@@ -1,0 +1,1656 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_POSTGRESQL",
+      "label": "PostgreSQL",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "postgres",
+      "pluginName": "PostgreSQL"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "barchart",
+      "name": "Bar chart",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "gapit-htmlgraphics-panel",
+      "name": "HTML graphics",
+      "version": "2.1.1"
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.5.9"
+    },
+    {
+      "type": "panel",
+      "id": "piechart",
+      "name": "Pie chart",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "postgres",
+      "name": "PostgreSQL",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 11,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": ".container {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  background: url('../public/img/logos/Img_sgp/HEADER-SGP-DARK.png'); /* Caminho atualizado para a sua imagem */\n  background-size: cover; /* Garante que a imagem cubra todo o container */\n  background-position: center; /* Centraliza a imagem de fundo */\n  border-radius: 20px;\n  font-family: Arial, sans-serif;\n  width: 2176px;\n  height: 65px;\n  color: white;\n  padding: 10px;\n}\n\n\n.info {\n  display: flex;\n  align-items: center;\n  /* justify-content: center; Removido para permitir que o ícone fique à esquerda */\n}\n\n.icon-query {\n    width: 35px; /* Largura do ícone */\n    height: 35px; /* Altura do ícone */\n    margin-right: 5%; /* Espaçamento à direita do ícone */\n}\n\n.icon {\n  width: 220px;\n  height: 100px;\n  margin-right: 10px;\n}\n\n.text {\n  font-size: 35px;\n  font-weight: bold;\n  flex-grow: 1;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);\n}\n\n\n\n.number-circle {\n  background-color: #165F8C; /* Cor de fundo ajustada */\n  color: #fcfcfc; /* Azul */\n  border-radius: 15px; /* Cantos arredondados */\n  width: 400px; /* Largura ajustada */\n  height: 60px; /* Altura ajustada */\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 18px; /* Tamanho da fonte dos números aumentado */\n  font-weight: bold;\n}\n\n.box {\n  margin-left: 10px; /* Adiciona margem à esquerda do componente .box */\n  font-size: 25px; /* Ajusta o tamanho do texto para 18px dentro de .box */\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"info\">\n      <img src=\"../public/img/logos/Img_sgp/SGP-LOGO-BRANCA.png\" alt=\"Ícone\" class=\"icon\"/>\n      <div class=\"text center-text\">SGP - PLANOS</div>\n    </div>\n    <div class=\"number-circle\">\n      <img src=\"../public/img/logos/Img_sgp/active-user.png\" alt=\"Ícone\" class=\"icon-query\"/>\n      <span class=\"uptime-label\">Total Upgrades: </span><div class=\"box\" id=\"htmlgraphics-value\"></div>\n    </div>\n  </div>\n</body>\n</html>\n",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "// Sets the value from the first series on every refresh\nconst htmlgraphicsValue = htmlNode.getElementById('htmlgraphics-value');\n\nif (htmlgraphicsValue) {\n  const valueField = data.series[0]?.fields[0];\n  if (valueField) {\n    const length = valueField.values.length;\n    htmlgraphicsValue.textContent = valueField.values.get(length - 1);\n  } else {\n    htmlgraphicsValue.textContent = \"0\"\n  }\n}\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "pluginVersion": "9.5.9",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH PlanosAntigosNovos AS (\r\n  SELECT\r\n    admcore_aditivo.id,\r\n    (admcore_aditivo.dado_antigo::json->>'plano_id')::INT AS id_plano_antigo,\r\n    (admcore_aditivo.dado_novo::json->>'plano_id')::INT AS id_plano_novo\r\n  FROM admcore_aditivo\r\n      LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.id = admcore_aditivo.clientecontrato_id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\n  WHERE\r\n    admcore_aditivo.dado_antigo LIKE '%plano%'\r\n    AND admcore_aditivo.dado_novo LIKE '%plano%'\r\n    AND \r\n    admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n)\r\nSELECT\r\n  COUNT(p.id) AS total_upgrades\r\nFROM PlanosAntigosNovos pan\r\nINNER JOIN admcore_plano AS p ON p.id = pan.id_plano_novo\r\nINNER JOIN admcore_plano AS pa ON pa.id = pan.id_plano_antigo\r\nWHERE p.preco > pa.preco;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 3
+      },
+      "id": 12,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:26px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nTOP 5 PLANOS POR POP</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 0,
+        "y": 5
+      },
+      "id": 22,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n    font-family: 'Arial', sans-serif;\n    margin: 0;\n    padding: 0;\n    background: #393838;\n}\n\n.card {\n    width: 400px; /* Ajuste conforme necessário */\n    height: 100%;\n    border-radius: 8px;\n    overflow: hidden;\n    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n    margin: 20px;\n}\n\n.card-header {\n    background: linear-gradient(90deg, #1D59BA,rgb(5, 211, 159));\n    height: 20px;\n    text-align: center;\n    padding: 15px;\n    font-weight: 1000;\n    color: #fff;\n}\n\n.card-body {\n    background-color:rgb(0, 51, 102);\n    padding: 10px;\n}\n\n.line {\n    margin-bottom: 5px;\n}\n\n.label {\n    font-size: 12px;\n    color: rgb(192, 188, 188);\n    font-weight: 1000;\n}\n\n.value {\n    display: block;\n    font-size: 1em;\n    font-weight: bold;\n}\n\n.negative {\n    color: #e74c3c;\n}\n\n.contribution {\n    color: #2ecc71;\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Card Financeiro</title>\n<link rel=\"stylesheet\" href=\"financeiro.css\">\n</head>\n<body>\n<div class=\"card\">\n    <div class=\"card-header\">\n        <!-- Cabeçalho Azul -->\n         <span class=\"mensal\">UPGRADE</span>\n    </div>\n    <div class=\"card-body\">\n        <div class=\"line revenue\">\n            <span class=\"label\">CRESCIMENTO LIQUÍDO</span>\n            <span class=\"value contribution\">R$1.609.168</span>\n        </div>\n        <div class=\"line expenses\">\n            <span class=\"label\">GANHOS UPGRADE</span>\n            <span class=\"value contribution\">R$1.445.153</span>\n        </div>\n        <div class=\"line percentage\">\n            <span class=\"label\">CRESCIMENTO (TOTAL)</span>\n            <span class=\"value contribution\">-34,8%</span>\n        </div>\n        </br>\n        </br>\n        </br>\n    </div>\n</div>\n</body>\n</html>\n",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "htmlNode.querySelector('.line.revenue>span.value').innerHTML = 'R$ ' + data.series[0].fields[0].values.buffer[0];\nhtmlNode.querySelector('.line.expenses>span.value').innerHTML = 'R$ ' + data.series[1].fields[0].values.buffer[0];\nhtmlNode.querySelector('.line.percentage>span.value').innerHTML = 'R$ ' + data.series[2].fields[0].values.buffer[0];\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n    (\r\n        (SELECT COUNT(admcore_clientecontratostatus.id) AS novos_contratos \r\n        FROM admcore_clientecontrato\r\n        INNER JOIN admcore_clientecontratostatus ON admcore_clientecontratostatus.id = admcore_clientecontrato.status_id\r\n        INNER JOIN admcore_servicointernet ON admcore_clientecontrato.id = admcore_servicointernet.clientecontrato_id\r\n        LEFT JOIN admcore_pop ON admcore_clientecontrato.pop_id = admcore_pop.id\r\n        WHERE admcore_clientecontratostatus.status IN (1,2) \r\n        AND $__timeFilter(admcore_clientecontrato.data_cadastro) \r\n        AND admcore_pop.cidade IN ($pop)\r\n        ) \r\n        - \r\n        (SELECT COUNT(admcore_clientecontratostatus.id) AS cancelamentos \r\n        FROM admcore_clientecontrato\r\n        INNER JOIN admcore_clientecontratostatus ON admcore_clientecontratostatus.id = admcore_clientecontrato.status_id\r\n        INNER JOIN admcore_servicointernet ON admcore_clientecontrato.id = admcore_servicointernet.clientecontrato_id\r\n        LEFT JOIN admcore_pop ON admcore_clientecontrato.pop_id = admcore_pop.id\r\n        WHERE admcore_clientecontratostatus.status = 3 \r\n        AND admcore_clientecontratostatus.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n        AND admcore_clientecontratostatus.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n        AND admcore_clientecontratostatus.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n        AND admcore_pop.cidade in ($pop)\r\n        )\r\n    ) as crescimento_liquido;",
+          "refId": "mensal1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR((sum(plano_novo.preco)-sum(plano_antigo.preco)), 'FM999G999G999D00') as upgrade\r\nFROM admcore_aditivo \r\nINNER JOIN admcore_plano AS plano_antigo ON plano_antigo.id = (admcore_aditivo.dado_antigo::json->>'plano_id')::INT\r\nINNER JOIN admcore_plano AS plano_novo ON plano_novo.id = (admcore_aditivo.dado_novo::json->>'plano_id')::INT\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.id = admcore_aditivo.clientecontrato_id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE admcore_aditivo.dado_antigo LIKE '%plano%' \r\nAND admcore_aditivo.dado_novo LIKE '%plano%' \r\nAND \r\n\r\nadmcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n     AND admcore_pop.cidade IN ($pop)\r\nand plano_novo.preco > plano_antigo.preco\r\n",
+          "refId": "saida1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select count(admcore_clientecontratostatus.id) AS novos_contratos from admcore_clientecontrato\r\nINNER JOIN admcore_clientecontratostatus ON (admcore_clientecontratostatus.id= admcore_clientecontrato.status_id)\r\nINNER JOIN admcore_servicointernet on (admcore_clientecontrato.id = admcore_servicointernet.clientecontrato_id)\r\nLEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nwhere admcore_clientecontratostatus.status in (1,2) and \r\n\r\nadmcore_clientecontrato.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_clientecontrato.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_clientecontrato.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n  AND admcore_pop.cidade in ($pop)",
+          "refId": "mensal2",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(valor), 'R$999G999G999D99') AS total_saidas_sem_repasse\r\nFROM public.financeiro_caixalancamento\r\nWHERE tipo_operacao = 2\r\n  AND EXTRACT(MONTH FROM data_cadastro) = EXTRACT(MONTH FROM CURRENT_DATE) \r\n  AND EXTRACT(YEAR FROM data_cadastro) = EXTRACT(YEAR FROM CURRENT_DATE) \r\n  AND NOT EXISTS (\r\n      SELECT 1 \r\n      FROM public.financeiro_caixalancamento AS fc_repasse\r\n      WHERE fc_repasse.observacao LIKE '%Repasse%' \r\n        AND fc_repasse.id = public.financeiro_caixalancamento.id\r\n  );",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 70,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#05c091",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 16,
+        "x": 4,
+        "y": 5
+      },
+      "id": 4,
+      "options": {
+        "barRadius": 0.15,
+        "barWidth": 0.85,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "9.5.9",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH PlanosAntigosNovos AS (\r\n  SELECT\r\n    admcore_aditivo.id,\r\n    (admcore_aditivo.dado_antigo::json->>'plano_id')::INT AS id_plano_antigo,\r\n    (admcore_aditivo.dado_novo::json->>'plano_id')::INT AS id_plano_novo\r\n  FROM admcore_aditivo\r\n      LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.id = admcore_aditivo.clientecontrato_id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\n  WHERE\r\n    admcore_aditivo.dado_antigo LIKE '%plano%'\r\n    AND admcore_aditivo.dado_novo LIKE '%plano%'\r\n    AND \r\n    admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n  AND admcore_pop.cidade in ($pop)\r\n)\r\nSELECT\r\n  p.descricao,\r\n  COUNT(p.id) AS upgrade\r\nFROM PlanosAntigosNovos pan\r\nINNER JOIN admcore_plano AS p ON p.id = pan.id_plano_novo\r\nINNER JOIN admcore_plano AS pa ON pa.id = pan.id_plano_antigo\r\nWHERE p.preco > pa.preco\r\nGROUP BY p.descricao order by upgrade desc limit 5;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "data_cadastro": 1,
+              "data_competencia": 2,
+              "descricao": 4,
+              "forma_de_pagamento": 5,
+              "tipo_operacao": 0,
+              "valor": 3
+            },
+            "renameByName": {
+              "data_alteracao": "DATA DA ALTERAÇÃO",
+              "data_cadastro": "DATA DE CADASTRO",
+              "data_competencia": "DATA DA COMPETÊNCIA",
+              "descricao": "COMPETÊNCIA",
+              "forma_de_pagamento": "FORMA DE PAGAMENTO",
+              "tipo_operacao": "TIPO DE OPERAÇÃO",
+              "valor": "VALOR"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 20,
+        "y": 5
+      },
+      "id": 23,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n    font-family: 'Arial', sans-serif;\n    margin: 0;\n    padding: 0;\n    background: #393838;\n}\n\n.card {\n    width: 400px; /* Ajuste conforme necessário */\n    height: 100%;\n    border-radius: 8px;\n    overflow: hidden;\n    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n    margin: 20px;\n}\n\n.card-header {\n    background: linear-gradient(90deg, #1D59BA,rgb(5, 211, 159));\n    height: 20px;\n    text-align: center;\n    padding: 15px;\n    font-weight: 1000;\n    color: #fff;\n}\n\n.card-body {\n    background-color:rgb(0, 51, 102);\n    padding: 10px;\n}\n\n.line {\n    margin-bottom: 5px;\n}\n\n.label {\n    font-size: 12px;\n    color: rgb(192, 188, 188);\n    font-weight: 1000;\n}\n\n.value {\n    display: block;\n    font-size: 1em;\n    font-weight: bold;\n}\n\n.negative {\n    color: #e74c3c;\n}\n\n.contribution {\n    color: #2ecc71;\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Card Financeiro</title>\n<link rel=\"stylesheet\" href=\"financeiro.css\">\n</head>\n<body>\n<div class=\"card\">\n    <div class=\"card-header\">\n        <!-- Cabeçalho Azul -->\n         <span class=\"mensal\">DOWNGRADE</span>\n    </div>\n    <div class=\"card-body\">\n        <div class=\"line revenue\">\n            <span class=\"label\">UPGRADE (TOTAL)</span>\n            <span class=\"value contribution\">R$1.609.168</span>\n        </div>\n        <div class=\"line expenses\">\n            <span class=\"label\">TOTAL DOWNGRADE</span>\n            <span class=\"value negative\">R$1.445.153</span>\n        </div>\n        <div class=\"line percentage\">\n            <span class=\"label\">PERDAS DOWNGRADE</span>\n            <span class=\"value negative\">-34,8%</span>\n        </div>\n        </br>\n        </br>\n        </br>\n    </div>\n</div>\n</body>\n</html>\n",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "htmlNode.querySelector('.line.revenue>span.value').innerHTML = 'R$ ' + data.series[0].fields[0].values.buffer[0];\nhtmlNode.querySelector('.line.expenses>span.value').innerHTML = 'R$ ' + data.series[1].fields[0].values.buffer[0];\nhtmlNode.querySelector('.line.percentage>span.value').innerHTML = 'R$ ' + data.series[2].fields[0].values.buffer[0];\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT count(admcore_aditivo.id) as upgrade\r\nFROM admcore_aditivo \r\nINNER JOIN admcore_plano AS plano_antigo ON plano_antigo.id = (admcore_aditivo.dado_antigo::json->>'plano_id')::INT\r\nINNER JOIN admcore_plano AS plano_novo ON plano_novo.id = (admcore_aditivo.dado_novo::json->>'plano_id')::INT\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.id = admcore_aditivo.clientecontrato_id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE admcore_aditivo.dado_antigo LIKE '%plano%' \r\nAND admcore_aditivo.dado_novo LIKE '%plano%' \r\nAND \r\nadmcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n     AND admcore_pop.cidade IN ($pop)\r\nand plano_novo.preco > plano_antigo.preco\r\n",
+          "refId": "mensal1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT count(admcore_aditivo.id) as upgrade\r\nFROM admcore_aditivo \r\nINNER JOIN admcore_plano AS plano_antigo ON plano_antigo.id = (admcore_aditivo.dado_antigo::json->>'plano_id')::INT\r\nINNER JOIN admcore_plano AS plano_novo ON plano_novo.id = (admcore_aditivo.dado_novo::json->>'plano_id')::INT\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.id = admcore_aditivo.clientecontrato_id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE admcore_aditivo.dado_antigo LIKE '%plano%' \r\nAND admcore_aditivo.dado_novo LIKE '%plano%' \r\nAND \r\nadmcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n\r\n     AND admcore_pop.cidade IN ($pop)\r\nand plano_novo.preco < plano_antigo.preco\r\n",
+          "refId": "saida1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR((sum(plano_novo.preco)-sum(plano_antigo.preco)), 'FM999G999G999D00') as upgrade\r\nFROM admcore_aditivo \r\nINNER JOIN admcore_plano AS plano_antigo ON plano_antigo.id = (admcore_aditivo.dado_antigo::json->>'plano_id')::INT\r\nINNER JOIN admcore_plano AS plano_novo ON plano_novo.id = (admcore_aditivo.dado_novo::json->>'plano_id')::INT\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.id = admcore_aditivo.clientecontrato_id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE admcore_aditivo.dado_antigo LIKE '%plano%' \r\nAND admcore_aditivo.dado_novo LIKE '%plano%' \r\nAND \r\nadmcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n     AND admcore_pop.cidade IN ($pop)\r\nand plano_novo.preco < plano_antigo.preco\r\n",
+          "refId": "mensal2",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 16,
+        "x": 0,
+        "y": 13
+      },
+      "id": 29,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:24px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nPLANOS NOVOS</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 16,
+        "y": 13
+      },
+      "id": 27,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:24px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nCRESCIMENTO POR POP</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 71,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#05d39f",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 15,
+        "x": 1,
+        "y": 15
+      },
+      "id": 25,
+      "options": {
+        "barRadius": 0.15,
+        "barWidth": 0.8,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xField": "descricao",
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "9.5.9",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH PlanosAntigosNovos AS (\r\n  SELECT\r\n    admcore_aditivo.id,\r\n    (admcore_aditivo.dado_antigo::json->>'plano_id')::INT AS id_plano_antigo,\r\n    (admcore_aditivo.dado_novo::json->>'plano_id')::INT AS id_plano_novo\r\n  FROM admcore_aditivo\r\n      LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.id = admcore_aditivo.clientecontrato_id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\n  WHERE\r\n    admcore_aditivo.dado_antigo LIKE '%plano%'\r\n    AND admcore_aditivo.dado_novo LIKE '%plano%'\r\n    AND \r\n    admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n  AND admcore_pop.cidade in ($pop)\r\n)\r\nSELECT\r\n  p.descricao,\r\n  COUNT(p.id) AS upgrade\r\nFROM PlanosAntigosNovos pan\r\nINNER JOIN admcore_plano AS p ON p.id = pan.id_plano_novo\r\nINNER JOIN admcore_plano AS pa ON pa.id = pan.id_plano_antigo\r\nWHERE p.preco > pa.preco\r\nGROUP BY p.descricao order by upgrade desc;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "data_cadastro": 1,
+              "data_competencia": 2,
+              "descricao": 4,
+              "forma_de_pagamento": 5,
+              "tipo_operacao": 0,
+              "valor": 3
+            },
+            "renameByName": {
+              "data_alteracao": "DATA DA ALTERAÇÃO",
+              "data_cadastro": "DATA DE CADASTRO",
+              "data_competencia": "DATA DA COMPETÊNCIA",
+              "descricao": "COMPETÊNCIA",
+              "forma_de_pagamento": "FORMA DE PAGAMENTO",
+              "tipo_operacao": "TIPO DE OPERAÇÃO",
+              "valor": "VALOR"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "AGUAS LINDAS DE GOIAS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#05c091",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "LIVE CONNECT"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#ffd500",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CONDOMINIOS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 15
+      },
+      "id": 24,
+      "options": {
+        "displayLabels": [
+          "value"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true,
+          "values": []
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.9",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \r\n      admcore_pop.cidade, \r\n      count(admcore_servicointernet.clientecontrato_id) as quantidade \r\nfrom admcore_clientecontrato\r\nINNER JOIN admcore_clientecontratostatus ON (admcore_clientecontratostatus.id= admcore_clientecontrato.status_id)\r\nINNER JOIN admcore_servicointernet on (admcore_clientecontrato.id = admcore_servicointernet.clientecontrato_id)\r\nINNER JOIN admcore_endereco on (admcore_endereco.id = admcore_servicointernet.endereco_id)\r\nINNER JOIN admcore_pop on (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nwhere admcore_clientecontratostatus.status in (1,2)\r\n\r\nAND admcore_clientecontrato.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_clientecontrato.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_clientecontrato.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\nGROUP BY admcore_pop.cidade\r\norder by quantidade desc limit 10;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "data_cadastro": 1,
+              "data_competencia": 2,
+              "descricao": 4,
+              "forma_de_pagamento": 5,
+              "tipo_operacao": 0,
+              "valor": 3
+            },
+            "renameByName": {
+              "data_alteracao": "DATA DA ALTERAÇÃO",
+              "data_cadastro": "DATA DE CADASTRO",
+              "data_competencia": "DATA DA COMPETÊNCIA",
+              "descricao": "COMPETÊNCIA",
+              "forma_de_pagamento": "FORMA DE PAGAMENTO",
+              "tipo_operacao": "TIPO DE OPERAÇÃO",
+              "valor": "VALOR"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 0,
+        "y": 23
+      },
+      "id": 14,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:24px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nPLANOS NOVOS</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 8,
+        "y": 23
+      },
+      "id": 15,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:24px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nNEGATIVADOS COM MAIOR NEGATIVAÇÃO!</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 16,
+        "y": 23
+      },
+      "id": 13,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:24px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nPLANOS INATIVADOS</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#003366",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "TOTAL:"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyBRL"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VALOR TOTAL:"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#13a016",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VENDIDOS:"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VALOR TOTAL:"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 0,
+        "y": 25
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.5.9",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \r\n\t\tpl.descricao as plano,\r\n\t\tcount(pl.descricao) as vendidos,\r\n\t\tsum(pl.preco) as total\r\nfrom public.admcore_clientecontratostatus cs\r\njoin public.admcore_clientecontrato as cc on cs.cliente_contrato_id = cc.id\r\njoin public.admcore_cliente as cl on cc.cliente_id = cl.id\r\njoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\njoin public.admcore_servicointernet as si on si.clientecontrato_id = cs.cliente_contrato_id\r\njoin public.admcore_plano as pl on pl.id = si.planointernet_id\r\nJOIN admcore_pop ON cc.pop_id = admcore_pop.id\r\nwhere cs.status = 1 \r\nAND cs.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\nAND cs.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\nAND admcore_pop.cidade in ($pop)\r\ngroup by pl.descricao\r\norder by vendidos desc",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "plano": "PLANO:",
+              "total": "VALOR TOTAL:",
+              "vendidos": "VENDIDOS:"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#003366",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "TOTAL:"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyBRL"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VALOR TOTAL:"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#13a016",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CANCELADOS:"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VALOR TOTAL:"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 8,
+        "y": 25
+      },
+      "id": 2,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.5.9",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \r\n\t\tpl.descricao as plano,\r\n\t\tcount(pl.descricao) as cancelados,\r\n\t\tsum(pl.preco) as total\r\nfrom public.admcore_clientecontratostatus cs\r\njoin public.admcore_clientecontrato as cc on cs.cliente_contrato_id = cc.id\r\njoin public.admcore_cliente as cl on cc.cliente_id = cl.id\r\njoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\njoin public.admcore_servicointernet as si on si.clientecontrato_id = cs.cliente_contrato_id\r\njoin public.admcore_plano as pl on pl.id = si.planointernet_id\r\nJOIN admcore_pop ON cc.pop_id = admcore_pop.id\r\nwhere cs.status = 3 \r\nAND cs.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\nAND cs.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\nand admcore_pop. cidade in ($pop)\r\ngroup by pl.descricao\r\norder by cancelados desc",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "cancelados": "CANCELADOS:",
+              "plano": "PLANO:",
+              "total": "VALOR TOTAL:",
+              "vendidos": "VENDIDOS:"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#003366",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VALOR TOTAL:"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyBRL"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#13a016",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "INATIVADOS:"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VALOR TOTAL:"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 16,
+        "y": 25
+      },
+      "id": 3,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.5.9",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \r\n\t\tpl.descricao as plano,\r\n\t\tcount(pl.descricao) as inativados,\r\n\t\tsum(pl.preco) as total\r\nfrom public.admcore_clientecontratostatus cs\r\njoin public.admcore_clientecontrato as cc on cs.cliente_contrato_id = cc.id\r\njoin public.admcore_cliente as cl on cc.cliente_id = cl.id\r\njoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\njoin public.admcore_servicointernet as si on si.clientecontrato_id = cs.cliente_contrato_id\r\njoin public.admcore_plano as pl on pl.id = si.planointernet_id\r\nJOIN admcore_pop ON cc.pop_id = admcore_pop.id\r\nwhere cs.status = 2 \r\nAND cs.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\nAND cs.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\nand admcore_pop.cidade in ($pop)\r\ngroup by pl.descricao\r\norder by inativados desc",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "inativados": "INATIVADOS:",
+              "plano": "PLANO:",
+              "total": "VALOR TOTAL:",
+              "vendidos": "VENDIDOS:"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 35
+      },
+      "id": 18,
+      "options": {
+        "activeTheme": "New Theme 2",
+        "disableThemePicker": false,
+        "themes": [
+          {
+            "name": "New Theme 2",
+            "styles": [
+              {
+                "props": {
+                  "theme": "default"
+                },
+                "type": "basetheme"
+              },
+              {
+                "props": {
+                  "url": ""
+                },
+                "type": "bgimage"
+              },
+              {
+                "props": {
+                  "url": ""
+                },
+                "type": "url"
+              },
+              {
+                "props": {
+                  "text": "body {\n    background-color: rgb(4, 4, 15);\n}"
+                },
+                "type": "style"
+              }
+            ]
+          }
+        ]
+      },
+      "pluginVersion": "0.2.1",
+      "transparent": true,
+      "type": "yesoreyeram-boomtheme-panel"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "sgp",
+    "planos"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": {
+          "type": "postgres",
+          "uid": "${DS_POSTGRESQL}"
+        },
+        "definition": "select cidade from admcore_pop",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Pops",
+        "multi": true,
+        "name": "pop",
+        "options": [],
+        "query": "select cidade from admcore_pop",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "SGP - PLANOS",
+  "uid": "c7cc3c9c-c4d0-4bc8-8e22-791468083866",
+  "version": 2,
+  "weekStart": ""
+}

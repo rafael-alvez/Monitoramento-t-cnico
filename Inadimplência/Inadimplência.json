@@ -1,0 +1,2139 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_POSTGRESQL",
+      "label": "PostgreSQL",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "postgres",
+      "pluginName": "PostgreSQL"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "barchart",
+      "name": "Bar chart",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "gapit-htmlgraphics-panel",
+      "name": "HTML graphics",
+      "version": "2.1.1"
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.5.9"
+    },
+    {
+      "type": "panel",
+      "id": "orchestracities-map-panel",
+      "name": "Orchestra Cities Map",
+      "version": "1.4.4"
+    },
+    {
+      "type": "datasource",
+      "id": "postgres",
+      "name": "PostgreSQL",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "volkovlabs-echarts-panel",
+      "name": "Apache ECharts",
+      "version": "5.3.0"
+    },
+    {
+      "type": "panel",
+      "id": "yesoreyeram-boomtheme-panel",
+      "name": "Boom Theme",
+      "version": "0.2.1"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "description": "/usr/share/grafana/public/img/logos/Img_sgp/",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 55,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": ".container {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  background: url('../public/img/logos/Img_sgp/HEADER-SGP-DARK.png'); /* Caminho atualizado para a sua imagem */\n  background-size: cover; /* Garante que a imagem cubra todo o container */\n  background-position: center; /* Centraliza a imagem de fundo */\n  border-radius: 20px;\n  font-family: Arial, sans-serif;\n  width: 2176px;\n  height: 65px;\n  color: white;\n  padding: 10px;\n}\n\n\n.info {\n  display: flex;\n  align-items: center;\n  /* justify-content: center; Removido para permitir que o ícone fique à esquerda */\n}\n\n.icon-query {\n    width: 35px; /* Largura do ícone */\n    height: 35px; /* Altura do ícone */\n    margin-right: 5%; /* Espaçamento à direita do ícone */\n}\n\n.icon {\n  width: 220px;\n  height: 100px;\n  margin-right: 10px;\n}\n\n.text {\n  font-size: 35px;\n  font-weight: bold;\n  flex-grow: 1;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);\n}\n\n\n\n.number-circle {\n  background-color: #165F8C; /* Cor de fundo ajustada */\n  color: #fcfcfc; /* Azul */\n  border-radius: 15px; /* Cantos arredondados */\n  width: 400px; /* Largura ajustada */\n  height: 60px; /* Altura ajustada */\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 18px; /* Tamanho da fonte dos números aumentado */\n  font-weight: bold;\n}\n\n.box {\n  margin-left: 10px; /* Adiciona margem à esquerda do componente .box */\n  font-size: 25px; /* Ajusta o tamanho do texto para 18px dentro de .box */\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"info\">\n      <img src=\"../public/img/logos/Img_sgp/SGP-LOGO-BRANCA.png\" alt=\"Ícone\" class=\"icon\"/>\n      <div class=\"text center-text\">ANÁLISE DE INADIMPLÊNCIA</div>\n    </div>\n    <div class=\"number-circle\">\n      <img src=\"../public/img/logos/Img_sgp/active-user.png\" alt=\"Ícone\" class=\"icon-query\"/>\n      <span class=\"uptime-label\">Total Ativos Agora: </span><div class=\"box\" id=\"htmlgraphics-value\"></div>\n    </div>\n  </div>\n</body>\n</html>\n",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "// Sets the value from the first series on every refresh\nconst htmlgraphicsValue = htmlNode.getElementById('htmlgraphics-value');\n\nif (htmlgraphicsValue) {\n  const valueField = data.series[0]?.fields[0];\n  if (valueField) {\n    const length = valueField.values.length;\n    htmlgraphicsValue.textContent = valueField.values.get(length - 1);\n  } else {\n    htmlgraphicsValue.textContent = \"0\"\n  }\n}\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "pluginVersion": "9.5.9",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n    COUNT(p.nome) AS quantidade_clientes\r\nFROM \r\n    public.admcore_cliente AS cl\r\nJOIN \r\n    public.admcore_clientecontrato AS cc ON cl.id = cc.cliente_id\r\nJOIN \r\n    public.admcore_clientecontratostatus AS cs ON cc.status_id = cs.id\r\nJOIN \r\n    public.admcore_pessoa AS p ON cl.pessoa_id = p.id\r\nJOIN \r\n    public.admcore_endereco AS ed ON cl.endereco_id = ed.id\r\nWHERE \r\n    cs.status = 1;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 0,
+        "y": 3
+      },
+      "id": 34,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "* {\n  font-family: Open Sans;\n}\n\n.box {\n  border: solid #555 2px;\n  border-radius: 10px;\n  padding: 10px 20px;\n}\n.container {\n    display: flex;\n    align-items: center;\n    justify-content: space-between; /* Alinha os elementos às extremidades do container */\n    background: rgb(0, 51, 102); /* Azul */\n    border-radius: 15px;\n    font-family: Arial, sans-serif;\n    width: 545px; /* Largura fixa do container */\n    height: 68px; /* Altura fixa do container */\n    color: white; /* Texto branco */\n    padding: 10px; /* Espaçamento interno */\n}\n\n.info {\n    display: flex;\n    align-items: center;\n}\n\n.icon {\n    width: 45px; /* Largura do ícone */\n    height: 45px; /* Altura do ícone */\n    margin-right: 10px; /* Espaçamento à direita do ícone */\n}\n\n.text {\n    font-size: 17px;\n    font-weight: bold;\n}\n\n.number-circle {\n    background-color: #FFA700; /* Cor de fundo ajustada */\n    color: #fcfcfc; /* Branco */\n    border-radius: 50%;\n    width: 70px; /* Largura do círculo ajustada */\n    height: 70px; /* Altura do círculo ajustada */\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-size: 30px; /* Tamanho da fonte dos números aumentado */\n    font-weight: bold;\n    /*text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)*/\n}\n\n/* Estilo para piscar */\n@keyframes piscar {\n    50% {\n        background-color: red;\n    }\n}\n\n/* Classe para aplicar a animação de piscar */\n.piscar {\n    animation: piscar 1s infinite;\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"info\">\n      <img src=\"../public/img/logos/Img_sgp/inativo.png\" alt=\"Ícone\" class=\"icon\"/>\n      <div class=\"text\">INATIVOS<br></div>\n    </div>\n    <div class=\"number-circle\">\n      <span id=\"htmlgraphics-value\">0</span>\n    </div>\n  </div>\n</body>\n</html>",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "// Sets the value from the first series on every refresh\nconst htmlgraphicsValue = htmlNode.getElementById('htmlgraphics-value');\n\nif (htmlgraphicsValue) {\n  const valueField = data.series[0]?.fields[0];\n  if (valueField) {\n    const length = valueField.values.length;\n    htmlgraphicsValue.textContent = valueField.values.get(length - 1);\n  } else {\n    htmlgraphicsValue.textContent = \"0\"\n  }\n}\n",
+        "overflow": "hidden",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \r\n\t\tcount(p.nome)\r\nfrom public.admcore_cliente as cl\r\njoin public.admcore_clientecontrato as cc on cl.id = cc.cliente_id\r\njoin public.admcore_clientecontratostatus as cs on cc.status_id = cs.id\r\njoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\njoin public.admcore_endereco as ed on cl.endereco_id = ed.id\r\nwhere cs.status = 2 ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 5,
+        "y": 3
+      },
+      "id": 33,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "* {\n  font-family: Open Sans;\n}\n\n.box {\n  border: solid #555 2px;\n  border-radius: 30px;\n  padding: 10px 20px;\n}\n.container {\n    display: flex;\n    align-items: center;\n    justify-content: space-between; /* Alinha os elementos às extremidades do container */\n    background: rgb(0, 51, 102); /* Azul */\n    border-radius: 15px;\n    font-family: Arial, sans-serif;\n    width: 545px; /* Largura fixa do container */\n    height: 68px; /* Altura fixa do container */\n    color: white; /* Texto branco */\n    padding: 10px; /* Espaçamento interno */\n}\n\n.info {\n    display: flex;\n    align-items: center;\n}\n\n.icon {\n    width: 45px; /* Largura do ícone */\n    height: 45px; /* Altura do ícone */\n    margin-right: 10px; /* Espaçamento à direita do ícone */\n}\n\n.text {\n    font-size: 17px;\n    font-weight: bold;\n}\n\n.number-circle {\n    background-color: rgb(19, 160, 22); /* Cor de fundo ajustada */\n    color: #fcfcfc; /* Branco */\n    border-radius: 50%;\n    width: 70px; /* Largura do círculo ajustada */\n    height: 70px; /* Altura do círculo ajustada */\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-size: 30px; /* Tamanho da fonte dos números aumentado */\n    font-weight: bold;\n    /*text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)*/\n}\n\n/* Estilo para piscar */\n@keyframes piscar {\n    50% {\n        background-color: red;\n    }\n}\n\n/* Classe para aplicar a animação de piscar */\n.piscar {\n    animation: piscar 1s infinite;\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"info\">\n      <img src=\"../public/img/logos/Img_sgp/icon-clientes-online.png\" alt=\"Ícone\" class=\"icon\"/>\n      <div class=\"text\">INSTALAÇÕES</br>(30 DIAS)</div>\n    </div>\n    <div class=\"number-circle\">\n      <span id=\"htmlgraphics-value\">0</span>\n    </div>\n  </div>\n</body>\n</html>",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "// Sets the value from the first series on every refresh\nconst htmlgraphicsValue = htmlNode.getElementById('htmlgraphics-value');\n\nif (htmlgraphicsValue) {\n  const valueField = data.series[0]?.fields[0];\n  if (valueField) {\n    const length = valueField.values.length;\n    htmlgraphicsValue.textContent = valueField.values.get(length - 1);\n  } else {\n    htmlgraphicsValue.textContent = \"0\"\n  }\n}\n",
+        "overflow": "hidden",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n count(atendimento_os.id)\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where atendimento_os.status = 1 and cast(atendimento_os.data_finalizacao as date) >= current_date - interval '30 day'\r\n and atendimento_motivoos.codigo = 10\r\n\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 9,
+        "y": 3
+      },
+      "id": 36,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "* {\n  font-family: Open Sans;\n}\n\n.box {\n  border: solid #555 2px;\n  border-radius: 10px;\n  padding: 10px 20px;\n}\n.container {\n    display: flex;\n    align-items: center;\n    justify-content: space-between; /* Alinha os elementos às extremidades do container */\n    background: rgb(0, 51, 102); /* Azul */\n    border-radius: 15px;\n    font-family: Arial, sans-serif;\n    width: 545px; /* Largura fixa do container */\n    height: 68px; /* Altura fixa do container */\n    color: white; /* Texto branco */\n    padding: 10px; /* Espaçamento interno */\n}\n\n.info {\n    display: flex;\n    align-items: center;\n}\n\n.icon {\n    width: 45px; /* Largura do ícone */\n    height: 45px; /* Altura do ícone */\n    margin-right: 10px; /* Espaçamento à direita do ícone */\n}\n\n.text {\n    font-size: 17px;\n    font-weight: bold;\n}\n\n.number-circle {\n    background-color: #63C4F1; /* Cor de fundo ajustada */\n    color: #fcfcfc; /* Branco */\n    border-radius: 50%;\n    width: 70px; /* Largura do círculo ajustada */\n    height: 70px; /* Altura do círculo ajustada */\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-size: 30px; /* Tamanho da fonte dos números aumentado */\n    font-weight: bold;\n    /*text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)*/\n}\n\n/* Estilo para piscar */\n@keyframes piscar {\n    50% {\n        background-color: red;\n    }\n}\n\n/* Classe para aplicar a animação de piscar */\n.piscar {\n    animation: piscar 1s infinite;\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"info\">\n      <img src=\"../public/img/logos/Img_sgp/inviabilidade.png\" alt=\"Ícone\" class=\"icon\"/>\n      <div class=\"text\">REDUÇÃO DE<br>VELOCIDADE</div>\n    </div>\n    <div class=\"number-circle\">\n      <span id=\"htmlgraphics-value\">0</span>\n    </div>\n  </div>\n</body>\n</html>",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "// Sets the value from the first series on every refresh\nconst htmlgraphicsValue = htmlNode.getElementById('htmlgraphics-value');\n\nif (htmlgraphicsValue) {\n  const valueField = data.series[0]?.fields[0];\n  if (valueField) {\n    const length = valueField.values.length;\n    htmlgraphicsValue.textContent = valueField.values.get(length - 1);\n  } else {\n    htmlgraphicsValue.textContent = \"0\"\n  }\n}\n",
+        "overflow": "hidden",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \r\n\t\tcount(p.nome)\r\nfrom public.admcore_cliente as cl\r\njoin public.admcore_clientecontrato as cc on cl.id = cc.cliente_id\r\njoin public.admcore_clientecontratostatus as cs on cc.status_id = cs.id\r\njoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\njoin public.admcore_endereco as ed on cl.endereco_id = ed.id\r\nwhere cs.status = 7 AND cs.data_cadastro >= current_date - interval '30 day'",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 14,
+        "y": 3
+      },
+      "id": 35,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "* {\n  font-family: Open Sans;\n}\n\n.box {\n  border: solid #555 2px;\n  border-radius: 10px;\n  padding: 10px 20px;\n}\n.container {\n    display: flex;\n    align-items: center;\n    justify-content: space-between; /* Alinha os elementos às extremidades do container */\n    background: rgb(0, 51, 102); /* Azul */\n    border-radius: 15px;\n    font-family: Arial, sans-serif;\n    width: 545px; /* Largura fixa do container */\n    height: 68px; /* Altura fixa do container */\n    color: white; /* Texto branco */\n    padding: 10px; /* Espaçamento interno */\n}\n\n.info {\n    display: flex;\n    align-items: center;\n}\n\n.icon {\n    width: 45px; /* Largura do ícone */\n    height: 45px; /* Altura do ícone */\n    margin-right: 10px; /* Espaçamento à direita do ícone */\n}\n\n.text {\n    font-size: 17px;\n    font-weight: bold;\n}\n\n.number-circle {\n    background-color: rgb(0, 0, 0); /* Cor de fundo ajustada */\n    color: #fcfcfc; /* Branco */\n    border-radius: 50%;\n    width: 70px; /* Largura do círculo ajustada */\n    height: 70px; /* Altura do círculo ajustada */\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-size: 30px; /* Tamanho da fonte dos números aumentado */\n    font-weight: bold;\n    /*text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)*/\n}\n\n/* Estilo para piscar */\n@keyframes piscar {\n    50% {\n        background-color: red;\n    }\n}\n\n/* Classe para aplicar a animação de piscar */\n.piscar {\n    animation: piscar 1s infinite;\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"info\">\n      <img src=\"../public/img/logos/Img_sgp/suspended2.png\" alt=\"Ícone\" class=\"icon\"/>\n      <div class=\"text\">SUSPENSOS<br></div>\n    </div>\n    <div class=\"number-circle\">\n      <span id=\"htmlgraphics-value\">0</span>\n    </div>\n  </div>\n</body>\n</html>",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "// Sets the value from the first series on every refresh\nconst htmlgraphicsValue = htmlNode.getElementById('htmlgraphics-value');\n\nif (htmlgraphicsValue) {\n  const valueField = data.series[0]?.fields[0];\n  if (valueField) {\n    const length = valueField.values.length;\n    htmlgraphicsValue.textContent = valueField.values.get(length - 1);\n  } else {\n    htmlgraphicsValue.textContent = \"0\"\n  }\n}\n",
+        "overflow": "hidden",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \r\n\t\tcount(p.nome)\r\nfrom public.admcore_cliente as cl\r\njoin public.admcore_clientecontrato as cc on cl.id = cc.cliente_id\r\njoin public.admcore_clientecontratostatus as cs on cc.status_id = cs.id\r\njoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\njoin public.admcore_endereco as ed on cl.endereco_id = ed.id\r\nwhere cs.status = 4 ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 19,
+        "y": 3
+      },
+      "id": 37,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "* {\n  font-family: Open Sans;\n}\n\n.box {\n  border: solid #555 2px;\n  border-radius: 30px;\n  padding: 10px 20px;\n}\n.container {\n    display: flex;\n    align-items: center;\n    justify-content: space-between; /* Alinha os elementos às extremidades do container */\n    background: rgb(0, 51, 102); /* Azul */\n    border-radius: 15px;\n    font-family: Arial, sans-serif;\n    width: 545px; /* Largura fixa do container */\n    height: 68px; /* Altura fixa do container */\n    color: white; /* Texto branco */\n    padding: 10px; /* Espaçamento interno */\n}\n\n.info {\n    display: flex;\n    align-items: center;\n}\n\n.icon {\n    width: 45px; /* Largura do ícone */\n    height: 45px; /* Altura do ícone */\n    margin-right: 10px; /* Espaçamento à direita do ícone */\n}\n\n.text {\n    font-size: 17px;\n    font-weight: bold;\n}\n\n.number-circle {\n    background-color: #C40606; /* Cor de fundo ajustada */\n    color: #fcfcfc; /* Branco */\n    border-radius: 50%;\n    width: 70px; /* Largura do círculo ajustada */\n    height: 70px; /* Altura do círculo ajustada */\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-size: 30px; /* Tamanho da fonte dos números aumentado */\n    font-weight: bold;\n    /*text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)*/\n}\n\n/* Estilo para piscar */\n@keyframes piscar {\n    50% {\n        background-color: red;\n    }\n}\n\n/* Classe para aplicar a animação de piscar */\n.piscar {\n    animation: piscar 1s infinite;\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"info\">\n      <img src=\"../public/img/logos/Img_sgp/canceled.png\" alt=\"Ícone\" class=\"icon\"/>\n      <div class=\"text\">CANCELADOS<br>(30 DIAS)</div>\n    </div>\n    <div class=\"number-circle\">\n      <span id=\"htmlgraphics-value\">0</span>\n    </div>\n  </div>\n</body>\n</html>",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "// Sets the value from the first series on every refresh\nconst htmlgraphicsValue = htmlNode.getElementById('htmlgraphics-value');\n\nif (htmlgraphicsValue) {\n  const valueField = data.series[0]?.fields[0];\n  if (valueField) {\n    const length = valueField.values.length;\n    htmlgraphicsValue.textContent = valueField.values.get(length - 1);\n  } else {\n    htmlgraphicsValue.textContent = \"0\"\n  }\n}\n",
+        "overflow": "hidden",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select count(*) from atendimento_ocorrencia\r\nwhere data_cadastro >= current_date - interval '29 day' and lower(conteudo) like '%cancelamento do%'",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 0,
+        "y": 6
+      },
+      "id": 29,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "const dados = {}\ndata.series.forEach((s, i) => {\n  s.fields.forEach((f, i) => {\n    if (!dados[f.name]) dados[f.name] = []\n    dados[f.name] = f.values.buffer\n  })\n})\n\nvar options = {\n  title: { text: '' },\n  tooltip: {\n    trigger: 'axis',\n    axisPointer: {\n      type: 'shadow'\n    }\n  },\n  legend: { display: false },\n  grid: {\n    left: '3%',\n    right: '4%',\n    bottom: '3%',\n    containLabel: true\n  },\n  xAxis: [],\n  yAxis: [\n    {\n      type: 'category',\n      data: dados['bairro'],\n      axisLabel: {\n        formatter: '{value}',\n        fontSize: 10\n      }\n    }\n  ],\n  series: [\n    {\n      name: 'Percentual por Bairro',\n      type: 'bar',\n      data: dados['total_por_bairro'].reverse(),\n      tooltip: {\n        valueFormatter: value => `${value} clientes inadimplentes`\n      },\n      label: {\n        show: true,\n        precision: 1,\n        position: 'right',\n        valueAnimation: true,\n        fontFamily: 'monospace',\n        formatter: d => `${d.value}`\n      },\n      itemStyle: {\n        borderRadius: [0, 7, 7, 0], // Define o border-radius para os itens de barra\n        color: '#165F8C'\n      }\n    },\n    {\n      name: 'Porcentagem por Bairro',\n      type: 'bar',\n      data: dados['percentual_porcentagem_por_bairro'].reverse(),\n      barGap: '2%',\n      barCategoryGap: '5%',\n      tooltip: {\n        valueFormatter: value => `${value.toFixed(2)}%`\n      },\n      label: {\n        show: true,\n        precision: 1,\n        position: 'right',\n        valueAnimation: true,\n        fontFamily: 'monospace',\n        formatter: d => `${d.value.toFixed(2)}%`\n      },\n      itemStyle: {\n        borderRadius: [0, 7, 7, 0], // Define o border-radius para os itens de barra\n        color: 'rgb(5, 192, 145)'\n      }\n    }\n  ]\n};\n\ndados['bairro'].reverse().forEach(bairro => {\n  options.xAxis.push({\n    type: 'value',\n    boundaryGap: [0, 0.01]\n  })\n})\n\nreturn options;\n",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "console.log(context);\nreturn {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n    ed.bairro,\r\n    COUNT(p.nome) AS total_por_bairro,\r\n    (COUNT(p.nome) * 100.0 / (SELECT COUNT(*) FROM public.admcore_cliente AS c JOIN public.admcore_pessoa AS ps ON c.pessoa_id = ps.id join public.admcore_clientecontrato as cc on c.id = cc.cliente_id join public.admcore_clientecontratostatus as cs on cc.status_id = cs.id WHERE cs.status = 3)) AS percentual_porcentagem_por_bairro\r\nFROM public.admcore_cliente AS cl\r\nJOIN public.admcore_pessoa AS p ON cl.pessoa_id = p.id\r\nJOIN public.admcore_endereco AS ed ON cl.endereco_id = ed.id\r\njoin public.admcore_clientecontrato as cc on cl.id = cc.cliente_id\r\njoin public.admcore_clientecontratostatus as cs on cc.status_id = cs.id\r\nWHERE cs.status = 3\r\nGROUP BY ed.bairro\r\nORDER BY percentual_porcentagem_por_bairro DESC\r\nlimit 5;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [],
+      "transparent": true,
+      "type": "volkovlabs-echarts-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 3,
+        "x": 21,
+        "y": 6
+      },
+      "id": 50,
+      "options": {
+        "activeTheme": "New Theme 2",
+        "disableThemePicker": false,
+        "themes": [
+          {
+            "name": "New Theme 2",
+            "styles": [
+              {
+                "props": {
+                  "theme": "default"
+                },
+                "type": "basetheme"
+              },
+              {
+                "props": {
+                  "url": ""
+                },
+                "type": "bgimage"
+              },
+              {
+                "props": {
+                  "url": ""
+                },
+                "type": "url"
+              },
+              {
+                "props": {
+                  "text": "body {\n    background-color: rgb(4, 4, 15);\n}"
+                },
+                "type": "style"
+              }
+            ]
+          }
+        ]
+      },
+      "pluginVersion": "0.2.1",
+      "transparent": true,
+      "type": "yesoreyeram-boomtheme-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "description": "-15.73545919267231, -48.25377337883115    -14.7851277,-39.3521367",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 7
+      },
+      "id": 38,
+      "options": {
+        "basemap": {
+          "config": {},
+          "type": "osm-standard"
+        },
+        "controls": {
+          "mouseWheelZoom": true,
+          "showAttribution": false,
+          "showDebug": false,
+          "showLayercontrol": true,
+          "showScale": true,
+          "showZoom": false
+        },
+        "layers": [
+          {
+            "config": {
+              "cluster": false,
+              "clusterDistance": 20,
+              "clusterMinDistance": 0,
+              "clusterValue": "size",
+              "color": {
+                "fixed": "dark-green"
+              },
+              "enableGradient": false,
+              "enableShadow": false,
+              "fillOpacity": 0.2,
+              "iconSize": 14,
+              "pinShape": "marker",
+              "selectIcon": "fa-home",
+              "shape": "circle",
+              "showLegend": true,
+              "showPin": true,
+              "size": {
+                "fixed": 4,
+                "max": 15,
+                "min": 2
+              }
+            },
+            "displayProperties": [
+              "nome",
+              "bairro",
+              "logradouro"
+            ],
+            "location": {
+              "mode": "auto"
+            },
+            "name": "Inadiplência",
+            "query": "A",
+            "titleField": "Bairro",
+            "type": "markers"
+          },
+          {
+            "config": {
+              "cluster": false,
+              "clusterDistance": 20,
+              "clusterMinDistance": 0,
+              "clusterValue": "size",
+              "color": {
+                "fixed": "light-blue"
+              },
+              "enableGradient": false,
+              "enableShadow": false,
+              "fillOpacity": 0.4,
+              "iconSize": 18,
+              "pinShape": "marker",
+              "selectIcon": "fa-home",
+              "shape": "circle",
+              "showLegend": true,
+              "showPin": true,
+              "size": {
+                "fixed": 5,
+                "max": 15,
+                "min": 2
+              }
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "Redução de velocidade",
+            "query": "B",
+            "type": "markers"
+          },
+          {
+            "config": {
+              "cluster": false,
+              "clusterDistance": 20,
+              "clusterMinDistance": 0,
+              "clusterValue": "size",
+              "color": {
+                "fixed": "semi-dark-yellow"
+              },
+              "enableGradient": false,
+              "enableShadow": false,
+              "fillOpacity": 0.4,
+              "iconSize": 18,
+              "pinShape": "marker",
+              "selectIcon": "fa-home",
+              "shape": "circle",
+              "showLegend": true,
+              "showPin": true,
+              "size": {
+                "fixed": 5,
+                "max": 15,
+                "min": 2
+              }
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "SUSPENSOS",
+            "query": "C",
+            "type": "markers"
+          }
+        ],
+        "view": {
+          "id": "coords",
+          "lat": -14.7851277,
+          "lon": -39.3,
+          "shared": true,
+          "zoom": 11.94
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n\tp.nome,\r\n\ted.bairro,\r\n\ted.cidade,\r\n\ted.logradouro,\r\n\tSPLIT_PART(map_ll, ',', 2) AS longitude,\r\n    SPLIT_PART(map_ll, ',', 1) AS latitude\r\nFROM public.admcore_cliente AS cl\r\nJOIN public.admcore_clientecontrato AS cc ON cl.id = cc.cliente_id\r\nJOIN public.admcore_clientecontratostatus AS cs ON cc.status_id = cs.id\r\nJOIN public.admcore_pessoa AS p ON cl.pessoa_id = p.id\r\nJOIN public.admcore_endereco AS ed ON cl.endereco_id = ed.id\r\nwhere cs.status = 3\r\n    AND ed.map_ll IS NOT NULL \r\n    AND ed.map_ll LIKE ANY (ARRAY['%1%', '%2%', '%3%', '%8%', '%5%', '%6%', '%0%', '%4%', '%7%', '%9%'])\r\n--GROUP BY ed.bairro, ed.map_ll, p.nome, ed.logradouro, ed.cidade,\r\nORDER BY p.nome ASC;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select \r\n\t\tp.nome,\r\n\t\t'*******' || SUBSTRING(p.cpfcnpj FROM 9) AS CPF_CNPJ,\r\n\t\tcl.data_alteracao,\r\n\t\ted.cep,\r\n\t\ted.bairro,\r\n\t\ted.cidade,\r\n\t\ted.logradouro,\r\n\t\tSPLIT_PART(map_ll, ',', 1) AS latitude,\r\n    SPLIT_PART(map_ll, ',', 2) AS longitude\r\nfrom public.admcore_cliente as cl\r\njoin public.admcore_clientecontrato as cc on cl.id = cc.cliente_id\r\njoin public.admcore_clientecontratostatus as cs on cc.status_id = cs.id\r\njoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\njoin public.admcore_endereco as ed on cl.endereco_id = ed.id\r\nwhere cs.status = 7\r\norder by data_alteracao desc",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select \r\n\t\tp.nome,\r\n\t\t'*******' || SUBSTRING(p.cpfcnpj FROM 9) AS CPF_CNPJ,\r\n\t\tcl.data_alteracao,\r\n\t\ted.cep,\r\n\t\ted.bairro,\r\n\t\ted.cidade,\r\n\t\ted.logradouro,\r\n\t\tSPLIT_PART(map_ll, ',', 1) AS latitude,\r\n    SPLIT_PART(map_ll, ',', 2) AS longitude\r\nfrom public.admcore_cliente as cl\r\njoin public.admcore_clientecontrato as cc on cl.id = cc.cliente_id\r\njoin public.admcore_clientecontratostatus as cs on cc.status_id = cs.id\r\njoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\njoin public.admcore_endereco as ed on cl.endereco_id = ed.id\r\nwhere cs.status = 4\r\norder by data_alteracao desc",
+          "refId": "C",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "bairro": "Bairro",
+              "logradouro": "Endereço",
+              "longitude": "",
+              "nome": "Nome"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "orchestracities-map-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "id": 32,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": ".dashboard {\n  display: flex;\n  background:rgb(0, 51, 102); /* Fundo escuro */\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */\n  border-radius: 4px; /* Bordas arredondadas */\n  overflow: hidden; /* Garante que os filhos não sobreponham as bordas arredondadas */\n  height: 40px; /* Altura definida (ajuste conforme necessário) */\n  justify-content: space-between;\n}\n\n\n.dashboard-item {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: center;\n  width: 33%;\n  padding: 20px;\n  border-right: 1px solid #eaeaea; /* Linha divisória */\n}\n\n.dashboard-item:last-child {\n  border-right: none; /* Remove a borda do último item */\n}\n\n.dashboard-icon {\n  width: 60px; /* Largura do ícone */\n  margin-right: 10px; /* Espaço entre o ícone e o texto */\n}\n\n.dashboard-value {\n  font-size: 1.5em; /* Tamanho maior para os valores */\n  font-weight: 600; /* Fonte mais grossa */\n  color: rgb(246, 241, 241); /* Cor do texto escuro */\n  margin-right: 10px; /* Espaço entre o valor e o rótulo */\n}\n\n.dashboard-label {\n  font-size: 0.9em;\n  color: rgb(246, 239, 239); /* Cor cinza para o texto do rótulo */\n  text-transform: uppercase; /* Rótulos em maiúsculas */\n  letter-spacing: 1px; /* Espaçamento entre letras */\n}\n\n.negative {\n  color: #e74c3c; /* Cor vermelha para números negativos */\n}\n\n/* Adicionando estilo para caso de ícones com cor negativa */\n.negative-icon {\n  /* Se o ícone de crescimento negativo tiver uma cor diferente, ajuste aqui */\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<div class=\"dashboard\">\n  <div class=\"dashboard-item\">\n    <img src=\"/public/img/logos/Img_sgp/velocimetro.png\" alt=\"Sales Icon\" class=\"dashboard-icon\">\n    <span id=\"reducao\" class=\"dashboard-value\">0</span>\n    <span class=\"dashboard-label\">REDUÇÃO DE VELOCIDADE</span>\n  </div>\n  <div class=\"dashboard-item\">\n    <img src=\"/public/img/logos/Img_sgp/inadiplência03.png\" alt=\"Profits Icon\" class=\"dashboard-icon\">\n    <span id=\"projecao\" class=\"dashboard-value\">0</span>\n    <span class=\"dashboard-label\">PROJEÇÃO DE CANCELAMENTOS</span>\n  </div>\n  <div class=\"dashboard-item\">\n    <img src=\"/public/img/logos/Img_sgp/inadiplencia.png\" alt=\"Growth Icon\" class=\"dashboard-icon negative-icon\">\n    <span id=\"pagamentos\" class=\"dashboard-value negative\">0%</span>\n    <span class=\"dashboard-label\">PAGAMENTOS ATRASADOS (30 dias)</span>\n  </div>\n  <div class=\"dashboard-item\">\n    <img src=\"/public/img/logos/Img_sgp/acordo2.png\" alt=\"Sales Icon\" class=\"dashboard-icon\">\n    <span id=\"atrasados\" class=\"dashboard-value\">0</span>\n    <span class=\"dashboard-label\">PAGAMENTOS PEDENTES (30 DIAS)</span>\n  </div>\n  <div class=\"dashboard-item\">\n    <img src=\"/public/img/logos/Img_sgp/lost.png\" alt=\"Profits Icon\" class=\"dashboard-icon\">\n    <span id=\"negativados\" class=\"dashboard-value\">0</span>\n    <span class=\"dashboard-label\">negativados</span>\n  </div>\n  <div class=\"dashboard-item\">\n    <img src=\"/public/img/logos/Img_sgp/bankrupt.png\" alt=\"Growth Icon\" class=\"dashboard-icon negative-icon\">\n    <span id=\"inadiplencia\" class=\"dashboard-value negative\">0%</span>\n    <span class=\"dashboard-label\">inadiplência</span>\n  </div>\n</div>\n",
+        "onInit": "// Sets the text from customProperties\n// const htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\n// if (htmlgraphicsText) {\n//   htmlgraphicsText.textContent = customProperties.text;\n\n//   // Change the text color based on the theme\n//   if (theme.isDark) {\n//     htmlgraphicsText.style.color = 'green';\n//   } else {\n//     htmlgraphicsText.style.color = 'red';\n//   }\n// }\n",
+        "onInitOnResize": false,
+        "onRender": "const dodos = {}\nconst colunas = data.series[0].fields[0].values.buffer || []\ncolunas.forEach((col, i) => dodos[col] = data.series[0]?.fields[1]?.values.buffer[i])\n\nhtmlNode.querySelector('#reducao').innerHTML = dodos.count || 0;\nhtmlNode.querySelector('#projecao').innerHTML = dodos.total || 0;\nhtmlNode.querySelector('#pagamentos').innerHTML = dodos.quantidade || 0;\nhtmlNode.querySelector('#atrasados').innerHTML = dodos.atrasados || 0;\nhtmlNode.querySelector('#negativados').innerHTML = dodos.total_inadiplentes || 0;\nhtmlNode.querySelector('#inadiplencia').innerHTML = `${Math.ceil(dodos.percentual_serasa || 0)}%`;",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select\r\n\tcount(nome) as atrasados\r\nfrom public.financeiro_titulo as tt\r\njoin public.admcore_cliente as cl on tt.cliente_id = cl.id\r\njoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\nwhere data_pagamento is null\r\nAND data_documento > CURRENT_DATE - INTERVAL '30 DAY'\r\nand data_vencimento < current_date\r\norder by atrasados desc",
+          "refId": "C",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \r\n\t\tcount(p.nome)\r\nfrom public.admcore_cliente as cl\r\njoin public.admcore_clientecontrato as cc on cl.id = cc.cliente_id\r\njoin public.admcore_clientecontratostatus as cs on cc.status_id = cs.id\r\njoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\njoin public.admcore_endereco as ed on cl.endereco_id = ed.id\r\nwhere cs.status = 7",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n    (COUNT(CASE WHEN cs.status = 3 THEN 1 END)::float / COUNT(*)) * 100 AS percentual_serasa\r\nfrom public.admcore_cliente as cl\r\njoin public.admcore_clientecontrato as cc on cl.id = cc.cliente_id\r\njoin public.admcore_clientecontratostatus as cs on cc.status_id = cs.id\r\njoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\njoin public.admcore_endereco as ed on cl.endereco_id = ed.id",
+          "refId": "D",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT COUNT(financeiro_titulo.cliente_id) AS total\r\nFROM admcore_clientecontrato\r\nINNER JOIN admcore_clientecontratostatus ON (admcore_clientecontratostatus.id = admcore_clientecontrato.status_id)\r\nINNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\nINNER JOIN financeiro_titulo ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\nINNER JOIN admcore_servicointernet on (admcore_clientecontrato.id = admcore_servicointernet.clientecontrato_id)\r\nLEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE admcore_clientecontratostatus.status = 3\r\nAND \r\nadmcore_clientecontratostatus.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_clientecontratostatus.data_cadastro >= current_date - interval '30 day'\r\nAND financeiro_titulo.data_vencimento >= TO_TIMESTAMP($__from/1000)\r\nAND financeiro_titulo.data_vencimento < '2050-01-01'::date\r\nAND financeiro_titulo.data_pagamento IS NULL\r\n",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select \r\n\tcount(p.nome) as total_inadiplentes\r\nfrom public.admcore_cliente as cl\r\njoin public.admcore_clientecontrato as cc on cl.id = cc.cliente_id\r\njoin public.admcore_clientecontratostatus as cs on cc.status_id = cs.id\r\njoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\njoin public.admcore_endereco as ed on cl.endereco_id = ed.id\r\nwhere cs.status = 3",
+          "refId": "E",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select\r\n\tcount(nome) as atrasados\r\nfrom public.financeiro_titulo as tt\r\njoin public.admcore_cliente as cl on tt.cliente_id = cl.id\r\njoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\nwhere data_pagamento is null\r\nAND data_documento > CURRENT_DATE - INTERVAL '30 DAY'\r\nand data_vencimento < current_date\r\norder by atrasados desc\r\n",
+          "refId": "F",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "reducers": [
+              "lastNotNull"
+            ]
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 0,
+        "y": 20
+      },
+      "id": 51,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:26px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nTOP RECORRÊNCIA DE ATRASOS</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 8,
+        "y": 20
+      },
+      "id": 52,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:26px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nACORDOS REALIZADOS</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 16,
+        "y": 20
+      },
+      "id": 53,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:26px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nTOP INADIMPLÊNCIA POR PLANOS</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 0,
+        "y": 22
+      },
+      "id": 48,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "let pops = [];\ndata.series[0]?.fields[0]?.values.forEach(pop => {\n  pops.push(pop.charAt(0).toUpperCase() + pop.slice(1));\n});\n\nif (data.series.length == 0) {\n  pops.push('Sem dados disponíveis')\n}\n\nreturn {\n  tooltip: {\n    trigger: 'axis'\n  },\n  grid: {\n    left: '5%',\n    top: '0%',\n    bottom: '0%',\n    containLabel: true\n  },\n  xAxis: {},\n  yAxis: {\n    type: 'category',\n    boundaryGap: true,\n    data: pops\n  },\n  series: [\n    {\n      type: 'bar',\n      data: data.series[0]?.fields[1]?.values.map(v => v || 0) || [0],\n      tooltip: {\n        valueFormatter: (value) => `Quantidade: ${value}`\n      },\n      label: {\n        show: true,\n        position: 'right',\n        valueAnimation: true\n      },\n      itemStyle: {\n        borderRadius: [0, 7, 7, 0],\n        color: 'rgba(5, 192, 145, 0.7)',\n      }\n    }\n  ],\n  grip: {\n    left: '10%'\n  }\n};\n",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "console.log(context);\nreturn {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select nome,\r\n\t\t\t\tquantidade\r\nfrom ( \r\n\t\tselect\r\n\t\t\tdistinct(p.nome) as nome, count(nome) as quantidade\r\n\t\tfrom public.financeiro_titulo as tt\r\n\t\tjoin public.admcore_cliente as cl on tt.cliente_id = cl.id\r\n\t\tjoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\n\t\tJOIN public.admcore_clientecontrato AS cc ON cl.id = cc.cliente_id\r\n\t\twhere (tt.data_pagamento > tt.data_vencimento OR tt.data_pagamento IS NULL)\r\n\t\tAND tt.data_vencimento < CURRENT_DATE\r\n\t\tand cc.status_id = 1\r\n\t\tgroup by nome, tt.data_documento, tt.data_vencimento\r\n\t\thaving count(nome) > 2\r\n\t\torder by quantidade desc\r\n\t\tLIMIT 5) as dados\r\norder by quantidade asc",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "valor_total": false
+            },
+            "indexByName": {
+              "cancelados": 1,
+              "plano": 0,
+              "valor_total": 2
+            },
+            "renameByName": {
+              "ano": "Ano",
+              "bairro": "BAIRRO",
+              "cep": "CEP",
+              "cpf_cnpj": "N° DE DOCUMENTO",
+              "data_alteracao": "DATA DA ALTERAÇÃO",
+              "data_cadastro": "DATA DE CADASTRO",
+              "data_competencia": "DATA DA COMPETÊNCIA",
+              "descricao": "COMPETÊNCIA",
+              "forma_de_pagamento": "FORMA DE PAGAMENTO",
+              "mes": "Mês",
+              "nome": "CLIENTE",
+              "tipo_operacao": "TIPO DE OPERAÇÃO",
+              "total_por_mes": "Valor",
+              "valor": "VALOR"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "volkovlabs-echarts-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 70,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#05c091"
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Field"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "acordos_15": {
+                        "index": 1,
+                        "text": "15 DIAS"
+                      },
+                      "acordos_3": {
+                        "index": 3,
+                        "text": "3 DIAS"
+                      },
+                      "acordos_30": {
+                        "index": 0,
+                        "text": "30 DIAS"
+                      },
+                      "acordos_7": {
+                        "index": 2,
+                        "text": "7 DIAS"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 8,
+        "y": 22
+      },
+      "id": 49,
+      "options": {
+        "barRadius": 0.15,
+        "barWidth": 0.8,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": false
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select count(*) as acordos_30\r\nfrom atendimento_ocorrencia\r\nwhere data_cadastro >= current_date - interval '30 day' and lower(conteudo) like '%acordo%' ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select count(*) as acordos_15\r\nfrom atendimento_ocorrencia\r\nwhere data_cadastro >= current_date - interval '15 day' and lower(conteudo) like '%acordo%' ",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select count(*) as acordos_7\r\nfrom atendimento_ocorrencia\r\nwhere data_cadastro >= current_date - interval '7 day' and lower(conteudo) like '%acordo%' ",
+          "refId": "C",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select count(*) as acordos_3\r\nfrom atendimento_ocorrencia\r\nwhere data_cadastro >= current_date - interval '3 day' and lower(conteudo) like '%acordo%' ",
+          "refId": "D",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "seriesToRows",
+          "options": {}
+        }
+      ],
+      "transparent": true,
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "gridPos": {
+        "h": 20,
+        "w": 8,
+        "x": 16,
+        "y": 22
+      },
+      "id": 47,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "let pops = []\ndata.series[0]?.fields[0]?.values.buffer.forEach(pop => {\n  pops.push(pop.charAt(0).toUpperCase() + pop.slice(1))\n})\n\nif(pops.length == 0) pops.push('Sem dados disponíveis')\n\nreturn {\n  tooltip: {\n    trigger: 'axis'\n  },\n  grid: {  // Adiciona configurações para o espaçamento do grid\n    left: '5%', // Ajusta a margem esquerda do grid\n    top: '0%',\n    bottom: '0%',\n    containLabel: true // Garante que os rótulos estejam contidos no gráfico\n  },\n  xAxis: {},\n  yAxis: {\n    type: 'category',\n    boundaryGap: true,\n    data: pops\n  },\n  series: [\n    {\n      type: 'bar',\n      data: data?.series[0]?.fields[1].values.buffer.map(v => v || 0),\n      itemStyle: {\n        color: 'rgb(5, 192, 145)',\n        borderRadius: [0, 7, 7, 0]\n      },\n      tooltip: {\n        valueFormatter: (value) => `Quantidade: ${value}`\n      },\n      label: {\n        show: true,\n        position: 'right',\n        valueAnimation: true,\n      }\n    },\n    {\n      type: 'bar',\n      data: data?.series[0]?.fields[2].values.buffer.map(v => v || 0),\n      itemStyle: {\n        color: 'blue',\n      },\n      tooltip: {\n        valueFormatter: (value) => `Prejuízo Total: ${value}`\n      },\n      label: {\n        show: true,\n        position: 'right',\n        valueAnimation: true,\n      }\n    }\n  ],\n  grip: {\n    left: '20%'\n  }\n}",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "console.log(context);\nreturn {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \r\n\t\tpl.descricao as plano,\r\n\t\tcount(pl.descricao) as cancelados,\r\n\t\tTO_CHAR(sum(pl.preco), 'R$999G999G999D99') as VALOR_total\r\nfrom public.admcore_clientecontratostatus cs\r\njoin public.admcore_clientecontrato as cc on cs.cliente_contrato_id = cc.id\r\njoin public.admcore_cliente as cl on cc.cliente_id = cl.id\r\njoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\njoin public.admcore_servicointernet as si on si.clientecontrato_id = cs.cliente_contrato_id\r\njoin public.admcore_plano as pl on pl.id = si.planointernet_id\r\nwhere cs.status = 3 and cl.data_alteracao >= CURRENT_DATE - INTERVAL '30 DAY' \r\ngroup by pl.descricao\r\norder by CANCELADOS ASC",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "valor_total": false
+            },
+            "indexByName": {
+              "cancelados": 1,
+              "plano": 0,
+              "valor_total": 2
+            },
+            "renameByName": {
+              "ano": "Ano",
+              "bairro": "BAIRRO",
+              "cep": "CEP",
+              "cpf_cnpj": "N° DE DOCUMENTO",
+              "data_alteracao": "DATA DA ALTERAÇÃO",
+              "data_cadastro": "DATA DE CADASTRO",
+              "data_competencia": "DATA DA COMPETÊNCIA",
+              "descricao": "COMPETÊNCIA",
+              "forma_de_pagamento": "FORMA DE PAGAMENTO",
+              "mes": "Mês",
+              "nome": "CLIENTE",
+              "tipo_operacao": "TIPO DE OPERAÇÃO",
+              "total_por_mes": "Valor",
+              "valor": "VALOR"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "volkovlabs-echarts-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 16,
+        "x": 0,
+        "y": 31
+      },
+      "id": 54,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:26px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nPAGAMENTOS ATRASADOS</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#003366"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DATA DE VENCIMENTO"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#df0a23",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DATA DE PAGAMENTO"
+            },
+            "properties": [
+              {
+                "id": "noValue",
+                "value": "EM ATRASO! 🗓️"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 16,
+        "x": 0,
+        "y": 33
+      },
+      "id": 39,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "9.5.9",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select\r\n\t--p.nome,\r\n\ttt.data_documento,\r\n\ttt.data_vencimento,\r\n\ttt.data_pagamento\r\nfrom public.financeiro_titulo as tt\r\njoin public.admcore_cliente as cl on tt.cliente_id = cl.id\r\njoin public.admcore_pessoa as p on cl.pessoa_id = p.id\r\nwhere (data_pagamento > data_vencimento OR data_pagamento IS NULL)\r\nAND data_documento > CURRENT_DATE - INTERVAL '30 DAY'\r\nand data_vencimento < current_date\r\nand data_cancela is null\r\ngroup by nome, tt.data_documento, tt.data_vencimento, tt.data_pagamento\r\norder by data_documento desc\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "ano": 0,
+              "descricao": 2,
+              "mes": 1,
+              "total_por_mes": 3
+            },
+            "renameByName": {
+              "ano": "Ano",
+              "bairro": "BAIRRO",
+              "cep": "CEP",
+              "cpf_cnpj": "N° DE DOCUMENTO",
+              "data_alteracao": "DATA DA ALTERAÇÃO",
+              "data_cadastro": "DATA DE CADASTRO",
+              "data_competencia": "DATA DA COMPETÊNCIA",
+              "data_documento": "DATA DE EMISSÃO",
+              "data_pagamento": "DATA DE PAGAMENTO",
+              "data_vencimento": "DATA DE VENCIMENTO",
+              "descricao": "COMPETÊNCIA",
+              "forma_de_pagamento": "FORMA DE PAGAMENTO",
+              "mes": "Mês",
+              "nome": "CLIENTE",
+              "tipo_operacao": "TIPO DE OPERAÇÃO",
+              "total_por_mes": "Valor",
+              "valor": "VALOR"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    }
+  ],
+  "refresh": "5m",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "sgp",
+    "inadimplencia"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": {
+          "type": "postgres",
+          "uid": "${DS_POSTGRESQL}"
+        },
+        "definition": "select cidade from admcore_pop",
+        "description": "pop",
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "POP",
+        "options": [],
+        "query": "select cidade from admcore_pop",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Dashboard - inadimplência",
+  "uid": "f8a57abc-9bc0-442tttttf",
+  "version": 10,
+  "weekStart": ""
+}

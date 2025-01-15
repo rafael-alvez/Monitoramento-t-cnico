@@ -1,0 +1,2095 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 15,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "id": 98,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random tex\"\n}",
+        "css": ".container {\n  display: flex;\n  align-items: center;\n  justify-content: space-between; /* Alinha os elementos às extremidades do container */\n  background: #0b0ec6; /* Azul */\n  border-radius: 20px;\n  font-family: Arial, sans-serif;\n  width: 550px; /* Largura fixa do container */\n  height: 55px; /* Altura fixa do container */\n  color: white; /* Texto branco */\n  padding: 10px; /* Espaçamento interno */\n}\n\n.info {\n  display: flex;\n  align-items: center;\n}\n\n.icon {\n  width: 40px; /* Largura do ícone */\n  height: 40px; /* Altura do ícone */\n  margin-right: 10px; /* Espaçamento à direita do ícone */\n}\n\n.text {\n  font-size: 18px;\n  font-weight: bold;\n}\n\n.number-circle {\n  background-color: #04040F; /* Cor de fundo ajustada */\n  color: #fcfcfc; /* Azul */\n  border-radius: 50%;\n  width: 60px; /* Largura do círculo ajustada */\n  height: 60px; /* Altura do círculo ajustada */\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 30px; /* Tamanho da fonte dos números aumentado */\n  font-weight: bold;\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": true,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"info\">\n      <img src=\"../public/img/logos/Img_sgp/responsive.png\" alt=\"Ícone\" class=\"icon\"/>\n      <div class=\"text\">TOTAL DE O.S ABERTAS</div>\n    </div>\n    <div class=\"number-circle\">\n      <span id=\"htmlgraphics-value\">1000</span>\n    </div>\n  </div>\n</body>\n</html>\n",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "// Sets the value from the first series on every refresh\nconst htmlgraphicsValue = htmlNode.getElementById('htmlgraphics-value');\n\nif (htmlgraphicsValue) {\n  const valueField = data.series[0]?.fields[1];\n  if (valueField && valueField.values) {\n    let count = 0;\n    for (let i = 0; i < valueField.values.length; i++) {\n      if (valueField.values.get(i) === 0) {\n        count++;  // Incrementando a contagem para cada ocorrência de 'Aberta'\n      }\n    }\n    htmlgraphicsValue.textContent = count;  // Exibindo o total de ocorrências\n  } else {\n    htmlgraphicsValue.textContent = \"0\";\n  }\n}\n\n\n\n",
+        "overflow": "visible",
+        "panelupdateOnMount": false,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n atendimento_os.id,\r\n atendimento_os.status\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where atendimento_os.status = 0 --and atendimento_os.data_cadastro >= current_timestamp - interval '2 day' \r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "cliente": false,
+              "conteudo": false,
+              "contrato": false,
+              "contrato_status": false,
+              "contrato_status_id": false,
+              "data_agendamento": false,
+              "data_cadastro": false,
+              "data_finalizacao": false,
+              "id": false,
+              "motivo": false,
+              "ocorrencia": false,
+              "pop": false,
+              "responsavel": false,
+              "status_id": false,
+              "timestamp": false,
+              "tipo": false,
+              "tipo_id": false,
+              "usuario": false,
+              "usuario_finalizacao": false
+            },
+            "indexByName": {},
+            "renameByName": {
+              "COUNT(*)": "ww",
+              "oss": "Aberta"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "id": 99,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random tex\"\n}",
+        "css": ".container {\n  display: flex;\n  align-items: center;\n  justify-content: space-between; /* Alinha os elementos às extremidades do container */\n  background: #ffcd02; /* Azul */\n  border-radius: 20px;\n  font-family: Arial, sans-serif;\n  width: 545px; /* Largura fixa do container */\n  height: 55px; /* Altura fixa do container */\n  color: white; /* Texto branco */\n  padding: 10px; /* Espaçamento interno */\n}\n\n.info {\n  display: flex;\n  align-items: center;\n}\n\n.icon {\n  width: 45px; /* Largura do ícone */\n  height: 45px; /* Altura do ícone */\n  margin-right: 10px; /* Espaçamento à direita do ícone */\n}\n\n.text {\n  font-size: 18px;\n  font-weight: bold;\n}\n\n.number-circle {\n  background-color: #04040F; /* Cor de fundo ajustada */\n  color: #fcfcfc; /* Azul */\n  border-radius: 50%;\n  width: 60px; /* Largura do círculo ajustada */\n  height: 60px; /* Altura do círculo ajustada */\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 30px; /* Tamanho da fonte dos números aumentado */\n  font-weight: bold;\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": true,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"info\">\n      <img src=\"../public/img/logos/Img_sgp/gear.png\" alt=\"Ícone\" class=\"icon\"/>\n      <div class=\"text\">O.S EM EXECUÇÃO</div>\n    </div>\n    <div class=\"number-circle\">\n      <span id=\"htmlgraphics-value\">1000</span>\n    </div>\n  </div>\n</body>\n</html>\n",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "// Sets the value from the first series on every refresh\nconst htmlgraphicsValue = htmlNode.getElementById('htmlgraphics-value');\n\nif (htmlgraphicsValue) {\n  const valueField = data.series[0]?.fields[1];\n  if (valueField && valueField.values) {\n    let count = 0;\n    for (let i = 0; i < valueField.values.length; i++) {\n      if (valueField.values.get(i) === 2) {\n        count++;  // Incrementando a contagem para cada ocorrência de 'Aberta'\n      }\n    }\n    htmlgraphicsValue.textContent = count;  // Exibindo o total de ocorrências\n  } else {\n    htmlgraphicsValue.textContent = \"0\";\n  }\n}\n\n\n\n",
+        "overflow": "visible",
+        "panelupdateOnMount": false,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n  atendimento_os.id AS OS,\r\n  atendimento_os.status\r\nfrom atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where atendimento_os.status = 2 ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "cliente": false,
+              "conteudo": false,
+              "contrato": false,
+              "contrato_status": false,
+              "contrato_status_id": false,
+              "data_agendamento": false,
+              "data_cadastro": false,
+              "data_finalizacao": false,
+              "id": false,
+              "motivo": false,
+              "ocorrencia": false,
+              "pop": false,
+              "responsavel": false,
+              "status_id": false,
+              "timestamp": false,
+              "tipo": false,
+              "tipo_id": false,
+              "usuario": false,
+              "usuario_finalizacao": false
+            },
+            "indexByName": {},
+            "renameByName": {
+              "COUNT(*)": "ww"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "id": 101,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random tex\"\n}",
+        "css": ".container {\n  display: flex;\n  align-items: center;\n  justify-content: space-between; /* Alinha os elementos às extremidades do container */\n  background: #9c0606; /* Azul */\n  border-radius: 20px;\n  font-family: Arial, sans-serif;\n  width: 558px; /* Largura fixa do container */\n  height: 55px; /* Altura fixa do container */\n  color: white; /* Texto branco */\n  padding: 10px; /* Espaçamento interno */\n}\n\n.info {\n  display: flex;\n  align-items: center;\n}\n\n.icon {\n  width: 45px; /* Largura do ícone */\n  height: 45px; /* Altura do ícone */\n  margin-right: 10px; /* Espaçamento à direita do ícone */\n}\n\n.text {\n  font-size: 17px;\n  font-weight: bold;\n}\n\n.number-circle {\n  background-color: #04040F; /* Cor de fundo ajustada */\n  color: #fcfcfc; /* Azul */\n  border-radius: 50%;\n  width: 60px; /* Largura do círculo ajustada */\n  height: 60px; /* Altura do círculo ajustada */\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 28px; /* Tamanho da fonte dos números aumentado */\n  font-weight: bold;\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": true,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"info\">\n      <img src=\"../public/img/logos/Img_sgp/cancelled.png\" alt=\"Ícone\" class=\"icon\"/>\n      <div class=\"text\">CONTRATOS CONCELADOS</div>\n    </div>\n    <div class=\"number-circle\">\n      <span id=\"htmlgraphics-value\">1000</span>\n    </div>\n  </div>\n</body>\n</html>\n",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "// Sets the value from the first series on every refresh\nconst htmlgraphicsValue = htmlNode.getElementById('htmlgraphics-value');\n\nif (htmlgraphicsValue) {\n  const valueField = data.series[0]?.fields[1];\n  if (valueField && valueField.values) {\n    let count = 0;\n    for (let i = 0; i < valueField.values.length; i++) {\n      if (valueField.values.get(i) === 3) {\n        count++;  // Incrementando a contagem para cada ocorrência de 'Aberta'\n      }\n    }\n    htmlgraphicsValue.textContent = count;  // Exibindo o total de ocorrências\n  } else {\n    htmlgraphicsValue.textContent = \"0\";\n  }\n}\n\n\n\n",
+        "overflow": "visible",
+        "panelupdateOnMount": false,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select admcore_clientecontratostatus.id, admcore_servicointernet.status from admcore_clientecontrato\r\nINNER JOIN admcore_clientecontratostatus ON (admcore_clientecontratostatus.id= admcore_clientecontrato.status_id)\r\nINNER JOIN admcore_servicointernet on (admcore_clientecontrato.id = admcore_servicointernet.clientecontrato_id)\r\nLEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nwhere admcore_servicointernet.status = 3 and EXTRACT(MONTH FROM admcore_clientecontratostatus.data_cadastro) = EXTRACT(MONTH FROM CURRENT_DATE) \r\nAND EXTRACT(YEAR FROM admcore_clientecontratostatus.data_cadastro) = EXTRACT(YEAR FROM CURRENT_DATE)",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 100,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random tex\"\n}",
+        "css": ".container {\n  display: flex;\n  align-items: center;\n  justify-content: space-between; /* Alinha os elementos às extremidades do container */\n  background: #008000; /* Azul */\n  border-radius: 20px;\n  font-family: Arial, sans-serif;\n  width: 558px; /* Largura fixa do container */\n  height: 55px; /* Altura fixa do container */\n  color: white; /* Texto branco */\n  padding: 10px; /* Espaçamento interno */\n}\n\n.info {\n  display: flex;\n  align-items: center;\n}\n\n.icon {\n  width: 45px; /* Largura do ícone */\n  height: 45px; /* Altura do ícone */\n  margin-right: 10px; /* Espaçamento à direita do ícone */\n}\n\n.text {\n  font-size: 18px;\n  font-weight: bold;\n}\n\n.number-circle {\n  background-color: #04040F; /* Cor de fundo ajustada */\n  color: #fcfcfc; /* Azul */\n  border-radius: 50%;\n  width: 60px; /* Largura do círculo ajustada */\n  height: 60px; /* Altura do círculo ajustada */\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 30px; /* Tamanho da fonte dos números aumentado */\n  font-weight: bold;\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": true,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"info\">\n      <img src=\"../public/img/logos/Img_sgp/approved.png\" alt=\"Ícone\" class=\"icon\"/>\n      <div class=\"text\">O.S ENCERRADAS</div>\n    </div>\n    <div class=\"number-circle\">\n      <span id=\"htmlgraphics-value\">1000</span>\n    </div>\n  </div>\n</body>\n</html>\n",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "// Sets the value from the first series on every refresh\nconst htmlgraphicsValue = htmlNode.getElementById('htmlgraphics-value');\n\nif (htmlgraphicsValue) {\n  const valueField = data.series[0]?.fields[1];\n  if (valueField && valueField.values) {\n    let count = 0;\n    for (let i = 0; i < valueField.values.length; i++) {\n      if (valueField.values.get(i) === 1) {\n        count++;  // Incrementando a contagem para cada ocorrência de 'Aberta'\n      }\n    }\n    htmlgraphicsValue.textContent = count;  // Exibindo o total de ocorrências\n  } else {\n    htmlgraphicsValue.textContent = \"0\";\n  }\n}\n\n\n\n",
+        "overflow": "visible",
+        "panelupdateOnMount": false,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n atendimento_os.id,\r\n atendimento_os.status\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where atendimento_os.status = 1 and cast(atendimento_os.data_finalizacao as date) >= current_date",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 6,
+        "x": 0,
+        "y": 3
+      },
+      "id": 126,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:22px;text-align:center;font-family: Arial, sans-serif;\nbackground: linear-gradient(90deg, #00146C,#00146C);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nRANK DE OS's </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "b56d342e-1b7d-43ec-89b1-76ea1a9daade"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 8,
+        "x": 8,
+        "y": 3
+      },
+      "id": 115,
+      "options": {
+        "bgColor": "transparent",
+        "clockType": "24 hour",
+        "countdownSettings": {
+          "endCountdownTime": "2024-01-12T03:34:11-03:00",
+          "endText": "00:00:00"
+        },
+        "countupSettings": {
+          "beginCountupTime": "2024-01-12T03:34:11-03:00",
+          "beginText": "00:00:00"
+        },
+        "dateSettings": {
+          "dateFormat": "DD-MM-YYYY",
+          "fontSize": "35px",
+          "fontWeight": "bold",
+          "locale": "",
+          "showDate": true
+        },
+        "fontMono": true,
+        "mode": "time",
+        "refresh": "dashboard",
+        "timeSettings": {
+          "fontSize": "30px",
+          "fontWeight": "bold"
+        },
+        "timezone": "",
+        "timezoneSettings": {
+          "fontSize": "12px",
+          "fontWeight": "normal",
+          "showTimezone": false,
+          "zoneFormat": "offsetAbbv"
+        }
+      },
+      "pluginVersion": "2.1.5",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "b56d342e-1b7d-43ec-89b1-76ea1a9daade"
+          },
+          "evaltype": "0",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "item": {
+            "filter": ""
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "grafana-clock-panel"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "b56d342e-1b7d-43ec-89b1-76ea1a9daade"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 1,
+        "x": 16,
+        "y": 3
+      },
+      "id": 116,
+      "options": {
+        "activeTheme": "SGP2",
+        "disableThemePicker": true,
+        "themes": [
+          {
+            "name": "SGP",
+            "styles": [
+              {
+                "props": {
+                  "theme": "default"
+                },
+                "type": "basetheme"
+              },
+              {
+                "props": {
+                  "url": "/public/img/logos/FUNDOHOME.png"
+                },
+                "type": "bgimage"
+              },
+              {
+                "props": {
+                  "url": ""
+                },
+                "type": "url"
+              },
+              {
+                "props": {
+                  "text": ""
+                },
+                "type": "style"
+              }
+            ]
+          },
+          {
+            "name": "SGP2",
+            "styles": [
+              {
+                "props": {
+                  "theme": "default"
+                },
+                "type": "basetheme"
+              },
+              {
+                "props": {
+                  "url": ""
+                },
+                "type": "bgimage"
+              },
+              {
+                "props": {
+                  "url": ""
+                },
+                "type": "url"
+              },
+              {
+                "props": {
+                  "text": "body {\n    background-color: rgb(4, 4, 15);\n}"
+                },
+                "type": "style"
+              }
+            ]
+          }
+        ]
+      },
+      "pluginVersion": "0.2.1",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "b56d342e-1b7d-43ec-89b1-76ea1a9daade"
+          },
+          "evaltype": "0",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "item": {
+            "filter": ""
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "yesoreyeram-boomtheme-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 1,
+        "x": 17,
+        "y": 3
+      },
+      "id": 133,
+      "options": {
+        "activeTheme": "SGP1",
+        "disableThemePicker": true,
+        "themes": [
+          {
+            "name": "SGP1",
+            "styles": [
+              {
+                "props": {
+                  "theme": "default"
+                },
+                "type": "basetheme"
+              },
+              {
+                "props": {
+                  "url": "/public/img/logos/FUNDOHOME.png"
+                },
+                "type": "bgimage"
+              },
+              {
+                "props": {
+                  "url": ""
+                },
+                "type": "url"
+              },
+              {
+                "props": {
+                  "text": ""
+                },
+                "type": "style"
+              }
+            ]
+          }
+        ]
+      },
+      "pluginVersion": "0.2.1",
+      "transparent": true,
+      "type": "yesoreyeram-boomtheme-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 6,
+        "x": 18,
+        "y": 3
+      },
+      "id": 125,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:22px;text-align:center;font-family: Arial, sans-serif;\nbackground: linear-gradient(90deg, #00146C,#00146C);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nANÁLISE DE ATENDIMENTOS </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 6,
+        "y": 4
+      },
+      "id": 113,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": ".container {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: flex-start;\n  border-radius: 10px;\n  background: #030BA6;\n  user-select: none !important;\n}\n\n.title {\n  display: none;\n  position: absolute;\n  color: #FFF;\n  text-shadow: 1px 1px 2px rgba(239, 163, 11, 0.874);\n  top: 0;\n  width: 100%;\n  text-align: center;\n  margin-bottom: 20px;\n}\n\n.carousel {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  margin-top: 30px;\n}\n\n.carouselbuttons {\n  width: 98%;\n  height: 100%;\n  background: transparent;\n  position: absolute;\n  left: 0;\n  top: 0;\n  margin: 1%;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.carouselbutton {\n  user-select: none;\n  cursor: pointer;\n  background-color: #ddd;\n  transition: background-color 0.3s ease;\n  color: #aaa;\n  font-size: 22px;\n  font-weight: bold;\n  border: solid 2px #aaa;\n  border-radius: 50%;\n  height: 15px;\n  padding: 10px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 15px;\n  opacity: .7;\n  z-index: 10;\n}\n\n.carouselbutton:hover {\n  color: #0b0ec6;\n  border-color: #0b0ec6;\n  opacity: 1;\n}\n\n.slide  {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 0;\n  transition: all 0.3s ease;\n  max-width: calc((100% / 5) - 10px) !important;\n  min-width: calc((100% / 5) - 10px) !important;\n  min-height: 100% !important;\n  z-index: 8;\n  margin: 10px;\n}\n\n.slide .main {\n  z-index: 2;\n  width: calc(100%/5);\n}\n\n.slide .side {\n  transform: scale(1);\n  z-index: 1;\n}\n\n.slide .side2 {\n  transform: scale(0.1);\n  z-index: 1;\n}\n\n.slide .side2 img {\n  transform: translate(-100px, 5px) !important;\n}\n\n.carouselimages {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  object-fit: cover;\n  transition: ease-in-out all .3s;\n}\n\n.slide > img {\n  position: relative;\n  transition: all 0.3s ease;\n  border-radius: 50%;\n  border: solid 2px rgba(0,0,0,.6);\n  width: 115px;\n  height: 115px;\n  margin: 20px !important;\n  cursor: pointer;\n  z-index: 5;\n  object-fit: cover;\n  background-color: #FFF;\n}\n\nimg:hover {\n  transform: scale(1.2) !important;\n  opacity: 1 !important;\n  z-index: 4;\n  transition: ease-in-out all .3s;\n  border-color: #459DEF;\n}\n\n.slide.main > img {\n  z-index: 2;\n  opacity: 1;\n  border: solid 3px #459DEF;\n  padding: 3px;\n  box-shadow: -1px -1px 10px rgba(0,0,0,.5);\n}\n\n.slide.side > img{\n  z-index: 1;\n  opacity: 0.5;\n  width: 80%;\n  margin-bottom: 10px;\n}\n\n.slide.side2 > img{\n  transform: scale(.8);\n  z-index: 1;\n  opacity: 0.4;\n  width: 80%;\n  margin-bottom: 10px;\n}\n\n\n.slide > .text {\n  z-index: 3;\n  color: #FFF;\n  font-size: 1.2rem;\n  font-weight: bolder;\n  letter-spacing: 1px;\n}\n\n.slide.side > .text,\n.slide.side2 > .text {\n   opacity: 0.5;\n   color: #000;\n}\n\n.legend {\n  width: 100%;\n  margin: 10px 0;\n}\n\n.legend, .legend-line {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n\n.legend-line > span {\n  margin-left: 5px;\n}\n\n.legend-line > .status-indicator{\n  width: 15px;\n  height: 15px;\n  border-radius: 100%;\n  margin-left: 10px;\n}\n\n.status-indicators{\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.status-indicator {\n  width: 25px; \n  height: 25px; \n  border-radius: 50%; \n  color: black;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 2px;\n  padding: 3px;\n  font-size: 13px; \n  font-weight: bold;\n  box-shadow: -1px -1px 10px rgba(0,0,0,.5);\n}\n\n.status-indicator.green {\n  background-color: rgb(26, 204, 3);\n}\n\n.status-indicator.yellow {\n  background-color: rgb(250, 100, 0);\n}\n\n@keyframes zoom {\n  0% {\n    transform: scale(0);\n  }\n  100% {transform: scale(1.5);}\n}\n\n\n.zoom {\n  animation: animated-zoom 1s ease 1;\n  animation-delay: .2s;\n}\n\n@keyframes animated-zoom {\n  50% {\n    transform: scale(1.2, 1.2);\n  }\n}\n\n.animated-left {\n  animation: animated-left 1s ease 1;\n}\n\n@keyframes animated-left {\n  50% {\n    transform: translateX(30px);\n  }\n}\n\n.animated-right {\n  animation: animated-right 1s ease 1;\n}\n\n@keyframes animated-right {\n  50% {\n    transform: translateX(-30px);\n  }\n}\n/* \n.side > .animated-left {\n  animation: animated-left-side 1s ease 1;\n}\n\n@keyframes animated-left-side {\n  50% {\n    transform: translate(30px, 20px) scale(1.2, 1.2);\n  }\n}\n\n\n.side > .animated-right {\n  animation: animated-right-side 1s ease 1;\n}\n\n@keyframes animated-right-side {\n  50% {\n    transform: translate(-30px, 20px) scale(1.2, 1.2);\n  }\n} */\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<div class=\"container\">\n  <h2 class=\"title\">EQUIPE TÉCNICA</h2>\n  <div class=\"carousel\">\n    <div class=\"carouselbuttons\">\n      <div class=\"carouselbutton left\">&lt;</div>\n      <div class=\"carouselbutton right\">&gt;</div>\n    </div>\n    <div class=\"carouselimages\"></div>\n  </div>\n   <div class=\"legend\">\n    <div class=\"legend-line\">\n      <div class=\"status-indicator green\"></div>\n      <span>OS's Abertas</span>\n    </div>\n    <div class=\"legend-line\">\n      <div class=\"status-indicator yellow\"></div>\n      <span>OS's em Execução</span>\n    </div>\n  </div>\n</div>",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "//Definir uma variavel chamada 'tecnicosJson' em configurações->variables da dashboard com os dados dos técnicos\nconst tecnicosJson = JSON.parse(data?.series[0].fields[0].values.buffer[0])\nlet showTecnicoIndex = 0\nconst carouselbuttons = htmlNode.querySelectorAll('.carouselbutton')\nconst carouselimages = htmlNode.querySelector('.carouselimages')\n\ncarouselbuttons.forEach((button) => {\n  button.addEventListener('click', (e) => {\n    let direction = ''\n    if (e.target?.classList.value.includes('left')) {\n      direction = 'left'\n      showTecnicoIndex--\n      if (showTecnicoIndex < 0) showTecnicoIndex = tecnicosJson.length-1\n    }\n    if (e.target?.classList.value.includes('right')) {\n      direction = 'right'\n      showTecnicoIndex++\n      if (showTecnicoIndex >= tecnicosJson.length) showTecnicoIndex = 0\n    }\n    setSlide(showTecnicoIndex, direction)\n    clearInterval(interval)\n  })\n})\n\nlet lastClick = false\nhtmlNode.querySelector('.container').addEventListener('click', (e) => {\n  if (e.target.tagName.toLocaleLowerCase() == \"img\") {\n    const tecnico = tecnicosJson.find(t => t.username == e.target.getAttribute('data-tecnico'))\n    const link = `${window.location.origin}/d/d5d89706-a731-4174-b19b-b72d2da1023g/tecnico-dinamico?&var-tecnico=${tecnico.username}&var-tecnico_name=${tecnico.name}&var-image=${tecnico.image}`\n    window.open(link, '_blank')\n  }\n})\n\nconst getSlideHtml = (tecnico = null, className = 'side', direction = 'left') => {\n  if(!tecnico) return ''\n  const index = data?.series[1]?.fields[0]?.values.buffer.findIndex(v => v.toLocaleLowerCase().trim() == tecnico.username.toLocaleLowerCase().trim())\n  const abertas = data?.series[1]?.fields[1].values.buffer[index] || 0\n  const execucao = data?.series[1]?.fields[2].values.buffer[index] || 0\n  \n  //img -> class=\"${direction == 'left' ? 'animated-right' : 'animated-left'}\"\n  return `\n    <div class=\"slide ${className}\">\n      <img  class=\"${direction == 'left' ? 'animated-right' : 'animated-left'}\" data-tecnico=\"${tecnico.username || '#'}\" src=\"${tecnico.image}\" alt=\"${tecnico.name}\">\n      <span class=\"text\">${tecnico.name}</span>\n      <div class=\"status-indicators\">\n        <div class=\"status-indicator green\">${abertas}</div>\n        <div class=\"status-indicator yellow\">${execucao}</div>\n      </div>\n    </div>\n  `\n}\n\nconst setSlide = (index = 0, direction = 'left') => {\n\n  let indexl2 = index - 2\n  let indexl = index - 1\n  let indexct = index\n  let indexr = index + 1\n  let indexr2 = index + 2\n  let length = tecnicosJson.length-1\n\n  if(index == 0) {\n    indexl2 = length - 1\n    indexl = length\n  }\n\n  if(index == 1) {\n    indexl2 = length - 1\n    indexl = 0\n  }\n\n  if(index == (length-1)) {\n    indexr = length\n    indexr2 = 0\n  }\n\n  if(index == length) {\n    indexr = 0\n    indexr2 = 1\n  }\n\n  carouselimages.innerHTML = ''\n  carouselimages.innerHTML += getSlideHtml(tecnicosJson[indexl2], 'side2', direction)\n  carouselimages.innerHTML += getSlideHtml(tecnicosJson[indexl], 'side', direction)\n  carouselimages.innerHTML += getSlideHtml(tecnicosJson[indexct], 'main', direction)\n  carouselimages.innerHTML += getSlideHtml(tecnicosJson[indexr], 'side', direction)\n  carouselimages.innerHTML += getSlideHtml(tecnicosJson[indexr2], 'side2', direction)\n\n  const main = htmlNode.querySelector('.main>img')\n  main?.classList?.add('zoom')\n  setTimeout(() => main?.classList?.remove('zoom'), 1000)\n\n  const images = htmlNode.querySelectorAll('img')\n  images.forEach((img) => img.addEventListener('mouseover', () => clearInterval(interval)))\n}\n\nlet interval = null, lastTime = null, timeout = 4000\nconst runInterval = () => {\n  interval = setInterval(() => {\n    var ts = new Date / 1E3 | 0;\n    if(!lastTime || ((ts + timeout)) >= lastTime) {\n      index++\n      setSlide(null, 'left')\n      lastTime = (ts + timeout)\n      clearInterval(interval)\n      setTimeout(runInterval, timeout)\n    }\n  }, timeout)\n}\n\nsetSlide()\nsetTimeout(runInterval, 6000)\n\nhtmlNode.querySelector('.container')?.addEventListener('mouseover', () => clearInterval(interval))\nhtmlNode.querySelector('.container')?.addEventListener('blur', runInterval)",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select '$tecnicosJson' as tecnicos;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n auth_user.username AS TECNICO,\r\n sum(case when atendimento_os.status = 0 then 1 else 0 end) as abertas,\r\n sum(case when atendimento_os.status = 2 then 1 else 0 end) as execucao\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN auth_user AS auth_user_start ON (atendimento_os.usuario_id = auth_user_start.id)\r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where atendimento_os.status in (0,2)\r\n group by TECNICO\r\n\r\n",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 0,
+        "y": 5
+      },
+      "id": 135,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "let tecnicos = data.series[0]?.fields[0]?.values.buffer || ['Sem dados disponíveis']\nlet options = {\n  tooltip: {\n    trigger: 'axis',\n    axisPointer: {\n      type: 'shadow'\n    }\n  },\n  xAxis: {\n    type: 'category',\n    data: []\n  },\n  yAxis: {\n    splitLine: {\n      show: false\n    }\n  },\n  series: [\n    {\n      type: 'bar',\n      data: [],\n      itemStyle: {\n        borderRadius: [7, 7, 0, 0],\n        color: 'rgba(5, 192, 145, 0.7)',\n      },\n      label: {\n        show: true,\n        position: 'top',\n        valueAnimation: true\n      },\n    }\n  ],\n  grid: {  // Adiciona configurações para o espaçamento do grid\n    left: '5%', // Ajusta a margem esquerda do grid\n    right: '0%',\n    top: '7%',\n    bottom: '0%',\n    containLabel: true // Garante que os rótulos estejam contidos no gráfico\n  },\n}\n\ntecnicos.forEach((tecnico, t) => {\n  options.xAxis.data.push(tecnico)\n  options.series[0].data.push(data.series[0]?.fields[1]?.values.buffer[t] || 0)\n})\n\nreturn options",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "console.log(context);\nreturn {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n\tupper(auth_user.username) as tecnico,\r\n\tcount(atendimento_os.id) AS quantidade\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where atendimento_os.data_cadastro >= current_date - interval '7 day' \r\n group by auth_user.username\r\n order by quantidade desc\r\n limit 3\r\n ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select username from auth_user order by username desc",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "data": true,
+              "estatistica_24h": false,
+              "estatistica_3h": true,
+              "estatistica_7d": false,
+              "id": true,
+              "status": false
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "volkovlabs-echarts-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 18,
+        "y": 5
+      },
+      "id": 134,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "let options = {\n  tooltip: {\n    trigger: 'axis',\n    axisPointer: {\n      type: 'shadow'\n    }\n  },\n  xAxis: {\n    type: 'category',\n    data: [\n      'Aberto',\n      'Encerrado',\n      'Checkin',\n    ]\n  },\n  yAxis: {\n    splitLine: {\n      show: false\n    },\n    position: 'right',\n  },\n  series: [\n    {\n      type: 'bar',\n      data: [\n        data.series[0]?.fields[1]?.values.buffer[0] || 0,\n        data.series[0]?.fields[1]?.values.buffer[1] || 0,\n        data.series[1]?.fields[0]?.values.buffer[0] || 0\n      ],\n      itemStyle: {\n        borderRadius: [7, 7, 0, 0],\n        color: 'rgba(5, 192, 145, 0.7)',\n      },\n      label: {\n        show: true,\n        position: 'top',\n        valueAnimation: true\n      },\n    }\n  ],\n  grid: {  // Adiciona configurações para o espaçamento do grid\n    left: '0%', // Ajusta a margem esquerda do grid\n    right: '5%',\n    top: '7%',\n    bottom: '0%',\n    containLabel: true // Garante que os rótulos estejam contidos no gráfico\n  },\n}\n\nreturn options",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "console.log(context);\nreturn {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n\tatendimento_os.status,\r\n\tcount(atendimento_os.status) AS QUANTIDADE\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where atendimento_os.data_cadastro >= current_date - interval '30 day' and atendimento_os.status in (0,1)\r\n group by atendimento_os.status",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n\tcount(atendimento_os.data_checkin) as data_checkin\r\nFROM \r\n    atendimento_os\r\nWHERE \r\n    atendimento_os.data_checkin >= current_date - interval '30 day' and data_checkin is not null\r\n",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "data": true,
+              "estatistica_24h": false,
+              "estatistica_3h": true,
+              "estatistica_7d": false,
+              "id": true,
+              "status": false
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "volkovlabs-echarts-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 6,
+        "x": 0,
+        "y": 12
+      },
+      "id": 128,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:18px;text-align:center;font-family: Arial, sans-serif;\nbackground: linear-gradient(90deg, #00146C,#00146C);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);\"> \nQTD DE CANCELAMENTOS POR POP </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 6,
+        "x": 18,
+        "y": 12
+      },
+      "id": 127,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:18px;text-align:center;font-family: Arial, sans-serif;\nbackground: linear-gradient(90deg, #00146C,#00146C);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nQTD DE ATENDIMENTO POR POP </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 14
+      },
+      "id": 124,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "let options = {\n  title: {\n    text: '',\n    subtext: '',\n    left: 'center'\n  },\n  tooltip: {\n    trigger: 'item',\n  },\n  legend: {\n    orient: 'vertical',\n    left: 'left',\n    show: true\n  },\n  series: [\n    {\n      name: 'CANCELAMENTOS',\n      type: 'pie',\n      radius: '50%',\n      data: [],\n      emphasis: {\n        itemStyle: {\n          shadowBlur: 10,\n          shadowOffsetX: 0,\n          shadowColor: 'rgba(0, 0, 0, 0.5)'\n        }\n      },\n      label: {\n        formatter: (value) => {\n          return `${value.data.value}`\n        }\n      },\n      center: ['65%', '50%']\n    }\n  ]\n};\n\nObject.values(data.series[0]?.fields[1]?.values?.buffer || ['Sem dados disponíveis']).forEach((cidade, i) => {\n  options.series[0]?.data.push({\n    name: cidade,\n    value: data.series[0]?.fields[0]?.values.buffer[i] || 0\n  })\n})\n\nreturn options",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "console.log(context);\nreturn {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n count(atendimento_os.id) AS qtd,\r\n admcore_pop.cidade\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER join public.admcore_clientecontratostatus as cs on admcore_clientecontrato.status_id = cs.id\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n INNER JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\n where EXTRACT(MONTH FROM atendimento_os.data_cadastro) = EXTRACT(MONTH FROM CURRENT_DATE) \r\nAND EXTRACT(YEAR FROM atendimento_os.data_cadastro) = EXTRACT(YEAR FROM CURRENT_DATE) AND cs.status = 3--and lower(atendimento_motivoos.descricao) like '%remoção%'\r\n group by admcore_pop.cidade",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [],
+      "transparent": true,
+      "type": "volkovlabs-echarts-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 6,
+        "y": 14
+      },
+      "id": 120,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n    font-family: Arial, sans-serif;\n    margin: 0;\n    padding: 20px;\n    border-radius: 5px;\n    background-color: rgb(4, 4, 15) !important;\n    overflow-x: auto;\n}\n\n.container {\n    width: 100%;\n    min-height: 100vh;\n    margin: auto;\n    padding: 20px;\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n    overflow-y: hidden;\n    overflow-x: auto;\n    border-radius: 5px;\n    background-color: transparent;\n}\n\n.buttons {\n    text-align: center;\n    margin-bottom: 20px;\n}\n\n.button {\n    padding: 10px 20px;\n    border: none;\n    color: white;\n    font-size: 16px;\n    cursor: pointer;\n    margin: 0 10px;\n    border-radius: 5px;\n    outline: none;\n    min-width: 150px;\n}\n\n.entrada {\n   background-color: #008000;\n}\n\n.saida {\n    background-color: #a91807;\n}\n\n.execucao {\n    background-color: #e89817;\n}\n\ntable {\n    width: 100%;\n    border-collapse: collapse;\n}\n\ntbody > tr {\n    font-weight: 550; \n}\n\ntbody{\n    background-color: #00146C!important;\n}\n\n.header{\n    background-color: #0F9390;\n}\n\nth,td {\n    text-align: left;\n    padding: 10px;\n    border-bottom: 1px solid #ddd;\n    word-break: keep-all;\n    font-size: 12px;\n}\n\nth {\n    text-align: center;\n}\n\nthead {\n    background-color: #0b0ec6;\n    color: #fff;\n    width: 100% !important;\n    border: none;\n}\n\ntbody tr:hover {\n    background-color: #f1f1f1;\n    color: #0b0ec6;\n}\n\n@keyframes changeBackgroundColor {\n  0% {\n    background-color: #fff;\n    color: #00146C;\n  }\n  75% {\n    background-color: #00146C;\n  }\n}\n\n.blink {\n  animation: changeBackgroundColor 1.9s infinite; /* propriedade de animação */\n}",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "\n<div class=\"container\">\n   <div class=\"buttons\">\n      <button class=\"button entrada\" data-status=\"0\">ABERTA</button>\n      <button class=\"button saida\" data-status=\"1\">ENCERRADA</button>\n      <button class=\"button execucao\" data-status=\"2\">EM EXECUÇÃO</button>\n    </div>\n\n  <div id=\"indicador\" class=\"indicador\">\n    <table>\n      <thead>\n        <tr class=\"header\">\n          <th>OS</th>\n          <th>STATUS</th>\n          <th>CLIENTE</th>\n          <th>TÉCNICO</th>\n          <th>MOTIVO</th>\n          <th id=\"atendente\">ATENDENTE</th>\n          <th id=\"atendente-final\">ATENDENTE FINAL</th>\n          <th id=\"data-agendamento\">DATA DE AGENDAMENTO</th>\n          <th id=\"data-final\">DATA DE FINALIZAÇÃO</th>\n        </tr>\n      </thead>\n      <tbody></tbody>\n    </table>\n  </div>\n</div>",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "let tdAtendente = htmlNode.querySelector('#atendente')\nlet tdAtendenteFinal = htmlNode.querySelector('#atendente-final')\nlet tdDataFinal = htmlNode.querySelector('#data-final')\nlet tdDataAgendamento = htmlNode.querySelector('#data-agendamento')\nlet thead = htmlNode.querySelector('table>thead')\nlet tbody = htmlNode.querySelector('table>tbody')\n\nlet tableHeadClasses = {\n  0: 'entrada',\n  1: 'saida',\n  2: 'execucao'\n}\n\nhtmlNode.querySelectorAll('.button').forEach(el => {\n  el.addEventListener('click', () => {\n    let dataStatus = el.getAttribute('data-status')\n    tdAtendenteFinal.style.display = 'none'\n    tdAtendente.style.display = 'none'\n    tdDataFinal.style.display = 'none'\n    tdDataAgendamento.style.display = 'none'\n    thead.className = ''\n    thead.classList.add(tableHeadClasses[dataStatus])\n    tbody.className = ''\n    tbody.classList.add(tableHeadClasses[dataStatus])\n    popularTabela(getDataByStatus(dataStatus), dataStatus)\n  })\n})\n\nfunction getDataByStatus(status = 0) {\n  let resultados = []\n  data.series[status == 1 ? 1 : 0]?.fields.forEach(f => {\n    f.values.buffer.forEach((value, v) => {\n      if (!resultados[v]) resultados[v] = {}\n      resultados[v][f.name] = value\n    })\n  })\n  return resultados.filter(r => r.status == status)\n}\n\nasync function popularTabela(dados, osStatus = 0) {\n  tbody.innerHTML = ''\n  await dados.forEach((data, i) => {\n    let tr = document.createElement('tr');\n\n    let os = document.createElement('td');\n    os.innerHTML = data.os\n    tr.appendChild(os);\n\n    let status = document.createElement('td');\n    if (data.status == 0) {\n      status.innerHTML = 'Aberta';\n    } else if (data.status == 1) {\n      status.innerHTML = 'Encerrada';\n    } else if (data.status == 2) {\n      status.innerHTML = 'Em Execução';\n    } else {\n      status.innerHTML = 'Status desconhecido';\n    }\n    tr.appendChild(status);\n\n    let cliente = document.createElement('td');\n    cliente.innerHTML = data.cliente\n    tr.appendChild(cliente);\n\n    let tecnico = document.createElement('td');\n    tecnico.innerHTML = data.tecnico\n    tr.appendChild(tecnico);\n\n    let motivo = document.createElement('td');\n    motivo.innerHTML = data.motivo\n    tr.appendChild(motivo);\n\n    if (osStatus != 1) {\n      tdAtendente.style.display = '';\n      let name = document.createElement('td');\n      name.innerHTML = data.name\n      tr.appendChild(name);\n    }\n\n    if (osStatus == 1) {\n      tdAtendenteFinal.style.display = '';\n      let final = document.createElement('td');\n      final.innerHTML = data.final\n      tr.appendChild(final);\n    }\n\n    if (osStatus != 1) {\n      tdDataAgendamento.style.display = '';\n      let data_cadastro = document.createElement('td');\n      data_cadastro.innerHTML = new Date(data.data_cadastro).toLocaleString()\n      tr.appendChild(data_cadastro);\n    }\n\n    if (osStatus == 1) {\n      tdDataFinal.style.display = '';\n      let data_finalizacao = document.createElement('td');\n      data_finalizacao.innerHTML = data.data_finalizacao// new Date(data.data_finalizacao).toLocaleString()\n      tr.appendChild(data_finalizacao);\n    }\n\n    const timeToSum = (60 * 60 * 1000) //Equivalente a 1 hora\n    const dataHoraAtual = (new Date()).getTime() - (timeToSum * 6); //data e hora atual menos duas horas\n    const dataCadastro = (new Date(data.data_cadastro)).getTime();\n\n    if ((dataCadastro >= dataHoraAtual) && osStatus == 0) {\n      setTimeout(() => {\n        tr.classList.add('blink');\n        tr.addEventListener('click', (e) => tr.classList.remove('blink'))\n        setTimeout(() => tr.classList.remove('blink'), timeToSum * 10);\n      }, 400 * i)\n    }\n\n    tbody.append(tr);\n  })\n}\n\nhtmlNode.querySelector('.button').click()",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n atendimento_os.id AS OS,\r\n atendimento_os.status,\r\n admcore_pessoa.nome AS CLIENTE,\r\n auth_user.username AS TECNICO,\r\n atendimento_motivoos.descricao AS MOTIVO,\r\n auth_user_start.name,\r\n TO_CHAR(atendimento_os.data_cadastro, 'MM-DD-YYYY HH24:MI:SS') as data_cadastro\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN auth_user AS auth_user_start ON (atendimento_os.usuario_id = auth_user_start.id)\r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where atendimento_os.data_cadastro >= current_date - interval '30 day'\r\n and atendimento_os.status in (0,2)\r\n order by atendimento_os.data_cadastro desc\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n atendimento_os.id AS OS,\r\n atendimento_os.status,\r\n admcore_pessoa.nome AS CLIENTE,\r\n auth_user.username AS TECNICO,\r\n atendimento_motivoos.descricao AS MOTIVO,\r\n auth_user_final.name as final,\r\n TO_CHAR(atendimento_os.data_finalizacao, 'DD/MM/YYYY HH24:MI:SS') as data_finalizacao\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN auth_user AS auth_user_final ON (atendimento_os.usuario_finaliza_id = auth_user_final.id)\r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where atendimento_os.data_cadastro >= current_date - interval '30 day'\r\n and atendimento_os.status = 1\r\n order by atendimento_os.data_finalizacao desc",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 14
+      },
+      "id": 111,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "let options = {\n  title: {\n    text: '',\n    subtext: '',\n    left: 'center'\n  },\n  tooltip: {\n    trigger: 'item'\n  },\n  legend: {\n    orient: 'vertical',\n    left: 'right',\n    show: true\n  },\n  series: [\n    {\n      name: 'ATENDIMENTOS',\n      type: 'pie',\n      radius: '50%',\n      data: [],\n      emphasis: {\n        itemStyle: {\n          shadowBlur: 10,\n          shadowOffsetX: 0,\n          shadowColor: 'rgba(0, 0, 0, 0.5)'\n        }\n      },\n      label: {\n        formatter: (value) => {\n          return `${value.data.value}`\n        }\n      },\n      center: ['35%', '50%']\n    }\n  ]\n};\n\nObject.values(data.series[0]?.fields[1]?.values?.buffer || ['Sem dados disponíveis']).forEach((cidade, i) => {\n  options.series[0]?.data.push({\n    name: cidade.split(' ', 3).join(' '),\n    value: data.series[0]?.fields[0]?.values.buffer[i] || 0\n  })\n})\n\nreturn options",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "console.log(context);\nreturn {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n count(atendimento_os.id) AS qtd,\r\n admcore_pop.cidade\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n INNER JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\n where EXTRACT(MONTH FROM atendimento_os.data_cadastro) = EXTRACT(MONTH FROM CURRENT_DATE) \r\nAND EXTRACT(YEAR FROM atendimento_os.data_cadastro) = EXTRACT(YEAR FROM CURRENT_DATE)\r\n --and atendimento_os.status in (0,1,2)\r\n group by admcore_pop.cidade",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [],
+      "transparent": true,
+      "type": "volkovlabs-echarts-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 6,
+        "x": 0,
+        "y": 22
+      },
+      "id": 129,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:22px;text-align:center;font-family: Arial, sans-serif;\nbackground: linear-gradient(90deg, #00146C,#00146C);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nATENDIMENTOS MENSAL </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#05c091"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "quantidade"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 90
+              },
+              {
+                "id": "custom.align",
+                "value": "center"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DESCRIÇÃO:"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#00146c",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 6,
+        "x": 0,
+        "y": 24
+      },
+      "id": 123,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.5.9",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n\tREPLACE(\r\n        REPLACE(\r\n            REPLACE(\r\n                REPLACE(\r\n                    upper(atendimento_motivoos.descricao),\r\n                    'TÉCNICA', 'TÉC'\r\n                ),\r\n                'INFRAESTRUTURA', 'INFRA'\r\n            ),\r\n            'CANCELAMENTO', 'CANCEL.'\r\n        ),\r\n        'ASSISTÊNCIA', 'ASS'\r\n    ) AS descricao_abreviada,\r\n\tcount(atendimento_motivoos.descricao) AS quantidade\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where EXTRACT(MONTH FROM atendimento_os.data_cadastro) = EXTRACT(MONTH FROM CURRENT_DATE) \r\nAND EXTRACT(YEAR FROM atendimento_os.data_cadastro) = EXTRACT(YEAR FROM CURRENT_DATE)\r\nand atendimento_os.status = 1\r\n group by atendimento_motivoos.descricao\r\n order by quantidade asc",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "descricao_abreviada": "DESCRIÇÃO:",
+              "quantidade": "TOTAL:"
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "TOTAL:"
+              }
+            ]
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 11,
+        "x": 6,
+        "y": 24
+      },
+      "id": 130,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:22px;text-align:center;font-family: Arial, sans-serif;\nbackground: linear-gradient(90deg, #00146C,#00146C);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nTOP ORDENS DE SERVIÇOS POR POP </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 7,
+        "x": 17,
+        "y": 24
+      },
+      "id": 132,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:22px;text-align:center;font-family: Arial, sans-serif;\nbackground: linear-gradient(90deg, #00146C,#00146C);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nTOP O.S POR CLIENTE </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 10,
+        "x": 6,
+        "y": 26
+      },
+      "id": 122,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto",
+          "height": 780
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "let pops = data.series[0]?.fields[0]?.values.map((v, i) => `${v} - ${data.series[0]?.fields[1]?.values.buffer[i]}`) || []\n\nif (pops.length == 0) {\n  pops.push('Sem dados disponíveis')  \n}\n\nlet options = {\n  xAxis: {\n    max: 'dataMax'\n  },\n  yAxis: [\n    {\n      type: 'category',\n      data: pops,\n      inverse: true,\n      animationDuration: 300,\n      animationDurationUpdate: 300,\n      max: data.series[0]?.fields[2]?.values.buffer.length,\n      splitLine: {\n        show: false\n      }\n    }\n  ],\n  series: [{\n    realtimeSort: true,\n    //name: pop,\n    type: 'bar',\n    data: data.series[0]?.fields[2]?.values.buffer,\n    label: {\n      show: true,\n      position: 'right',\n      valueAnimation: true,\n      formatter: (v) => `${v.value}`\n    },\n    itemStyle: {\n      borderRadius: [0, 7, 7, 0],\n      color: 'rgba(5, 192, 145, 0.7)',\n    },\n  }],\n  grid: {  // Adiciona configurações para o espaçamento do grid\n    left: '5%', // Ajusta a margem esquerda do grid\n    right: '5%',\n    top: '7%',\n    bottom: '0%',\n    containLabel: true // Garante que os rótulos estejam contidos no gráfico\n  },\n  legend: {\n    show: true\n  },\n  animationDuration: 0,\n  animationDurationUpdate: 300,\n  animationEasing: 'linear',\n  animationEasingUpdate: 'linear'\n};\n\nreturn options\n",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "console.log(context);\nreturn {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH motivos_pop AS (\r\n    SELECT \r\n        admcore_pop.cidade,\r\n        REPLACE(\r\n        REPLACE(\r\n            REPLACE(\r\n                REPLACE(\r\n                    upper(atendimento_motivoos.descricao),\r\n                    'TÉCNICA', 'TÉC'\r\n                ),\r\n                'INFRAESTRUTURA', 'INFRA'\r\n            ),\r\n            'CANCELAMENTO', 'CANCEL.'\r\n        ),\r\n        'ASSISTÊNCIA', 'ASS'\r\n    ) AS descricao,\r\n        count(atendimento_motivoos.descricao) AS quantidade,\r\n        ROW_NUMBER() OVER(PARTITION BY admcore_pop.cidade ORDER BY count(atendimento_motivoos.descricao) DESC) AS rank_motivo\r\n    FROM atendimento_os\r\n    INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n    INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n    INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n    INNER JOIN admcore_clientecontrato ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n    INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n    INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n    INNER JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\n    WHERE EXTRACT(MONTH FROM atendimento_os.data_cadastro) = EXTRACT(MONTH FROM CURRENT_DATE) \r\nAND EXTRACT(YEAR FROM atendimento_os.data_cadastro) = EXTRACT(YEAR FROM CURRENT_DATE) and atendimento_os.status = 1\r\n    GROUP BY admcore_pop.cidade, atendimento_motivoos.descricao\r\n)\r\nSELECT\r\n    cidade,\r\n    descricao,\r\n    quantidade\r\nFROM motivos_pop\r\nWHERE rank_motivo <= 3 \r\nORDER BY cidade DESC, rank_motivo;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "volkovlabs-echarts-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#05c091"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "quantidade"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 90
+              },
+              {
+                "id": "custom.align",
+                "value": "center"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DESCRIÇÃO:"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#00146c",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 8,
+        "x": 16,
+        "y": 26
+      },
+      "id": 131,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.5.9",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n\tREPLACE(\r\n        REPLACE(\r\n            REPLACE(\r\n                REPLACE(\r\n                    upper(atendimento_motivoos.descricao),\r\n                    'TÉCNICA', 'TÉC'\r\n                ),\r\n                'INFRAESTRUTURA', 'INFRA'\r\n            ),\r\n            'CANCELAMENTO', 'CANCEL.'\r\n        ),\r\n        'ASSISTÊNCIA', 'ASS'\r\n    ) AS descricao_abreviada,\r\n\tadmcore_pessoa.nome,\r\n\tcount(atendimento_motivoos.descricao) AS quantidade\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where atendimento_os.data_cadastro >= current_date - interval '30 day' and UPPER(admcore_pessoa.nome) not like '%VAGA DE CHAMADO%' and atendimento_os.status = 1\r\n group by atendimento_motivoos.descricao, admcore_pessoa.nome\r\n having count(atendimento_motivoos.descricao) >= 2\r\n order by quantidade desc\r\n\r\n\r\n\r\n/*SELECT \r\n\tREPLACE(\r\n        REPLACE(\r\n            REPLACE(\r\n                REPLACE(\r\n                    upper(atendimento_motivoos.descricao),\r\n                    'TÉCNICA', 'TÉC'\r\n                ),\r\n                'INFRAESTRUTURA', 'INFRA'\r\n            ),\r\n            'CANCELAMENTO', 'CANCEL.'\r\n        ),\r\n        'ASSISTÊNCIA', 'ASS'\r\n    ) AS descricao_abreviada,\r\n\tcount(atendimento_motivoos.descricao) AS quantidade\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where atendimento_os.data_cadastro >= current_date - interval '30 day' \r\n group by atendimento_motivoos.descricao\r\n order by quantidade asc*/\r\n ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "descricao_abreviada": "DESCRIÇÃO:",
+              "quantidade": "TOTAL:"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    }
+  ],
+  "refresh": "",
+  "revision": 1,
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "sgp",
+    "agendamentos"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "e4c2a87d-8c11-46dc-a8d0-faadc44b340e"
+        },
+        "definition": "select cidade from admcore_pop",
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "POP",
+        "options": [],
+        "query": "select cidade from admcore_pop",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "hide": 2,
+        "label": "Técnicos JSON",
+        "name": "tecnicosJson",
+        "query": "[   { \"username\": \"jerlan\", \"name\": \"Jerlan\", \"image\": \"../public/img/logos/Img_sgp/Técnicos/tec2.png\" },   { \"username\": \"caueoliveira\", \"name\": \"Caue\", \"image\": \"../public/img/logos/Img_sgp/Técnicos/tec2.png\" },   { \"username\": \"marcosbarbosa\", \"name\": \"Marcos\", \"image\": \"../public/img/logos/Img_sgp/Técnicos/tec2.png\" }]",
+        "skipUrlSync": false,
+        "type": "constant"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-2d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "2m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "SGP- AGENDAMENTOS",
+  "uid": "b9d2fba2-a014-46cb-98a4-d9de6e33bd9a",
+  "version": 19,
+  "weekStart": ""
+}

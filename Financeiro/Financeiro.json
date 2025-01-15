@@ -1,0 +1,2675 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_POSTGRESQL",
+      "label": "PostgreSQL",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "postgres",
+      "pluginName": "PostgreSQL"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "gapit-htmlgraphics-panel",
+      "name": "HTML graphics",
+      "version": "2.1.1"
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.5.9"
+    },
+    {
+      "type": "datasource",
+      "id": "postgres",
+      "name": "PostgreSQL",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "volkovlabs-echarts-panel",
+      "name": "Apache ECharts",
+      "version": "5.3.0"
+    },
+    {
+      "type": "panel",
+      "id": "yesoreyeram-boomtheme-panel",
+      "name": "Boom Theme",
+      "version": "0.2.1"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 72,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": ".container {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  background: url('../public/img/logos/Img_sgp/HEADER-SGP-DARK.png'); /* Caminho atualizado para a sua imagem */\n  background-size: cover; /* Garante que a imagem cubra todo o container */\n  background-position: center; /* Centraliza a imagem de fundo */\n  border-radius: 20px;\n  font-family: Arial, sans-serif;\n  width: 2176px;\n  height: 65px;\n  color: white;\n  padding: 10px;\n}\n\n\n.info {\n  display: flex;\n  align-items: center;\n  /* justify-content: center; Removido para permitir que o ícone fique à esquerda */\n}\n\n.icon {\n  width: 220px;\n  height: 100px;\n  margin-right: 10px;\n}\n\n.text {\n  font-size: 35px;\n  font-weight: bold;\n  flex-grow: 1;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);\n}\n\n\n\n.number-circle {\n  background-color: #165F8C; /* Cor de fundo ajustada */\n  color: #fcfcfc; /* Azul */\n  border-radius: 15px; /* Cantos arredondados */\n  width: 400px; /* Largura ajustada */\n  height: 60px; /* Altura ajustada */\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 18px; /* Tamanho da fonte dos números aumentado */\n  font-weight: bold;\n}\n\n.box {\n  margin-left: 10px; /* Adiciona margem à esquerda do componente .box */\n  font-size: 18px; /* Ajusta o tamanho do texto para 18px dentro de .box */\n}\n\n/* Estilos para o efeito de brilho */\n.glow-on-hover {\n  border: none;\n  outline: none;\n  color: #fff;\n  background: #165F8C;\n  cursor: pointer;\n  position: relative;\n  z-index: 0;\n  border-radius: 10px;\n  overflow: hidden;\n}\n\n.glow-on-hover:before {\n  content: '';\n  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);\n  position: absolute;\n  top: -2px;\n  left:-2px;\n  background-size: 400%;\n  z-index: -1;\n  filter: blur(5px);\n  width: calc(100% + 4px);\n  height: calc(100% + 4px);\n  animation: glowing 20s linear infinite;\n  opacity: 0;\n  transition: opacity .3s ease-in-out;\n  border-radius: 10px;\n}\n\n.glow-on-hover:active {\n  color: #000;\n}\n\n.glow-on-hover:active:after {\n  background: transparent;\n}\n\n.glow-on-hover:hover:before {\n  opacity: 2;\n}\n\n.glow-on-hover:after {\n  z-index: -1;\n  content: '';\n  position: absolute;\n  background: #111;\n  left: 0;\n  top: 0;\n  border-radius: 10px;\n}\n\n@keyframes glowing {\n  0% { background-position: 0 0; }\n  50% { background-position: 400% 0; }\n  100% { background-position: 0 0; }\n}\n\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"info\">\n      <img src=\"../public/img/logos/Img_sgp/SGP-LOGO-BRANCA.png\" alt=\"Ícone\" class=\"icon\"/>\n      <div class=\"text center-text\">ANÁLISE FINANCEIRA</div>\n    </div>\n    <div class=\"number-circle glow-on-hover\">\n      <span class=\"uptime-label\">Entrada do Mês: </span><div class=\"box\" id=\"htmlgraphics-value\"></div>\n    </div>\n  </div>\n</body>\n</html>\n",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "// Sets the value from the first series on every refresh\nconst htmlgraphicsValue = htmlNode.getElementById('htmlgraphics-value');\n\nif (htmlgraphicsValue) {\n  const valueField = data.series[0]?.fields[0];\n  if (valueField) {\n    const length = valueField.values.length;\n    htmlgraphicsValue.textContent = valueField.values.get(length - 1);\n  } else {\n    htmlgraphicsValue.textContent = \"0\"\n  }\n}\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "pluginVersion": "9.5.9",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(valor), 'R$999G999G999D99') AS total_entradas\r\nFROM public.financeiro_caixalancamento\r\nWHERE tipo_operacao = 1 and EXTRACT(MONTH FROM data_cadastro) = EXTRACT(MONTH FROM CURRENT_DATE) \r\nAND EXTRACT(YEAR FROM data_cadastro) = EXTRACT(YEAR FROM CURRENT_DATE)\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 0,
+        "y": 3
+      },
+      "id": 92,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n  font-family: 'Arial', sans-serif;\n}\n\n.card {\n  width: 300px; /* Ajuste conforme necessário */\n  height: 100%;\n  overflow: hidden;\n  border-radius: 10px 10px 0px 0px;\n  margin: 20px;\n}\n\n.card-header {\n  background: linear-gradient(90deg, #00146C,#003366);\n  height: 20px;\n  text-align: center;\n  padding: 15px;\n  font-weight: 1000;\n  color: #fff;\n}\n\n.card-body {\n  background-color: #00146C;\n  padding: 10px;\n  border-radius: 0px 0px 10px 10px;\n}\n\n.line {\n  display: flex; /* Make the line a flex container */\n  flex-direction: column; /* Arrange items vertically */\n  margin-bottom: 5px;\n}\n\n.label {\n  font-size: 0.75em;\n  color: rgb(192, 188, 188);\n  font-weight: 1000;\n}\n\n.value {\n  margin-top: 5px; /* Create space between the label and value */\n  font-size: 1em;\n  font-weight: bold;\n}\n\n.icone-value {\n  display: flex; /* Make the icon and value sit on the same line */\n  align-items: center; /* Vertically align them within their container */\n}\n\n.negative {\n  color: #e74c3c;\n}\n\n.contribution {\n  color: #2ecc71;\n}\n\n.icon {\n    width: 20px; /* Largura do ícone */\n    height: 20px; /* Altura do ícone */\n    margin-right: 2px; /* Espaçamento à direita do ícone */\n}\n\n/* Estilos para o efeito de brilho */\n.glow-on-hover {\n  border: none;\n  outline: none;\n  color: #fff;\n  background: #00186C;\n  cursor: pointer;\n  position: relative;\n  z-index: 0;\n  border-radius: 10px 10px 0px 0px;\n  overflow: hidden;\n}\n\n.glow-on-hover:before {\n  content: '';\n  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);\n  position: absolute;\n  top: -2px;\n  left:-2px;\n  background-size: 400%;\n  z-index: -1;\n  filter: blur(5px);\n  width: calc(100% + 4px);\n  height: calc(100% + 4px);\n  animation: glowing 20s linear infinite;\n  opacity: 0;\n  transition: opacity .3s ease-in-out;\n  border-radius: 10px;\n}\n\n.glow-on-hover:active {\n  color: #000;\n}\n\n.glow-on-hover:active:after {\n  background: transparent;\n}\n\n.glow-on-hover:hover:before {\n  opacity: 2;\n}\n\n.glow-on-hover:after {\n  z-index: -1;\n  content: '';\n  position: absolute;\n  background: #111;\n  left: 0;\n  top: 0;\n  border-radius: 10px;\n}\n\n@keyframes glowing {\n  0% { background-position: 0 0; }\n  50% { background-position: 400% 0; }\n  100% { background-position: 0 0; }\n}\n\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Card Financeiro</title>\n<link rel=\"stylesheet\" href=\"financeiro.css\">\n</head>\n<body>\n<div class=\"card\">\n    <div class=\"card-header glow-on-hover\">\n        <!-- Cabeçalho Azul -->\n         <span class=\"mensal\">MENSAL</span>\n    </div>\n    <div class=\"card-body\">\n        <div class=\"line revenue\">\n            <span class=\"label\">ENTRADA</span>\n            <span class=\"value contribution\">R$1.609.168</span>\n        </div>\n        <div class=\"line expenses\">\n            <span class=\"label\">SAÍDA</span>\n            <span class=\"value negative\">R$1.445.153</span>\n        </div>\n        \n    </div>\n</div>\n</body>\n</html>\n",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "htmlNode.querySelector('.line.revenue>span.value').innerHTML = data.series[0].fields[0].values.buffer[0]\nhtmlNode.querySelector('.line.expenses>span.value').innerHTML = data.series[1].fields[0].values.buffer[0]\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(valor), 'R$999G999G999D99') AS total_entradas\r\nFROM public.financeiro_caixalancamento\r\n--join admcore_pop as p on financeiro_caixalancamento.pop_id = p.id\r\nWHERE tipo_operacao = 1 and EXTRACT(MONTH FROM data_cadastro) = EXTRACT(MONTH FROM CURRENT_DATE) \r\nAND EXTRACT(YEAR FROM data_cadastro) = EXTRACT(YEAR FROM CURRENT_DATE)\r\n--AND p.cidade in ($pop)\r\n\r\n",
+          "refId": "mensal1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(valor), 'R$999G999G999D99') AS total_saida\r\nFROM public.financeiro_caixalancamento\r\n--join admcore_pop as p on financeiro_caixalancamento.pop_id = p.id\r\nWHERE tipo_operacao = 2 and EXTRACT(MONTH FROM data_cadastro) = EXTRACT(MONTH FROM CURRENT_DATE) \r\nAND EXTRACT(YEAR FROM data_cadastro) = EXTRACT(YEAR FROM CURRENT_DATE)\r\n--and p.cidade in ($pop)",
+          "refId": "saida1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 4,
+        "y": 3
+      },
+      "id": 66,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:26px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nPROJEÇÃO DE PERDAS E GANHOS </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 12,
+        "y": 3
+      },
+      "id": 67,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:26px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nENTRADA / SAÍDA POR MÊS </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 20,
+        "y": 3
+      },
+      "id": 93,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n  font-family: 'Arial', sans-serif;\n}\n\n.card {\n  width: 300px; /* Ajuste conforme necessário */\n  height: 100%;\n  overflow: hidden;\n  border-radius: 10px 10px 0px 0px;\n  margin: 20px;\n}\n\n.card-header {\n  background: linear-gradient(90deg, #00146C,#003366);\n  height: 20px;\n  text-align: center;\n  padding: 15px;\n  font-weight: 1000;\n  color: #fff;\n}\n\n.card-body {\n  background-color: #00146C;\n  padding: 10px;\n  border-radius: 0px 0px 10px 10px;\n}\n\n.line {\n  display: flex; /* Make the line a flex container */\n  flex-direction: column; /* Arrange items vertically */\n  margin-bottom: 5px;\n}\n\n.label {\n  font-size: 0.75em;\n  color: rgb(192, 188, 188);\n  font-weight: 1000;\n}\n\n.value {\n  margin-top: 5px; /* Create space between the label and value */\n  font-size: 1em;\n  font-weight: bold;\n}\n\n.icone-value {\n  display: flex; /* Make the icon and value sit on the same line */\n  align-items: center; /* Vertically align them within their container */\n}\n\n.negative {\n  color: #e74c3c;\n}\n\n.contribution {\n  color: #2ecc71;\n}\n\n.icon {\n    width: 20px; /* Largura do ícone */\n    height: 20px; /* Altura do ícone */\n    margin-right: 2px; /* Espaçamento à direita do ícone */\n}\n\n/* Estilos para o efeito de brilho */\n.glow-on-hover {\n  border: none;\n  outline: none;\n  color: #fff;\n  background: #00186C;\n  cursor: pointer;\n  position: relative;\n  z-index: 0;\n  border-radius: 10px 10px 0px 0px;\n  overflow: hidden;\n}\n\n.glow-on-hover:before {\n  content: '';\n  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);\n  position: absolute;\n  top: -2px;\n  left:-2px;\n  background-size: 400%;\n  z-index: -1;\n  filter: blur(5px);\n  width: calc(100% + 4px);\n  height: calc(100% + 4px);\n  animation: glowing 20s linear infinite;\n  opacity: 0;\n  transition: opacity .3s ease-in-out;\n  border-radius: 10px;\n}\n\n.glow-on-hover:active {\n  color: #000;\n}\n\n.glow-on-hover:active:after {\n  background: transparent;\n}\n\n.glow-on-hover:hover:before {\n  opacity: 2;\n}\n\n.glow-on-hover:after {\n  z-index: -1;\n  content: '';\n  position: absolute;\n  background: #111;\n  left: 0;\n  top: 0;\n  border-radius: 10px;\n}\n\n@keyframes glowing {\n  0% { background-position: 0 0; }\n  50% { background-position: 400% 0; }\n  100% { background-position: 0 0; }\n}\n\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Card Financeiro</title>\n<link rel=\"stylesheet\" href=\"financeiro.css\">\n</head>\n<body>\n<div class=\"card\">\n    <div class=\"card-header glow-on-hover\">\n        <!-- Cabeçalho Azul -->\n        <span>ANUAL</span>\n    </div>\n    <div class=\"card-body\">\n        <div class=\"line revenue\">\n            <span class=\"label\">ENTRADA</span>\n            <span class=\"value contribution\">R$1.609.168</span>\n        </div>\n        <div class=\"line expenses\">\n            <span class=\"label\">SAIDA</span>\n            <span class=\"value negative\">R$1.445.153</span>\n        </div>\n       \n    </div>\n</div>\n</body>\n</html>\n",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "htmlNode.querySelector('.line.revenue>span.value').innerHTML = data.series[0].fields[0].values.buffer[0]\nhtmlNode.querySelector('.line.expenses>span.value').innerHTML = data.series[1].fields[0].values.buffer[0]\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(valor), 'R$999G999G999D99') AS total_\r\nFROM public.financeiro_caixalancamento\r\n--join admcore_pop as p on financeiro_caixalancamento.pop_id = p.id\r\nWHERE tipo_operacao = 1  \r\nAND EXTRACT(YEAR FROM data_cadastro) = EXTRACT(YEAR FROM CURRENT_DATE)\r\n--and p.cidade in ($pop)",
+          "refId": "anual1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(valor), 'R$999G999G999D99') AS total_entradas\r\nFROM public.financeiro_caixalancamento\r\n--join admcore_pop as p on financeiro_caixalancamento.pop_id = p.id\r\nWHERE tipo_operacao = 2  \r\nAND EXTRACT(YEAR FROM data_cadastro) = EXTRACT(YEAR FROM CURRENT_DATE)\r\n--and p.cidade in ($pop)",
+          "refId": "saida1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(valor), 'R$999G999G999D99') AS total_entradas_sem_repasse\r\nFROM public.financeiro_caixalancamento\r\n--join admcore_pop as p on financeiro_caixalancamento.pop_id = p.id\r\nWHERE tipo_operacao = 1\r\n  AND EXTRACT(YEAR FROM data_cadastro) = EXTRACT(YEAR FROM CURRENT_DATE) \r\n  AND NOT EXISTS (\r\n      SELECT 1 \r\n      FROM public.financeiro_caixalancamento AS fc_repasse\r\n      WHERE fc_repasse.observacao LIKE '%Repasse%' \r\n        AND fc_repasse.id = public.financeiro_caixalancamento.id\r\n  )\r\n  --and p.cidade in ($pop);",
+          "refId": "anual2",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(valor), 'R$999G999G999D99') AS total_entradas_sem_repasse\r\nFROM public.financeiro_caixalancamento\r\n--join admcore_pop as p on financeiro_caixalancamento.pop_id = p.id\r\nWHERE tipo_operacao = 2\r\n  AND EXTRACT(YEAR FROM data_cadastro) = EXTRACT(YEAR FROM CURRENT_DATE) \r\n  AND NOT EXISTS (\r\n      SELECT 1 \r\n      FROM public.financeiro_caixalancamento AS fc_repasse\r\n      WHERE fc_repasse.observacao LIKE '%Repasse%' \r\n        AND fc_repasse.id = public.financeiro_caixalancamento.id\r\n  )\r\n  --and p.cidade in ($pop);",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 4,
+        "y": 5
+      },
+      "id": 95,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "// Verificação adicional para garantir que os dados estão presentes\nif (!data || !data.series || data.series.length === 0) {\n  // Retorna uma configuração de gráfico vazia ou com uma mensagem\n  return {\n    title: {\n      text: 'Não há dados disponíveis',\n      left: 'center',\n      top: 'center',\n      textStyle: {\n        color: '#ccc',\n        fontSize: 16\n      }\n    },\n    xAxis: {\n      show: false\n    },\n    yAxis: {\n      show: false\n    },\n    series: [] // Sem séries\n  };\n}\n\n// Assumindo que os dados seguem o formato fornecido na imagem que você enviou\nconst transformData = (series) => {\n  // Encontra a série correta baseando-se no refId ou outra propriedade identificadora\n  const targetSeries = series.find(s => s.refId === 'A'); // Ajuste 'A' conforme necessário\n\n  if (!targetSeries) {\n    throw new Error('Série específica não encontrada.');\n  }\n\n  // Verifica se os campos estão presentes\n  const mesField = targetSeries.fields.find(f => f.name === 'mes');\n  const ganhosField = targetSeries.fields.find(f => f.name === 'ganhos');\n  const perdasField = targetSeries.fields.find(f => f.name === 'perdas');\n\n  if (!mesField || !ganhosField || !perdasField) {\n    throw new Error('Um ou mais campos necessários não foram encontrados.');\n  }\n\n  // Verifica se os buffers de valores estão presentes\n  const mesValues = mesField.values.buffer || mesField.values; // Ajustado para aceitar diretamente o array de valores\n  const ganhosValues = ganhosField.values.buffer || ganhosField.values; // Ajustado da mesma forma\n  const perdasValues = perdasField.values.buffer || perdasField.values; // Ajustado da mesma forma\n\n\n  if (!mesValues || !ganhosValues || !perdasValues) {\n    throw new Error('Um ou mais buffers de valores necessários não foram encontrados.');\n  }\n\n  // Mapeia os dados para o formato esperado pelo Echarts\n  return mesValues.map((mes, index) => ({\n    mes,\n    ganhos: ganhosValues[index],\n    perdas: -perdasValues[index], // Convertendo perdas para positivo para exibição\n  }));\n};\n\n// Utiliza a função de transformação para preparar os dados para o gráfico\nconst formattedData = transformData(data.series);\n\n// Cria as séries para o gráfico de barras\nconst series = [\n  {\n    name: 'Ganhos',\n    type: 'bar',\n    itemStyle: {\n      color: 'green'\n    },\n    data: formattedData.map(item => item.ganhos),\n    label: {\n      show: true,\n      position: 'top',\n      formatter: 'R$ {c}',\n      color: 'white',\n      fontSize: 8\n    }\n  },\n  {\n    name: 'Perdas',\n    type: 'bar',\n    itemStyle: {\n      color: 'red'\n    },\n    data: formattedData.map(item => item.perdas),\n    label: {\n      show: true,\n      position: 'top',\n      formatter: 'R${c}',\n      color: 'white',\n      fontSize: 8\n    }\n  }\n];\n\n// Configuração do gráfico\nreturn {\n  tooltip: {\n    trigger: 'axis',\n    axisPointer: { type: 'shadow' }\n  },\n  legend: {\n    data: ['Ganhos', 'Perdas']\n  },\n  xAxis: {\n    type: 'category',\n    data: formattedData.map(item => item.mes)\n  },\n  yAxis: {\n    type: 'value'\n  },\n  series: series\n};\n",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "console.log(context);\nreturn {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH todas_as_datas AS (\r\n  SELECT DISTINCT TO_CHAR(DATE_TRUNC('month', financeiro_titulo.data_vencimento), 'YYYY-MM') AS mes\r\n  FROM financeiro_titulo\r\n  WHERE \r\n    financeiro_titulo.data_vencimento >= TO_TIMESTAMP($__from/1000)\r\n    AND financeiro_titulo.data_vencimento < '2050-01-01'::date\r\n)\r\nSELECT\r\n  todas_as_datas.mes,\r\n  COALESCE(SUM(ganhos.total), 0) AS ganhos,\r\n  COALESCE(SUM(perdas.total)*-1, 0) AS perdas\r\nFROM\r\n  todas_as_datas\r\nLEFT JOIN (\r\n  -- Consulta de ganhos\r\n  SELECT\r\n    TO_CHAR(DATE_TRUNC('month', financeiro_titulo.data_vencimento), 'YYYY-MM') AS mes,\r\n    SUM(financeiro_titulo.valor) AS total\r\n  FROM\r\n    admcore_clientecontrato\r\n    INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n    INNER JOIN financeiro_titulo \r\n      ON (financeiro_titulo.cliente_id = admcore_cliente.id \r\n      AND financeiro_titulo.data_pagamento IS NULL)\r\n    INNER JOIN admcore_servicointernet ON (admcore_clientecontrato.id = admcore_servicointernet.clientecontrato_id)\r\n    INNER JOIN financeiro_cobranca ON (financeiro_titulo.cobranca_id = financeiro_cobranca.id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\n  WHERE \r\n    admcore_servicointernet.status IN (1, 2)\r\n     AND admcore_pop.cidade in ($pop)\r\n    AND \r\nadmcore_clientecontrato.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_clientecontrato.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_clientecontrato.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n    AND admcore_clientecontrato.cobranca_id = financeiro_cobranca.id\r\n\t\t\t\t\t\t\t\t\t\t\t\t\r\n  GROUP BY mes\r\n) AS ganhos ON todas_as_datas.mes = ganhos.mes\r\nLEFT JOIN (\r\n  -- Consulta de perdas\r\n  SELECT\r\n    TO_CHAR(DATE_TRUNC('month', financeiro_titulo.data_vencimento), 'YYYY-MM') AS mes,\r\n    SUM(financeiro_titulo.valor) AS total\r\n  FROM\r\n    admcore_clientecontrato\r\n    INNER JOIN admcore_clientecontratostatus ON (admcore_clientecontratostatus.id = admcore_clientecontrato.status_id)\r\n    INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n    INNER JOIN financeiro_titulo ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\n    INNER JOIN admcore_servicointernet ON (admcore_clientecontrato.id = admcore_servicointernet.clientecontrato_id)\r\n    INNER JOIN financeiro_cobranca ON (financeiro_titulo.cobranca_id = financeiro_cobranca.id)\r\n        LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\n\r\n  WHERE\r\n    admcore_servicointernet.status = 3\r\n         AND admcore_pop.cidade in ($pop)\r\n\r\n    AND \r\n  admcore_clientecontratostatus.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_clientecontratostatus.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_clientecontratostatus.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n  AND financeiro_titulo.data_vencimento >= TO_TIMESTAMP($__from/1000)\r\nAND financeiro_titulo.data_vencimento < '2050-01-01'::date\r\nAND financeiro_titulo.data_pagamento IS NULL\r\n  GROUP BY mes\r\n) AS perdas ON todas_as_datas.mes = perdas.mes\r\nGROUP BY todas_as_datas.mes\r\nHAVING COALESCE(SUM(ganhos.total), 0) <> 0 OR COALESCE(SUM(perdas.total), 0) <> 0\r\nORDER BY todas_as_datas.mes;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "data_cadastro": 1,
+              "data_competencia": 2,
+              "descricao": 4,
+              "forma_de_pagamento": 5,
+              "tipo_operacao": 0,
+              "valor": 3
+            },
+            "renameByName": {
+              "data_alteracao": "DATA DA ALTERAÇÃO",
+              "data_cadastro": "DATA DE CADASTRO",
+              "data_competencia": "DATA DA COMPETÊNCIA",
+              "descricao": "COMPETÊNCIA",
+              "forma_de_pagamento": "FORMA DE PAGAMENTO",
+              "tipo_operacao": "TIPO DE OPERAÇÃO",
+              "valor": "VALOR"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "volkovlabs-echarts-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 12,
+        "y": 5
+      },
+      "id": 94,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "const series = data.series.flatMap((s) => {\n  // Processar todos os campos, convertendo strings numéricas para números.\n  return s.fields.map((field) => {\n    let sData;\n    if (field.type === 'number') {\n      sData = field.values.buffer || field.values;\n    } else if (['valor_entrada', 'valor_saida'].includes(field.name)) {\n      // Substitua a vírgula por um ponto e converta a string para um número.\n      sData = field.values.map(value => parseFloat(value.replace(/,/g, '.')));\n    } else {\n      return null; // Ignorar campos que não são nem 'number' nem os de interesse.\n    }\n    return {\n      name: field.name,\n      type: 'bar',\n      data: sData,\n    };\n  }).filter(series => series !== null); // Filtrar para remover entradas nulas.\n});\n\n//Legenda anos\nconst anos = (() => {\n  let years = series[1].data.map(s => s)\n  years = years.filter((item, pos) => years.indexOf(item) == pos)\n  years.push('Todos')\n  return years.sort()\n})();\n\n//Legenda meses\nconst meses = (() => {\n  return ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];\n})();\n\n//valores de entrada e saida de acordo com o ano\nconst getData = async function (year, type = 'saida') {\n  if (year) {\n    let key = 2;\n    if (type === 'saida' || !type) {\n      key = 3\n    }\n\n    let valores = []\n    await new Promise((resolve, reject) => {\n      let total = 1;\n      series[1].data.forEach(async (ano, i) => {\n        let mes = await series[0].data[i];\n        let valor = await series[key].data[i];\n        if (!valores[ano]) valores[ano] = [];\n        if (!valores[ano][mes]) valores[ano][mes] = [];\n        valores[ano][mes - 1] = await series[key].data[i];\n        if (total == series[1].data.length) resolve();\n        else total++\n      })\n    });\n\n    let returnValues = []\n    await valores.forEach(ano => {\n      if (!ano.includes('todos')) {\n        if (!returnValues[year]) returnValues[year] = [];\n        for (let mes = 0; mes <= 11; mes++) {\n          returnValues[year][mes] = valores[year] ? valores[year][mes] : 0\n        }\n      }\n    })\n    return Object.values(returnValues[year])\n  }\n  return []\n};\n\nvar options = {\n  title: {\n    text: ''\n  },\n\n  /*grid: { // Definindo margens para o gráfico\n    top: 60,\n    left: 100,\n    right: 20,\n    bottom: 30\n  },*/\n\n  tooltip: {\n    trigger: 'axis'\n  },\n  legend: {\n    display: true,\n    type: 'scroll',\n    orient: 'horizontal',\n    top: 30,\n    left: '25%',\n    right: '0%',\n\n  },\n  xAxis: [\n    {\n      type: 'category',\n      boundaryGap: true,\n      data: meses\n    },\n    {\n      type: 'category',\n      boundaryGap: true,\n      data: [],\n      axisLabel: {\n        fontSize: 15\n      }\n    }\n  ],\n  yAxis: [\n    {\n      type: 'value',\n      scale: true,\n      axisLabel: {\n        formatter: 'R${value}'\n      }\n    },\n    {\n      type: 'value',\n      scale: true,\n      axisLabel: {\n        formatter: 'R${value}'\n      }\n    }\n  ],\n  series: []\n};\n\nconst valueFormatter = (value, type = 'Entrada') => {\n  const valueRS = Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(value)\n  return `${valueRS || 0} - ${type}`\n}\n\nanos.forEach(async year => {\n  options.series.push({\n    name: `${year}`,\n    type: 'bar',\n    data: await getData(year, 'entrada'),\n    universalTransition: true,\n    tooltip: {\n      valueFormatter: value => valueFormatter(value, 'Entrada')\n    },\n  })\n  options.series.push({\n    name: `${year}`,\n    type: 'line',\n    data: (await getData(year, 'saida')).map(v => Math.abs(v)),\n    itemStyle: { normal: { color: 'red' } },\n    tooltip: {\n      valueFormatter: value => valueFormatter(value, 'Saída')\n    },\n  })\n})\n\nlet i = 0\nconst legendSelect = (name) => {\n  echartsInstance.dispatchAction({ type: 'legendAllSelect' });\n  echartsInstance.dispatchAction({ type: 'legendInverseSelect' });\n  echartsInstance.dispatchAction({ type: 'legendSelect', name });\n}\n\nsetTimeout(() => {\n  echartsInstance.setOption(options);\n  if (i === 0) {\n    legendSelect(new Date().getFullYear())\n    i++\n  }\n}, 100);\n\nvar ctrlIsPressed = false;\ndocument.addEventListener('keydown', (e) => {\n  if (e.ctrlKey) ctrlIsPressed = true\n})\ndocument.addEventListener('keyup', (e) => {\n  if (!e.ctrlKey) ctrlIsPressed = false\n})\n\nechartsInstance.on('legendselectchanged', function (params) {\n  if (ctrlIsPressed) return;\n  if (params.name.toLowerCase().includes('todos')) {\n    return echartsInstance.dispatchAction({ type: 'legendAllSelect' });\n  }\n  legendSelect(params.name)\n});\n\nreturn options;",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "console.log(context);\nreturn {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n    EXTRACT(MONTH FROM data_cadastro) AS mes,\r\n    EXTRACT(YEAR FROM data_cadastro) AS ano,\r\n    SUM(CASE WHEN valor > 0 THEN valor ELSE 0 END) AS valor_entrada,\r\n    SUM(CASE WHEN valor < 0 THEN valor ELSE 0 END) AS valor_saida\r\n    --to_char(SUM(CASE WHEN valor > 0 THEN valor ELSE 0 END) - SUM(CASE WHEN valor < 0 THEN -valor ELSE 0 END), 'R$999G999G999D99') AS diferenca_entrada_saida\r\nFROM public.financeiro_caixalancamento\r\n--join admcore_pop as p on financeiro_caixalancamento.pop_id = p.id\r\nWHERE NOT EXISTS (\r\n      SELECT 1 \r\n      FROM public.financeiro_caixalancamento AS fc_repasse\r\n      WHERE fc_repasse.observacao LIKE '%Repasse%' \r\n      AND fc_repasse.id = public.financeiro_caixalancamento.id)\r\n      --and p.cidade IN ($pop)\r\nGROUP BY mes, ano\r\nORDER BY ano desc, mes desc\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "volkovlabs-echarts-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 12,
+        "x": 0,
+        "y": 12
+      },
+      "id": 69,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:26px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nSALDOS MENSAIS </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 12,
+        "x": 12,
+        "y": 12
+      },
+      "id": 70,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:26px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nPOR TIPO DE PAGAMENTOS </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 14
+      },
+      "id": 22,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "var series = {}\ndata.series[0].fields[0].values.buffer.forEach((ano, a) => {\n  let mes = data.series[0].fields[5].values.buffer[a]\n  let valor = data.series[0].fields[4].values.buffer[a]\n  if (!series[ano]) { series[ano] = [] }\n  if (!series[ano][mes - 1]) { series[ano][mes - 1] = [] }\n  series[ano][mes - 1] = valor\n})\n\noptions = {\n  title: { text: '' },\n  tooltip: {\n    trigger: 'axis',\n    axisPointer: {\n      type: 'shadow'\n    },\n    valueFormatter: value => {\n      return Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(value)\n    }\n  },\n  legend: {\n    display: true,\n    type: 'scroll',\n    orient: 'horizontal',\n    top: 30,\n    left: '25%',\n    right: '0%',\n\n  },\n  grid: {\n    top: 80,\n    bottom: 30\n  },\n  xAxis: {\n    type: 'value',\n    position: 'top',\n    splitLine: {\n      lineStyle: {\n        type: 'dashed'\n      }\n    }\n  },\n  yAxis: {\n    type: 'category',\n    axisLine: { show: false },\n    axisLabel: { show: false },\n    axisTick: { show: false },\n    splitLine: { show: false },\n    data: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']\n  },\n  series: []\n};\n\nObject.keys(series).forEach(year => {\n  let data = []\n  series[year].forEach(value => {\n    data.push({ value: value, label: { position: 'right' } })\n  })\n  options.series.push({\n    data: data,\n    name: year,\n    type: 'bar',\n    label: {\n      show: true,\n      formatter: '{b}'\n    },\n    itemStyle: {\n      borderRadius: [7, 7],\n      color: 'rgba(5, 192, 145, 0.7)',\n    },\n  })\n})\n\nlet i = 0\nconst legendSelect = (name) => {\n  echartsInstance.dispatchAction({ type: 'legendAllSelect' });\n  echartsInstance.dispatchAction({ type: 'legendInverseSelect' });\n  echartsInstance.dispatchAction({ type: 'legendSelect', name });\n}\n\nsetTimeout(() => {\n  echartsInstance.setOption(options);\n  if (i === 0) {\n    legendSelect(new Date().getFullYear())\n    i++\n  }\n}, 10);\n\nreturn options",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "console.log(context);\nreturn {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n    EXTRACT(YEAR FROM data_cadastro) AS Ano,\r\n\tEXTRACT(Month FROM data_cadastro) as mes_bin,\r\n    Case \r\n\t    when EXTRACT(Month FROM data_cadastro) = 1 then 'Jan'\r\n\t\twhen EXTRACT(Month FROM data_cadastro) = 2 then 'Fev'\r\n\t\twhen EXTRACT(Month FROM data_cadastro) = 3 then 'Mar'\r\n\t\twhen EXTRACT(Month FROM data_cadastro) = 4 then 'Abr'\r\n\t\twhen EXTRACT(Month FROM data_cadastro) = 5 then 'Mai'\r\n\t\twhen EXTRACT(Month FROM data_cadastro) = 6 then 'Jun'\r\n\t\twhen EXTRACT(Month FROM data_cadastro) = 7 then 'Jul'\r\n\t\twhen EXTRACT(Month FROM data_cadastro) = 8 then 'Ago'\r\n\t\twhen EXTRACT(Month FROM data_cadastro) = 9 then 'Set'\r\n\t\twhen EXTRACT(Month FROM data_cadastro) = 10 then 'Out'\r\n\t\twhen EXTRACT(Month FROM data_cadastro) = 11 then 'Nov'\r\n\t\twhen EXTRACT(Month FROM data_cadastro) = 12 then 'Dez'\r\n\tend as mes,\t\r\n    SUM(CASE WHEN valor > 0 THEN valor ELSE 0 END) AS valor_entrada,\r\n    SUM(CASE WHEN valor < 0 THEN valor ELSE 0 END) AS valor_saida,\r\n    SUM(CASE WHEN valor > 0 THEN valor ELSE 0 END) - SUM(CASE WHEN valor < 0 THEN -valor ELSE 0 END) AS diferenca_entrada_saida\r\nFROM public.financeiro_caixalancamento\r\n--join admcore_pop as p on financeiro_caixalancamento.pop_id = p.id\r\nWHERE NOT EXISTS (\r\n      SELECT 1 \r\n      FROM public.financeiro_caixalancamento AS fc_repasse\r\n      WHERE fc_repasse.observacao LIKE '%Repasse%' \r\n      AND fc_repasse.id = public.financeiro_caixalancamento.id)\r\n\t\t\t--and admcore_pop.cidade in ($pop)\r\nGROUP BY ano, mes_bin\r\nORDER BY ano desc, mes_bin Desc;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "ano": false,
+              "mes": false,
+              "valor_entrada": false,
+              "valor_saida": false
+            },
+            "indexByName": {
+              "ano": 0,
+              "diferenca_entrada_saida": 4,
+              "mes": 1,
+              "valor_entrada": 2,
+              "valor_saida": 3
+            },
+            "renameByName": {
+              "ano": "ANO",
+              "diferenca_entrada_saida": "SALDO",
+              "mes": "MES"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "volkovlabs-echarts-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 3,
+        "x": 21,
+        "y": 14
+      },
+      "id": 54,
+      "options": {
+        "activeTheme": "New Theme 2",
+        "disableThemePicker": false,
+        "themes": [
+          {
+            "name": "New Theme 2",
+            "styles": [
+              {
+                "props": {
+                  "theme": "default"
+                },
+                "type": "basetheme"
+              },
+              {
+                "props": {
+                  "url": ""
+                },
+                "type": "bgimage"
+              },
+              {
+                "props": {
+                  "url": ""
+                },
+                "type": "url"
+              },
+              {
+                "props": {
+                  "text": "body {\n    background-color: rgb(4, 4, 15);\n}"
+                },
+                "type": "style"
+              }
+            ]
+          }
+        ]
+      },
+      "pluginVersion": "0.2.1",
+      "transparent": true,
+      "type": "yesoreyeram-boomtheme-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 15
+      },
+      "id": 24,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "const flags = {\n  'PIX': 'icon_Pix.png',\n  'Dinheiro': 'money (1).png',\n  'Especie-maos': 'pay.png',\n  'Transferência Bancária': 'transference.png',\n  'Cartão de Crédito': 'money.png',\n  'Cartão de Débito': 'credit-card (1).png'\n}\n\nconst getFlag = (type) => {\n  return `${window.location.origin}/public/img/logos/Img_sgp/${flags[type]}`\n}\n\nlet options = {\n  tooltip: {\n    trigger: 'axis',\n    axisPointer: {\n      type: 'shadow'\n    }\n  },\n  xAxis: {\n    splitLine: {\n      show: false\n    }\n  },\n  yAxis: {\n    data: data.series[0].fields[0].values.buffer,\n    type: 'category',\n    position: 'left',\n    inverse: false,\n    axisLabel: {\n      formatter: function (value) {\n        return value + '  {' + Object.keys(flags).indexOf(value) + '|}';\n      },\n      margin: 20,\n      rich: {}\n    },\n    animationDuration: 300,\n    animationDurationUpdate: 300\n  },\n  series: [\n    {\n      type: 'bar',\n      data: data.series[0].fields[1].values.buffer,\n      itemStyle: {\n        borderRadius: [0, 7, 7, 0],\n        color: 'rgba(5, 192, 145, 0.7)',\n      },\n      label: {\n        show: true,\n        position: 'right',\n        valueAnimation: true\n      }\n    }\n  ],\n  grid: {  // Adiciona configurações para o espaçamento do grid\n    left: '4%', // Ajusta a margem esquerda do grid\n    right: '10%',\n    top: '0%',\n    bottom: '0%',\n    containLabel: true // Garante que os rótulos estejam contidos no gráfico\n  },\n}\n\nObject.keys(flags).forEach((type, i) => {\n  options.yAxis.axisLabel.rich[i] = {\n    height: 25,\n    align: 'center',\n    backgroundColor: {\n      image: getFlag(type)\n    }\n  }\n})\n\nreturn options",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "console.log(context);\nreturn {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT financeiro_formapagamento.descricao, COUNT(DISTINCT financeiro_titulo.id) as total\r\nFROM financeiro_titulo\r\n join financeiro_formapagamento on (financeiro_titulo.formapagamento_id = financeiro_formapagamento.id)\r\n  JOIN admcore_cliente ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\n  JOIN admcore_clientecontrato ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n  JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE data_pagamento IS NOT NULL AND data_cancela is NULL and $__timeFilter(data_pagamento) --and admcore_pop.cidade in ($pop)\r\nGROUP BY financeiro_formapagamento.descricao ORDER BY total DESC\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "ano": 0,
+              "descricao": 2,
+              "mes": 1,
+              "total_por_mes": 3
+            },
+            "renameByName": {
+              "ano": "Ano",
+              "data_alteracao": "DATA DA ALTERAÇÃO",
+              "data_cadastro": "DATA DE CADASTRO",
+              "data_competencia": "DATA DA COMPETÊNCIA",
+              "descricao": "COMPETÊNCIA",
+              "forma_de_pagamento": "FORMA DE PAGAMENTO",
+              "mes": "Mês",
+              "tipo_operacao": "TIPO DE OPERAÇÃO",
+              "total_por_mes": "Valor",
+              "valor": "VALOR"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "volkovlabs-echarts-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 59,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:26px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nHISTÓRICO ENTRADA / SAÍDA </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#003366"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "TIPO DE OPERAÇÃO"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "1": {
+                        "index": 0,
+                        "text": "Entrada"
+                      },
+                      "2": {
+                        "index": 1,
+                        "text": "Saída"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 185
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DATA DA COMPETÊNCIA"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsLocal"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DATA DA ALTERAÇÃO"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsLocal"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DATA DE CADASTRO"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsLocal"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VALOR"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyBRL"
+              },
+              {
+                "id": "custom.width",
+                "value": 157
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Mês"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "1": {
+                        "index": 0,
+                        "text": "JANEIRO"
+                      },
+                      "2": {
+                        "index": 1,
+                        "text": "FEVEREIRO"
+                      },
+                      "3": {
+                        "index": 2,
+                        "text": "MARÇO"
+                      },
+                      "4": {
+                        "index": 3,
+                        "text": "ABRIL"
+                      },
+                      "5": {
+                        "index": 4,
+                        "text": "MAIO"
+                      },
+                      "6": {
+                        "index": 5,
+                        "text": "JUNHO"
+                      },
+                      "7": {
+                        "index": 6,
+                        "text": "JULHO"
+                      },
+                      "8": {
+                        "index": 7,
+                        "text": "AGOSTO"
+                      },
+                      "9": {
+                        "index": 8,
+                        "text": "SETEMBRO"
+                      },
+                      "10": {
+                        "index": 9,
+                        "text": "OUTUBRO"
+                      },
+                      "11": {
+                        "index": 10,
+                        "text": "NOVEMBRO"
+                      },
+                      "12": {
+                        "index": 11,
+                        "text": "DEZEMBRO"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 24
+      },
+      "id": 14,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "9.5.9",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT EXTRACT(YEAR FROM fc.data_cadastro) AS ano,\r\n      EXTRACT(MONTH FROM fc.data_cadastro) AS mes,\r\n      TO_CHAR(SUM(valor), 'R$999G999G999D99') AS total_por_mes,\r\n\t   \tcc.descricao\r\nFROM \r\n\tpublic.financeiro_caixalancamento as fc\r\nJOIN \r\n    public.financeiro_centrodecusto AS cc ON fc.centrodecusto_id = cc.id\r\n--join admcore_pop as p on financeiro_caixalancamento.pop_id = p.id\r\n--where admcore_pop.cidade in ($pop)\r\nGROUP BY \r\n\tEXTRACT(YEAR FROM data_cadastro), EXTRACT(MONTH FROM data_cadastro), cc.id\r\nORDER BY \r\n\tano desc, mes desc",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "ano": 0,
+              "descricao": 2,
+              "mes": 1,
+              "total_por_mes": 3
+            },
+            "renameByName": {
+              "ano": "Ano",
+              "data_alteracao": "DATA DA ALTERAÇÃO",
+              "data_cadastro": "DATA DE CADASTRO",
+              "data_competencia": "DATA DA COMPETÊNCIA",
+              "descricao": "COMPETÊNCIA",
+              "forma_de_pagamento": "FORMA DE PAGAMENTO",
+              "mes": "Mês",
+              "tipo_operacao": "TIPO DE OPERAÇÃO",
+              "total_por_mes": "Valor",
+              "valor": "VALOR"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 24
+      },
+      "id": 7,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n    font-family: Arial, sans-serif;\n    margin: 0;\n    padding: 20px;\n    border-radius: 5px;\n    background-color: rgb(4, 4, 15) !important;\n    overflow-x: auto;\n}\n\n.container {\n    width: 100%;\n    min-height: 100vh;\n    margin: auto;\n    padding: 20px;\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n    overflow-y: hidden;\n    overflow-x: auto;\n    border-radius: 5px;\n    background-color: transparent;\n}\n\n.buttons {\n    text-align: right;\n    margin-bottom: 20px;\n}\n\n.button {\n    padding: 10px 20px;\n    border: none;\n    color: white;\n    font-size: 16px;\n    cursor: pointer;\n    margin: 0 10px;\n    border-radius: 5px;\n    outline: none;\n    min-width: 150px;\n}\n\n.entrada {\n    background-color: #0b0ec6;\n}\n\n.saida {\n    background-color: #a91807;\n}\n\n.execucao {\n    background-color: #e89817;\n}\n\ntable {\n    width: 100%;\n    border-collapse: collapse;\n}\n\ntbody > tr {\n    font-weight: 550;\n}\n\nth,td {\n    text-align: left;\n    padding: 10px;\n    border-bottom: 1px solid #ddd;\n    word-break: keep-all;\n    font-size: 12px;\n}\n\nth {\n    text-align: center;\n}\n\n\nthead {\n    background-color: #0b0ec6;\n    color: #fff;\n    width: 100% !important;\n    border: none;\n}\n\ntbody tr:hover {\n    background-color: #f1f1f1;\n    color: #7d1c11;\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "\n<div class=\"container\">\n   <div class=\"buttons\">\n      <button class=\"button entrada\" data-status=\"1\">ENTRADA</button>\n      <button class=\"button saida\" data-status=\"2\">SAÍDA</button>\n    </div>\n\n  <div id=\"indicador\" class=\"indicador\">\n    <table>\n      <thead>\n        <tr>\n          <th>Operação</th>\n          <th>Valor</th>\n          <th>Data de competência</th>\n          <th>Data de Cadastro</th>\n          <th>Competência</th>\n          <th>Forma de pagamento</th>\n        </tr>\n      </thead>\n      <tbody></tbody>\n    </table>\n  </div>\n</div>",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "let tableHeadClasses = {\n  1: 'entrada',\n  2: 'saida',\n}\n\nhtmlNode.querySelectorAll('.button').forEach(el => {\n  el.addEventListener('click', () => {\n    atualizarIndicador(el.getAttribute('data-status'));\n    let dataStatus = el.getAttribute('data-status')\n    atualizarIndicador(dataStatus);\n    let thead = htmlNode.querySelector('table>thead')\n    thead.className = ''\n    thead.classList.add(tableHeadClasses[dataStatus])\n    let tbody = htmlNode.querySelector('table>tbody')\n    tbody.className = ''\n    tbody.classList.add(tableHeadClasses[dataStatus])\n  })\n})\n\n\n\n\nfunction atualizarIndicador(tipo_operacao_id) {\n    let resultados = []\n    data.series[0]?.fields.forEach(f => {\n      f.values?.buffer.forEach((value, v) => {\n        if(!resultados[v]) resultados[v] = {}\n        resultados[v][f.name] = value\n      })\n    })\n    \n  // Atualizar o conteúdo do indicador com os resultados\n  let dados = resultados.filter(r => r.tipo_operacao == tipo_operacao_id)\n  popularTabela(dados)\n}\n\n\nfunction popularTabela(dados, osStatus = 0){\n  let tbody = htmlNode.querySelector('#indicador>table>tbody')\n  tbody.innerHTML = ''\n  \n  dados.forEach(data => {\n    let tr = document.createElement('tr');\n\n    let tipo_operacao = document.createElement('td');\n    tipo_operacao.innerHTML = data.tipo_operacao == 1 ? 'Entrada' : 'Saída'\n    tr.appendChild(tipo_operacao);\n\n    let valor = document.createElement('td');\n    valor.innerHTML = Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(data.valor)\n    tr.appendChild(valor);\n\n    let data_competencia = document.createElement('td');\n    data_competencia.innerHTML = data.data_conpetencia\n    tr.appendChild(data_competencia);\n\n\n    let data_cadastro = document.createElement('td');\n    data_cadastro.innerHTML = data.data_cadastro\n    tr.appendChild(data_cadastro);\n\n    let centro_de_custo = document.createElement('td');\n    centro_de_custo.innerHTML = data.centro_de_custo\n    tr.appendChild(centro_de_custo);\n\n    let forma_de_pagamento = document.createElement('td');\n    forma_de_pagamento.innerHTML = data.forma_de_pagamento\n    tr.appendChild(forma_de_pagamento);\n\n    tbody.append(tr);\n  })\n} \n\n\nhtmlNode.querySelector('.button').click()",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": ".scrollbar-view {\r\n    display: flex !important;\r\n    flex-direction: column !important;\r\n}\r\n\r\nhtml ::-webkit-scrollbar {\r\n  width: 10px;\r\n}\r\nhtml ::-webkit-scrollbar-thumb {\r\n  border-radius: 50px;\r\n  background: #6e6ea9;\r\n}\r\nhtml ::-webkit-scrollbar-track {\r\n  background: #ededed;\r\n}\r\n",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\nfinanceiro_caixalancamento.tipo_operacao,\r\nfinanceiro_caixalancamento.valor,\r\nTO_CHAR(data_cadastro, 'DD/MM/YYYY HH24:MI:SS') AS data_cadastro,\r\nTO_CHAR(data_competencia, 'DD/MM/YYYY HH24:MI:SS') AS data_conpetencia,\r\nfinanceiro_centrodecusto.descricao as centro_de_custo,\r\nfinanceiro_formapagamento.descricao as forma_de_pagamento\r\nFROM financeiro_caixalancamento\r\nJOIN financeiro_centrodecusto on financeiro_caixalancamento.centrodecusto_id = financeiro_centrodecusto.id\r\nJoin financeiro_formapagamento on financeiro_caixalancamento.forma_pagamento_id = financeiro_formapagamento.id\r\n--join admcore_pop as p on financeiro_caixalancamento.pop_id = p.id\r\n--where admcore_pop.cidade in ($pop)\r\norder by financeiro_caixalancamento.data_cadastro desc\r\nlimit 50;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "data_competencia": "Data de Competência "
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 33
+      },
+      "id": 89,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:26px;text-align:center;font-family:Arial;\nbackground: linear-gradient(90deg, #00146C,#003366);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nVISÃO GERAL </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 0,
+        "y": 35
+      },
+      "id": 83,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n  font-family: 'Arial', sans-serif;\n}\n\n.card {\n  width: 300px; /* Ajuste conforme necessário */\n  height: 100%;\n  overflow: hidden;\n\n  margin: 20px;\n}\n\n.card-header {\n  background: linear-gradient(90deg, #00146C,#003366);\n  height: 20px;\n  text-align: center;\n  padding: 15px;\n  font-weight: 1000;\n  color: #fff;\n}\n\n.card-body {\n  background-color: #00146C;\n  padding: 10px;\n  border-radius: 0px 0px 10px 10px;\n}\n\n.line {\n  display: flex; /* Make the line a flex container */\n  flex-direction: column; /* Arrange items vertically */\n  margin-bottom: 5px;\n}\n\n.label {\n  font-size: 0.75em;\n  color: rgb(192, 188, 188);\n  font-weight: 1000;\n}\n\n.value {\n  margin-top: 5px; /* Create space between the label and value */\n  font-size: 1em;\n  font-weight: bold;\n}\n\n.icone-value {\n  display: flex; /* Make the icon and value sit on the same line */\n  align-items: center; /* Vertically align them within their container */\n}\n\n.negative {\n  color: #e74c3c;\n}\n\n.contribution {\n  color: #2ecc71;\n}\n\n.icon {\n    width: 20px; /* Largura do ícone */\n    height: 20px; /* Altura do ícone */\n    margin-right: 2px; /* Espaçamento à direita do ícone */\n}\n\n/* Estilos para o efeito de brilho */\n.glow-on-hover {\n  border: none;\n  outline: none;\n  color: #fff;\n  background: #00186C;\n  cursor: pointer;\n  position: relative;\n  z-index: 0;\n  border-radius: 10px 10px 0px 0px;\n  overflow: hidden;\n}\n\n.glow-on-hover:before {\n  content: '';\n  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);\n  position: absolute;\n  top: -2px;\n  left:-2px;\n  background-size: 400%;\n  z-index: -1;\n  filter: blur(5px);\n  width: calc(100% + 4px);\n  height: calc(100% + 4px);\n  animation: glowing 20s linear infinite;\n  opacity: 0;\n  transition: opacity .3s ease-in-out;\n  border-radius: 10px;\n}\n\n.glow-on-hover:active {\n  color: #000;\n}\n\n.glow-on-hover:active:after {\n  background: transparent;\n}\n\n.glow-on-hover:hover:before {\n  opacity: 2;\n}\n\n.glow-on-hover:after {\n  z-index: -1;\n  content: '';\n  position: absolute;\n  background: #111;\n  left: 0;\n  top: 0;\n  border-radius: 10px;\n}\n\n@keyframes glowing {\n  0% { background-position: 0 0; }\n  50% { background-position: 400% 0; }\n  100% { background-position: 0 0; }\n}\n\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Card Financeiro</title>\n<link rel=\"stylesheet\" href=\"financeiro.css\">\n</head>\n<body>\n<div class=\"card\">\n    <div class=\"card-header glow-on-hover\">\n        <!-- Cabeçalho Azul -->\n         <span class=\"mensal\">TÍTULOS</span>\n    </div>\n    <div class=\"card-body\">\n        <div class=\"line revenue\">\n            <span class=\"label\">RECEBIDOS</span>\n            <span class=\"value contribution\">R$1.609.168</span>\n        </div>\n        <div class=\"line expenses\">\n            <span class=\"label\">EM ATRASO</span>\n            <span class=\"value negative\">R$1.445.153</span>\n        </div>\n        <div class=\"line percentage\">\n            <span class=\"label\">TOTAL</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/up-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value contribution\">-34,8%</span>\n            </div>\n        </div>\n        <div class=\"line contribution\">\n            <span class=\"label\">PAGOS</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/up-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value contribution\">R$488.430</span>\n            </div></br></br>\n        </div>\n    </div>\n</div>\n</body>\n</html>\n",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "htmlNode.querySelector('.line.revenue>span.value').innerHTML = data.series[0].fields[0].values.buffer[0]\nhtmlNode.querySelector('.line.expenses>span.value').innerHTML = data.series[1].fields[0].values.buffer[0]\nhtmlNode.querySelector('.line.percentage .icone-value .value').innerHTML = data.series[2].fields[0].values.buffer[0];\nhtmlNode.querySelector('.line.contribution .icone-value .value').innerHTML = data.series[3].fields[0].values.buffer[0]\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT to_char(SUM(valorpago), 'R$999G999G999D99') AS \"Recebidos\"\r\nFROM (\r\n    SELECT DISTINCT ON (financeiro_titulo.id) financeiro_titulo.id, financeiro_titulo.valorpago\r\n    FROM financeiro_titulo\r\n    LEFT JOIN admcore_cliente ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE data_pagamento IS NOT NULL\r\n  AND date_trunc('month', data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife') = date_trunc('month', current_date AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife')\r\n  \r\n  \r\n  AND data_cancela IS NULL\r\n  AND admcore_pop.cidade in ($pop)\r\n) AS subquery\r\n\r\n",
+          "refId": "mensal1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT to_char(SUM(valor), 'R$999G999G999D99') AS \"Em Atraso\"\r\nFROM financeiro_titulo\r\nWHERE data_pagamento IS NULL\r\n  AND data_vencimento < CURRENT_DATE AT TIME ZONE 'America/Recife'\r\n  AND data_cancela IS NULL\r\n  AND date_trunc('month', data_vencimento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife') = date_trunc('month', current_date AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife');\r\n",
+          "refId": "saida1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT COUNT(*) AS \"Total\"\r\nFROM (\r\n    SELECT DISTINCT ON (financeiro_titulo.id) financeiro_titulo.id\r\n    FROM financeiro_titulo\r\n\r\n    LEFT JOIN admcore_cliente ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE  date_trunc('month', data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife') = date_trunc('month', current_date AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife')\r\nand data_cancela is NULL\r\n      AND admcore_pop.cidade in ($pop)\r\n) AS subquery",
+          "refId": "mensal2",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT COUNT(*) AS \"Pagos\"\r\nFROM (\r\n    SELECT DISTINCT ON (financeiro_titulo.id) financeiro_titulo.id\r\n    FROM financeiro_titulo\r\n    LEFT JOIN admcore_cliente ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE  \r\ndate_trunc('month', data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife') = date_trunc('month', current_date AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife')\r\nand data_cancela is NULL and data_pagamento is not null\r\n      AND admcore_pop.cidade in ($pop)\r\n) AS subquery",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 4,
+        "y": 35
+      },
+      "id": 84,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n  font-family: 'Arial', sans-serif;\n}\n\n.card {\n  width: 300px; /* Ajuste conforme necessário */\n  height: 100%;\n  overflow: hidden;\n\n  margin: 20px;\n}\n\n.card-header {\n  background: linear-gradient(90deg, #00146C,#003366);\n  height: 20px;\n  text-align: center;\n  padding: 15px;\n  font-weight: 1000;\n  color: #fff;\n}\n\n.card-body {\n  background-color: #00146C;\n  padding: 10px;\n  border-radius: 0px 0px 10px 10px;\n}\n\n.line {\n  display: flex; /* Make the line a flex container */\n  flex-direction: column; /* Arrange items vertically */\n  margin-bottom: 5px;\n}\n\n.label {\n  font-size: 0.75em;\n  color: rgb(192, 188, 188);\n  font-weight: 1000;\n}\n\n.value {\n  margin-top: 5px; /* Create space between the label and value */\n  font-size: 1em;\n  font-weight: bold;\n}\n\n.icone-value {\n  display: flex; /* Make the icon and value sit on the same line */\n  align-items: center; /* Vertically align them within their container */\n}\n\n.negative {\n  color: #e74c3c;\n}\n\n.contribution {\n  color: #2ecc71;\n}\n\n.icon {\n    width: 20px; /* Largura do ícone */\n    height: 20px; /* Altura do ícone */\n    margin-right: 2px; /* Espaçamento à direita do ícone */\n}\n\n/* Estilos para o efeito de brilho */\n.glow-on-hover {\n  border: none;\n  outline: none;\n  color: #fff;\n  background: #00186C;\n  cursor: pointer;\n  position: relative;\n  z-index: 0;\n  border-radius: 10px 10px 0px 0px;\n  overflow: hidden;\n}\n\n.glow-on-hover:before {\n  content: '';\n  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);\n  position: absolute;\n  top: -2px;\n  left:-2px;\n  background-size: 400%;\n  z-index: -1;\n  filter: blur(5px);\n  width: calc(100% + 4px);\n  height: calc(100% + 4px);\n  animation: glowing 20s linear infinite;\n  opacity: 0;\n  transition: opacity .3s ease-in-out;\n  border-radius: 10px;\n}\n\n.glow-on-hover:active {\n  color: #000;\n}\n\n.glow-on-hover:active:after {\n  background: transparent;\n}\n\n.glow-on-hover:hover:before {\n  opacity: 2;\n}\n\n.glow-on-hover:after {\n  z-index: -1;\n  content: '';\n  position: absolute;\n  background: #111;\n  left: 0;\n  top: 0;\n  border-radius: 10px;\n}\n\n@keyframes glowing {\n  0% { background-position: 0 0; }\n  50% { background-position: 400% 0; }\n  100% { background-position: 0 0; }\n}\n\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Card Financeiro</title>\n<link rel=\"stylesheet\" href=\"financeiro.css\">\n</head>\n<body>\n<div class=\"card\">\n    <div class=\"card-header glow-on-hover\">\n        <!-- Cabeçalho Azul -->\n         <span class=\"mensal\">CANCELAMENTOS</span>\n    </div>\n    <div class=\"card-body\">\n\n        <div class=\"line revenue\">\n            <span class=\"label\">TOTAL DE CANCELAMENTOS</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/dow-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value negative\">R$1.609.168</span>\n            </div>\n\n        </div>\n        <div class=\"line expenses\">\n            <span class=\"label\">MÉDIA DE CANCELAMENTOS</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/dow-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value negative\">R$1.445.153</span>\n            </div>\n        </div>\n\n        <div class=\"line percentage\">\n            <span class=\"label\">PROJEÇÃO DE CANCELAMENTOS</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp//dow-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value negative\">-34,8%</span>\n            </div>\n        </div>\n\n        <div class=\"line contribution\">\n            <span class=\"label\">TÍTULOS EM ATRASO</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/dow-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value negative\">R$488.430</span>\n            </div></br>\n        </div>\n    </div>\n</div>\n</body>\n</html>\n",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "htmlNode.querySelector('.line.revenue .icone-value .value').innerHTML = data.series[0].fields[0].values.buffer\nhtmlNode.querySelector('.line.expenses .icone-value .value').innerHTML = data.series[1].fields[0].values.buffer\nhtmlNode.querySelector('.line.percentage .icone-value .value').innerHTML = data.series[2].fields[0].values.buffer\nhtmlNode.querySelector('.line.contribution .icone-value .value').innerHTML = data.series[3].fields[0].values.buffer\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select count(admcore_clientecontratostatus.id) AS cancelamentos from admcore_clientecontrato\r\nINNER JOIN admcore_clientecontratostatus ON (admcore_clientecontratostatus.id= admcore_clientecontrato.status_id)\r\nINNER JOIN admcore_servicointernet on (admcore_clientecontrato.id = admcore_servicointernet.clientecontrato_id)\r\nLEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nwhere admcore_servicointernet.status = 3 and \r\n\r\ndate_trunc('month', admcore_clientecontratostatus.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife') = date_trunc('month', current_date AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife')\r\n  AND admcore_pop.cidade in ($pop)\r\n ",
+          "refId": "mensal1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  TO_CHAR(\r\n    COUNT(admcore_clientecontratostatus.id) /\r\n    (EXTRACT(day FROM TO_TIMESTAMP($__to/1000) - TO_TIMESTAMP($__from/1000)) + 1),\r\n    'FM999999990.00'\r\n  ) AS media_cancelamentos_por_dia\r\nFROM admcore_clientecontrato\r\nINNER JOIN admcore_clientecontratostatus ON admcore_clientecontratostatus.id = admcore_clientecontrato.status_id\r\nINNER JOIN admcore_servicointernet on (admcore_clientecontrato.id = admcore_servicointernet.clientecontrato_id)\r\nLEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE admcore_clientecontratostatus.status = 3\r\nAND admcore_clientecontratostatus.data_cadastro BETWEEN TO_TIMESTAMP($__from/1000) AND TO_TIMESTAMP($__to/1000)\r\nAND admcore_pop.cidade in ($pop)\r\n;",
+          "refId": "saida1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT COUNT(financeiro_titulo.cliente_id) AS total\r\nFROM admcore_clientecontrato\r\nINNER JOIN admcore_clientecontratostatus ON (admcore_clientecontratostatus.id = admcore_clientecontrato.status_id)\r\nINNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\nINNER JOIN financeiro_titulo ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\nINNER JOIN admcore_servicointernet on (admcore_clientecontrato.id = admcore_servicointernet.clientecontrato_id)\r\nLEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE admcore_clientecontratostatus.status = 3\r\nAND \r\ndate_trunc('month', admcore_clientecontratostatus.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife') = date_trunc('month', current_date AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife')\r\n\r\nAND financeiro_titulo.data_vencimento >= TO_TIMESTAMP($__from/1000)\r\nAND financeiro_titulo.data_vencimento < '2050-01-01'::date\r\nAND financeiro_titulo.data_pagamento IS NULL\r\nAND admcore_pop.cidade in ($pop)\r\n\r\n",
+          "refId": "mensal2",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT COUNT(*) AS total\r\nFROM (\r\n    SELECT DISTINCT ON (financeiro_titulo.id) financeiro_titulo.id\r\n    FROM financeiro_titulo\r\n    LEFT JOIN admcore_cliente ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE data_pagamento IS NULL AND \r\ndate_trunc('month', data_vencimento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife') = date_trunc('month', current_date AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife')\r\nand data_vencimento < CURRENT_DATE AT TIME ZONE 'America/Recife'\r\n  AND data_cancela IS NULL\r\n  AND admcore_pop.cidade IN ($pop)\r\n) AS subquery\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 8,
+        "y": 35
+      },
+      "id": 85,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n  font-family: 'Arial', sans-serif;\n}\n\n.card {\n  width: 300px; /* Ajuste conforme necessário */\n  height: 100%;\n  overflow: hidden;\n\n  margin: 20px;\n}\n\n.card-header {\n  background: linear-gradient(90deg, #00146C,#003366);\n  height: 20px;\n  text-align: center;\n  padding: 15px;\n  font-weight: 1000;\n  color: #fff;\n}\n\n.card-body {\n  background-color: #00146C;\n  padding: 10px;\n  border-radius: 0px 0px 10px 10px;\n}\n\n.line {\n  display: flex; /* Make the line a flex container */\n  flex-direction: column; /* Arrange items vertically */\n  margin-bottom: 5px;\n}\n\n.label {\n  font-size: 0.75em;\n  color: rgb(192, 188, 188);\n  font-weight: 1000;\n}\n\n.value {\n  margin-top: 5px; /* Create space between the label and value */\n  font-size: 1em;\n  font-weight: bold;\n}\n\n.icone-value {\n  display: flex; /* Make the icon and value sit on the same line */\n  align-items: center; /* Vertically align them within their container */\n}\n\n.negative {\n  color: #e74c3c;\n}\n\n.contribution {\n  color: #2ecc71;\n}\n\n.icon {\n    width: 20px; /* Largura do ícone */\n    height: 20px; /* Altura do ícone */\n    margin-right: 2px; /* Espaçamento à direita do ícone */\n}\n\n/* Estilos para o efeito de brilho */\n.glow-on-hover {\n  border: none;\n  outline: none;\n  color: #fff;\n  background: #00186C;\n  cursor: pointer;\n  position: relative;\n  z-index: 0;\n  border-radius: 10px 10px 0px 0px;\n  overflow: hidden;\n}\n\n.glow-on-hover:before {\n  content: '';\n  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);\n  position: absolute;\n  top: -2px;\n  left:-2px;\n  background-size: 400%;\n  z-index: -1;\n  filter: blur(5px);\n  width: calc(100% + 4px);\n  height: calc(100% + 4px);\n  animation: glowing 20s linear infinite;\n  opacity: 0;\n  transition: opacity .3s ease-in-out;\n  border-radius: 10px;\n}\n\n.glow-on-hover:active {\n  color: #000;\n}\n\n.glow-on-hover:active:after {\n  background: transparent;\n}\n\n.glow-on-hover:hover:before {\n  opacity: 2;\n}\n\n.glow-on-hover:after {\n  z-index: -1;\n  content: '';\n  position: absolute;\n  background: #111;\n  left: 0;\n  top: 0;\n  border-radius: 10px;\n}\n\n@keyframes glowing {\n  0% { background-position: 0 0; }\n  50% { background-position: 400% 0; }\n  100% { background-position: 0 0; }\n}\n\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Card Financeiro</title>\n<link rel=\"stylesheet\" href=\"financeiro.css\">\n</head>\n<body>\n<div class=\"card\">\n    <div class=\"card-header glow-on-hover\">\n        <!-- Cabeçalho Azul -->\n         <span class=\"mensal\">RECEBIMENTO</span>\n    </div>\n    <div class=\"card-body\">\n\n        <div class=\"line revenue\">\n            <span class=\"label\">TOTAL DE RECEBIMENTOS</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/up-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value contribution\">R$1.609.168</span>\n            </div>\n\n        </div>\n        <div class=\"line expenses\">\n            <span class=\"label\">PROJEÇÃO DE RECEBIMENTO</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/up-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value contribution\">R$1.445.153</span>\n            </div>\n        </div>\n\n        <div class=\"line percentage\">\n            <span class=\"label\">RECEBIMENTOS NO PRAZO</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/up-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value contribution\">-34,8%</span>\n            </div>\n        </div>\n\n        <div class=\"line contribution\">\n            <span class=\"label\">TICKET MÉDIO</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/up-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value contribution\">R$488.430</span>\n            </div></br></br>\n        </div>\n    </div>\n</div>\n</body>\n</html>\n",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "htmlNode.querySelector('.line.revenue .icone-value .value').innerHTML = data.series[0].fields[0].values.buffer[0]\nhtmlNode.querySelector('.line.expenses .icone-value .value').innerHTML = \"R$ \" + data.series[1].fields[0].values.buffer[0]\nhtmlNode.querySelector('.line.percentage .icone-value .value').innerHTML = data.series[2].fields[0].values.buffer[0];\nhtmlNode.querySelector('.line.contribution .icone-value .value').innerHTML = \"R$ \" + data.series[3].fields[0].values.buffer[0]\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT COUNT(*) AS total\r\nFROM (\r\n    SELECT DISTINCT ON (financeiro_titulo.id) financeiro_titulo.id\r\n    FROM financeiro_titulo\r\n    LEFT JOIN admcore_cliente ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\n    where\r\ndate_trunc('month', data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife') = date_trunc('month', current_date AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife')\r\nand data_cancela is NULL and data_pagamento is not null\r\n     AND admcore_pop.cidade IN ($pop)\r\n) AS subquery\r\n",
+          "refId": "mensal1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(subquery.valor), 'FM999G999G999D00') AS total_pagamentos\r\nFROM (\r\n    SELECT DISTINCT ON (financeiro_titulo.id) financeiro_titulo.id, financeiro_titulo.valor\r\n    FROM financeiro_titulo\r\n        LEFT JOIN admcore_cliente ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n     LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE  \r\ndate_trunc('month', data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife') = date_trunc('month', current_date AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife')\r\n  and data_cancela is NULL \r\n      AND admcore_pop.cidade in ($pop)\r\n) AS subquery\r\n",
+          "refId": "saida1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT COUNT(*) AS total\r\nFROM (\r\n    SELECT DISTINCT ON (financeiro_titulo.id) financeiro_titulo.id\r\n    FROM financeiro_titulo\r\n    LEFT JOIN admcore_cliente ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\n    WHERE date_trunc('month', data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife') = date_trunc('month', current_date AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife')\r\n      AND $__timeFilter(data_vencimento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife')\r\n      AND data_cancela IS NULL\r\n      AND admcore_pop.cidade IN ($pop)\r\n) AS subquery\r\n",
+          "refId": "mensal2",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(subquery.valor)/COUNT(subquery.id), 'FM999G999G999D00') AS total_pagamentos\r\nFROM (\r\n    SELECT DISTINCT ON (financeiro_titulo.id) financeiro_titulo.id, financeiro_titulo.valor\r\n    FROM financeiro_titulo\r\n    LEFT JOIN admcore_cliente ON financeiro_titulo.cliente_id = admcore_cliente.id\r\n    LEFT JOIN admcore_clientecontrato ON admcore_clientecontrato.cliente_id = admcore_cliente.id\r\n    LEFT JOIN admcore_pop ON admcore_clientecontrato.pop_id = admcore_pop.id\r\nWHERE  \r\ndate_trunc('month', data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife') = date_trunc('month', current_date AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife') \r\n\tand (extract(year FROM financeiro_titulo.data_vencimento) = extract(year FROM current_date)\r\n    AND extract(month FROM financeiro_titulo.data_vencimento) = extract(month FROM current_date))\r\nand data_cancela is NULL\r\n     AND admcore_pop.cidade IN ($pop)\r\n) AS subquery",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 12,
+        "y": 35
+      },
+      "id": 86,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n  font-family: 'Arial', sans-serif;\n}\n\n.card {\n  width: 300px; /* Ajuste conforme necessário */\n  height: 100%;\n  overflow: hidden;\n\n  margin: 20px;\n}\n\n.card-header {\n  background: linear-gradient(90deg, #00146C,#003366);\n  height: 20px;\n  text-align: center;\n  padding: 15px;\n  font-weight: 1000;\n  color: #fff;\n}\n\n.card-body {\n  background-color: #00146C;\n  padding: 10px;\n  border-radius: 0px 0px 10px 10px;\n}\n\n.line {\n  display: flex; /* Make the line a flex container */\n  flex-direction: column; /* Arrange items vertically */\n  margin-bottom: 5px;\n}\n\n.label {\n  font-size: 0.75em;\n  color: rgb(192, 188, 188);\n  font-weight: 1000;\n}\n\n.value {\n  margin-top: 5px; /* Create space between the label and value */\n  font-size: 1em;\n  font-weight: bold;\n}\n\n.icone-value {\n  display: flex; /* Make the icon and value sit on the same line */\n  align-items: center; /* Vertically align them within their container */\n}\n\n.negative {\n  color: #e74c3c;\n}\n\n.contribution {\n  color: #2ecc71;\n}\n\n.icon {\n    width: 20px; /* Largura do ícone */\n    height: 20px; /* Altura do ícone */\n    margin-right: 2px; /* Espaçamento à direita do ícone */\n}\n\n/* Estilos para o efeito de brilho */\n.glow-on-hover {\n  border: none;\n  outline: none;\n  color: #fff;\n  background: #00186C;\n  cursor: pointer;\n  position: relative;\n  z-index: 0;\n  border-radius: 10px 10px 0px 0px;\n  overflow: hidden;\n}\n\n.glow-on-hover:before {\n  content: '';\n  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);\n  position: absolute;\n  top: -2px;\n  left:-2px;\n  background-size: 400%;\n  z-index: -1;\n  filter: blur(5px);\n  width: calc(100% + 4px);\n  height: calc(100% + 4px);\n  animation: glowing 20s linear infinite;\n  opacity: 0;\n  transition: opacity .3s ease-in-out;\n  border-radius: 10px;\n}\n\n.glow-on-hover:active {\n  color: #000;\n}\n\n.glow-on-hover:active:after {\n  background: transparent;\n}\n\n.glow-on-hover:hover:before {\n  opacity: 2;\n}\n\n.glow-on-hover:after {\n  z-index: -1;\n  content: '';\n  position: absolute;\n  background: #111;\n  left: 0;\n  top: 0;\n  border-radius: 10px;\n}\n\n@keyframes glowing {\n  0% { background-position: 0 0; }\n  50% { background-position: 400% 0; }\n  100% { background-position: 0 0; }\n}\n\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Card Financeiro</title>\n<link rel=\"stylesheet\" href=\"financeiro.css\">\n</head>\n<body>\n<div class=\"card\">\n    <div class=\"card-header glow-on-hover\">\n        <!-- Cabeçalho Azul -->\n         <span class=\"mensal\">PROJEÇÕES</span>\n    </div>\n    <div class=\"card-body\">\n\n        <div class=\"line revenue\">\n            <span class=\"label\">PROJEÇÃO DE CRESCIMENTO</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/up-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value contribution\">R$1.609.168</span>\n            </div>\n\n        </div>\n        <div class=\"line expenses\">\n            <span class=\"label\">PROJEÇÃO DE PERDA</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/dow-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value negative\">R$1.445.153</span>\n            </div>\n        </div>\n\n        <div class=\"line percentage\">\n            <span class=\"label\">RECEITAS NO PRAZO</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/up-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value contribution\">-34,8%</span>\n            </div>\n        </div>\n\n        <div class=\"line contribution\">\n            <span class=\"label\">RECEBIDO FORA DO PERÍODO</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/dow-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value negative\">R$488.430</span>\n            </div></br></br>\n        </div>\n    </div>\n</div>\n</body>\n</html>\n",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "htmlNode.querySelector('.line.revenue .icone-value .value').innerHTML = \"R$ \" + data.series[0].fields[0].values.buffer[0]\nhtmlNode.querySelector('.line.expenses .icone-value .value').innerHTML = \"R$ \" + data.series[1].fields[0].values.buffer[0]\nhtmlNode.querySelector('.line.percentage .icone-value .value').innerHTML = \"R$ \" + data.series[2].fields[0].values.buffer[0];\nhtmlNode.querySelector('.line.contribution .icone-value .value').innerHTML = \"R$ \" + data.series[3].fields[0].values.buffer[0]\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(financeiro_titulo.valor), 'FM999,999,999D00') AS total\r\nFROM admcore_clientecontrato\r\nINNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\nINNER JOIN financeiro_titulo \r\n  ON (financeiro_titulo.cliente_id = admcore_cliente.id \r\n  AND financeiro_titulo.data_pagamento IS NULL)\r\nINNER JOIN admcore_servicointernet on (admcore_clientecontrato.id = admcore_servicointernet.clientecontrato_id)\r\nINNER JOIN financeiro_cobranca on (financeiro_titulo.cobranca_id = financeiro_cobranca.id)\r\nLEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE \r\nadmcore_servicointernet.status IN (1,2)\r\nAND date_trunc('month', admcore_clientecontrato.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife') = date_trunc('month', current_date AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife')\r\nand admcore_clientecontrato.cobranca_id = financeiro_cobranca.id\r\nAND financeiro_titulo.data_vencimento >= TO_TIMESTAMP($__from/1000)\r\nAND financeiro_titulo.data_vencimento < '2050-01-01'::date\r\nAND admcore_pop.cidade in ($pop)\r\n\r\n",
+          "refId": "mensal1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(financeiro_titulo.valor), 'FM999,999,999D00') AS total\r\nFROM admcore_clientecontrato\r\nINNER JOIN admcore_clientecontratostatus ON (admcore_clientecontratostatus.id = admcore_clientecontrato.status_id)\r\nINNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\nINNER JOIN financeiro_titulo ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\nINNER JOIN admcore_servicointernet on (admcore_clientecontrato.id = admcore_servicointernet.clientecontrato_id)\r\nINNER JOIN financeiro_cobranca on (financeiro_titulo.cobranca_id = financeiro_cobranca.id)\r\nLEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE admcore_servicointernet.status = 3\r\nAND \r\nadmcore_clientecontratostatus.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_clientecontratostatus.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_clientecontratostatus.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\nAND financeiro_titulo.data_vencimento >= TO_TIMESTAMP($__from/1000)\r\nAND financeiro_titulo.data_vencimento < '2050-01-01'::date\r\nAND financeiro_titulo.data_pagamento IS NULL\r\nAND admcore_pop.cidade in ($pop)\r\nand admcore_clientecontrato.cobranca_id = financeiro_cobranca.id\r\n",
+          "refId": "saida1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(valorpago), 'FM999G999G999D00') AS total_pagamentos\r\nFROM (\r\n    SELECT DISTINCT ON (financeiro_titulo.id) financeiro_titulo.id, financeiro_titulo.valorpago\r\nFROM financeiro_titulo\r\n    LEFT JOIN admcore_cliente ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n     LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE \r\n  data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' > $__timeFrom()\r\n  AND data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n  AND $__timeFilter(data_vencimento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife')\r\n  AND data_cancela IS NULL\r\n      AND admcore_pop.cidade in ($pop)\r\n) AS subquery\r\n\r\n",
+          "refId": "mensal2",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(valorpago), 'FM999G999G999D00') AS total_pagamentos\r\nFROM (\r\n    SELECT DISTINCT ON (financeiro_titulo.id) financeiro_titulo.id, financeiro_titulo.valorpago\r\nFROM financeiro_titulo\r\n    LEFT JOIN admcore_cliente ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n     LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE \r\n  data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND (data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' < $__timeFrom()\r\n  OR data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' > $__timeTo())\r\n  AND $__timeFilter(data_vencimento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife')\r\n  AND data_cancela IS NULL\r\n     AND admcore_pop.cidade in ($pop)\r\n) AS subquery\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 16,
+        "y": 35
+      },
+      "id": 87,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n  font-family: 'Arial', sans-serif;\n}\n\n.card {\n  width: 300px; /* Ajuste conforme necessário */\n  height: 100%;\n  overflow: hidden;\n\n  margin: 20px;\n}\n\n.card-header {\n  background: linear-gradient(90deg, #00146C,#003366);\n  height: 20px;\n  text-align: center;\n  padding: 15px;\n  font-weight: 1000;\n  color: #fff;\n}\n\n.card-body {\n  background-color: #00146C;\n  padding: 10px;\n  border-radius: 0px 0px 10px 10px;\n}\n\n.line {\n  display: flex; /* Make the line a flex container */\n  flex-direction: column; /* Arrange items vertically */\n  margin-bottom: 5px;\n}\n\n.label {\n  font-size: 0.75em;\n  color: rgb(192, 188, 188);\n  font-weight: 1000;\n}\n\n.value {\n  margin-top: 5px; /* Create space between the label and value */\n  font-size: 1em;\n  font-weight: bold;\n}\n\n.icone-value {\n  display: flex; /* Make the icon and value sit on the same line */\n  align-items: center; /* Vertically align them within their container */\n}\n\n.negative {\n  color: #e74c3c;\n}\n\n.contribution {\n  color: #2ecc71;\n}\n\n.icon {\n    width: 20px; /* Largura do ícone */\n    height: 20px; /* Altura do ícone */\n    margin-right: 2px; /* Espaçamento à direita do ícone */\n}\n\n/* Estilos para o efeito de brilho */\n.glow-on-hover {\n  border: none;\n  outline: none;\n  color: #fff;\n  background: #00186C;\n  cursor: pointer;\n  position: relative;\n  z-index: 0;\n  border-radius: 10px 10px 0px 0px;\n  overflow: hidden;\n}\n\n.glow-on-hover:before {\n  content: '';\n  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);\n  position: absolute;\n  top: -2px;\n  left:-2px;\n  background-size: 400%;\n  z-index: -1;\n  filter: blur(5px);\n  width: calc(100% + 4px);\n  height: calc(100% + 4px);\n  animation: glowing 20s linear infinite;\n  opacity: 0;\n  transition: opacity .3s ease-in-out;\n  border-radius: 10px;\n}\n\n.glow-on-hover:active {\n  color: #000;\n}\n\n.glow-on-hover:active:after {\n  background: transparent;\n}\n\n.glow-on-hover:hover:before {\n  opacity: 2;\n}\n\n.glow-on-hover:after {\n  z-index: -1;\n  content: '';\n  position: absolute;\n  background: #111;\n  left: 0;\n  top: 0;\n  border-radius: 10px;\n}\n\n@keyframes glowing {\n  0% { background-position: 0 0; }\n  50% { background-position: 400% 0; }\n  100% { background-position: 0 0; }\n}\n\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Card Financeiro</title>\n<link rel=\"stylesheet\" href=\"financeiro.css\">\n</head>\n<body>\n<div class=\"card\">\n    <div class=\"card-header glow-on-hover\">\n        <!-- Cabeçalho Azul -->\n         <span class=\"mensal\">RECEITAS</span>\n    </div>\n    <div class=\"card-body\">\n\n        <div class=\"line revenue\">\n            <span class=\"label\">TOTAL UPGRADE</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/up-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value contribution\">R$1.609.168</span>\n            </div>\n\n        </div>\n        <div class=\"line expenses\">\n            <span class=\"label\">TOTAL DOWNGRADE</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/dow-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value negative\">R$1.445.153</span>\n            </div>\n        </div>\n\n        <div class=\"line percentage\">\n            <span class=\"label\">GANHOS UPGRADE</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/up-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value contribution\">-34,8%</span>\n            </div>\n        </div>\n\n        <div class=\"line contribution\">\n            <span class=\"label\">PERDAS DOWNGRADE</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/dow-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value negative\">R$488.430</span>\n            </div></br></br>\n        </div>\n    </div>\n</div>\n</body>\n</html>\n",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "htmlNode.querySelector('.line.revenue .icone-value .value').innerHTML = data.series[0].fields[0].values.buffer[0]\nhtmlNode.querySelector('.line.expenses .icone-value .value').innerHTML = data.series[1].fields[0].values.buffer[0]\nhtmlNode.querySelector('.line.percentage .icone-value .value').innerHTML = \"R$ \" + data.series[2].fields[0].values.buffer[0];\nhtmlNode.querySelector('.line.contribution .icone-value .value').innerHTML = \"R$ \" + data.series[3].fields[0].values.buffer[0]\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT count(admcore_aditivo.id) as upgrade\r\nFROM admcore_aditivo \r\nINNER JOIN admcore_plano AS plano_antigo ON plano_antigo.id = (admcore_aditivo.dado_antigo::json->>'plano_id')::INT\r\nINNER JOIN admcore_plano AS plano_novo ON plano_novo.id = (admcore_aditivo.dado_novo::json->>'plano_id')::INT\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.id = admcore_aditivo.clientecontrato_id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE admcore_aditivo.dado_antigo LIKE '%plano%' \r\nAND admcore_aditivo.dado_novo LIKE '%plano%' \r\nAND \r\nadmcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n     AND admcore_pop.cidade IN ($pop)\r\nand plano_novo.preco > plano_antigo.preco\r\n",
+          "refId": "mensal1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT count(admcore_aditivo.id) as upgrade\r\nFROM admcore_aditivo \r\nINNER JOIN admcore_plano AS plano_antigo ON plano_antigo.id = (admcore_aditivo.dado_antigo::json->>'plano_id')::INT\r\nINNER JOIN admcore_plano AS plano_novo ON plano_novo.id = (admcore_aditivo.dado_novo::json->>'plano_id')::INT\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.id = admcore_aditivo.clientecontrato_id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE admcore_aditivo.dado_antigo LIKE '%plano%' \r\nAND admcore_aditivo.dado_novo LIKE '%plano%' \r\nAND \r\nadmcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n\r\n     AND admcore_pop.cidade IN ($pop)\r\nand plano_novo.preco < plano_antigo.preco\r\n",
+          "refId": "saida1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR((sum(plano_novo.preco)-sum(plano_antigo.preco)), 'FM999G999G999D00') as upgrade\r\nFROM admcore_aditivo \r\nINNER JOIN admcore_plano AS plano_antigo ON plano_antigo.id = (admcore_aditivo.dado_antigo::json->>'plano_id')::INT\r\nINNER JOIN admcore_plano AS plano_novo ON plano_novo.id = (admcore_aditivo.dado_novo::json->>'plano_id')::INT\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.id = admcore_aditivo.clientecontrato_id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE admcore_aditivo.dado_antigo LIKE '%plano%' \r\nAND admcore_aditivo.dado_novo LIKE '%plano%' \r\nAND \r\n\r\nadmcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n     AND admcore_pop.cidade IN ($pop)\r\nand plano_novo.preco > plano_antigo.preco\r\n",
+          "refId": "mensal2",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR((sum(plano_novo.preco)-sum(plano_antigo.preco)), 'FM999G999G999D00') as upgrade\r\nFROM admcore_aditivo \r\nINNER JOIN admcore_plano AS plano_antigo ON plano_antigo.id = (admcore_aditivo.dado_antigo::json->>'plano_id')::INT\r\nINNER JOIN admcore_plano AS plano_novo ON plano_novo.id = (admcore_aditivo.dado_novo::json->>'plano_id')::INT\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.id = admcore_aditivo.clientecontrato_id)\r\n    LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE admcore_aditivo.dado_antigo LIKE '%plano%' \r\nAND admcore_aditivo.dado_novo LIKE '%plano%' \r\nAND \r\nadmcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND admcore_aditivo.data_baixa AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n     AND admcore_pop.cidade IN ($pop)\r\nand plano_novo.preco < plano_antigo.preco\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 20,
+        "y": 35
+      },
+      "id": 88,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n  font-family: 'Arial', sans-serif;\n}\n\n.card {\n  width: 300px; /* Ajuste conforme necessário */\n  height: 100%;\n  overflow: hidden;\n\n  margin: 20px;\n}\n\n.card-header {\n  background: linear-gradient(90deg, #00146C,#003366);\n  height: 20px;\n  text-align: center;\n  padding: 15px;\n  font-weight: 1000;\n  color: #fff;\n}\n\n.card-body {\n  background-color: #00146C;\n  padding: 10px;\n  border-radius: 0px 0px 10px 10px;\n}\n\n.line {\n  display: flex; /* Make the line a flex container */\n  flex-direction: column; /* Arrange items vertically */\n  margin-bottom: 5px;\n}\n\n.label {\n  font-size: 0.75em;\n  color: rgb(192, 188, 188);\n  font-weight: 1000;\n}\n\n.value {\n  margin-top: 5px; /* Create space between the label and value */\n  font-size: 1em;\n  font-weight: bold;\n}\n\n.icone-value {\n  display: flex; /* Make the icon and value sit on the same line */\n  align-items: center; /* Vertically align them within their container */\n}\n\n.negative {\n  color: #e74c3c;\n}\n\n.contribution {\n  color: #2ecc71;\n}\n\n.icon {\n    width: 20px; /* Largura do ícone */\n    height: 20px; /* Altura do ícone */\n    margin-right: 2px; /* Espaçamento à direita do ícone */\n}\n\n/* Estilos para o efeito de brilho */\n.glow-on-hover {\n  border: none;\n  outline: none;\n  color: #fff;\n  background: #00186C;\n  cursor: pointer;\n  position: relative;\n  z-index: 0;\n  border-radius: 10px 10px 0px 0px;\n  overflow: hidden;\n}\n\n.glow-on-hover:before {\n  content: '';\n  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);\n  position: absolute;\n  top: -2px;\n  left:-2px;\n  background-size: 400%;\n  z-index: -1;\n  filter: blur(5px);\n  width: calc(100% + 4px);\n  height: calc(100% + 4px);\n  animation: glowing 20s linear infinite;\n  opacity: 0;\n  transition: opacity .3s ease-in-out;\n  border-radius: 10px;\n}\n\n.glow-on-hover:active {\n  color: #000;\n}\n\n.glow-on-hover:active:after {\n  background: transparent;\n}\n\n.glow-on-hover:hover:before {\n  opacity: 2;\n}\n\n.glow-on-hover:after {\n  z-index: -1;\n  content: '';\n  position: absolute;\n  background: #111;\n  left: 0;\n  top: 0;\n  border-radius: 10px;\n}\n\n@keyframes glowing {\n  0% { background-position: 0 0; }\n  50% { background-position: 400% 0; }\n  100% { background-position: 0 0; }\n}\n\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Card Financeiro</title>\n<link rel=\"stylesheet\" href=\"financeiro.css\">\n</head>\n<body>\n<div class=\"card\">\n    <div class=\"card-header glow-on-hover\">\n        <!-- Cabeçalho Azul -->\n         <span class=\"mensal\">ATRASOS</span>\n    </div>\n    <div class=\"card-body\">\n\n        <div class=\"line revenue\">\n            <span class=\"label\">REDIMENTOS POR ATRASO</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/dow-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value negative\">R$1.609.168</span>\n            </div>\n\n        </div>\n        <div class=\"line expenses\">\n            <span class=\"label\">QUITADOS PERÍODO POSTERIOR</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/up-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value contribution\">R$1.445.153</span>\n            </div>\n        </div>\n\n        <div class=\"line percentage\">\n            <span class=\"label\">QUITADOS PERÍODO ANTERIOR</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/up-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value contribution\">-34,8%</span>\n            </div>\n        </div>\n\n        <div class=\"line contribution\">\n            <span class=\"label\">TOTAL CRESCIMENTO</span>\n            <div class=\"icone-value\">\n                <img src=\"../public/img/logos/Img_sgp/up-arrow.png\" alt=\"icone\" class=\"icon\">\n                <span class=\"value contribution\">R$488.430</span>\n            </div></br>\n        </div>\n    </div>\n</div>\n</body>\n</html>\n",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "htmlNode.querySelector('.line.revenue .icone-value .value').innerHTML = \"R$ \" + data.series[0].fields[0].values.buffer[0]\nhtmlNode.querySelector('.line.expenses .icone-value .value').innerHTML = \"R$ \" + data.series[1].fields[0].values.buffer[0]\nhtmlNode.querySelector('.line.percentage .icone-value .value').innerHTML = \"R$ \" + data.series[2].fields[0].values.buffer[0];\nhtmlNode.querySelector('.line.contribution .icone-value .value').innerHTML = data.series[3].fields[0].values.buffer[0]\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(subquery.valorpago) - SUM(subquery.valor), 'FM999G999G999D00') AS total_pagamentos\r\nFROM (\r\n    SELECT DISTINCT ON (financeiro_titulo.id) financeiro_titulo.id, financeiro_titulo.valorpago, financeiro_titulo.valor\r\n    FROM financeiro_titulo\r\n    LEFT JOIN admcore_cliente ON financeiro_titulo.cliente_id = admcore_cliente.id\r\n    LEFT JOIN admcore_clientecontrato ON admcore_clientecontrato.cliente_id = admcore_cliente.id\r\n    LEFT JOIN admcore_pop ON admcore_clientecontrato.pop_id = admcore_pop.id\r\n    WHERE date_trunc('month', admcore_clientecontrato.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife') = date_trunc('month', current_date AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife')\r\n      AND data_cancela IS NULL\r\n      AND admcore_pop.cidade IN ($pop)\r\n) AS subquery\r\n",
+          "refId": "mensal1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(valorpago), 'FM999G999G999D00') AS total_pagamentos\r\nFROM (\r\n    SELECT DISTINCT ON (financeiro_titulo.id) financeiro_titulo.id, financeiro_titulo.valorpago\r\nFROM financeiro_titulo\r\n    LEFT JOIN admcore_cliente ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n     LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n  AND data_vencimento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' > $__timeTo()\r\n  AND data_cancela IS NULL\r\n      AND admcore_pop.cidade in ($pop)\r\n) AS subquery\r\n\r\n",
+          "refId": "saida1",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(SUM(valorpago), 'FM999G999G999D00') AS total_pagamentos\r\nFROM (\r\n    SELECT DISTINCT ON (financeiro_titulo.id) financeiro_titulo.id, financeiro_titulo.valorpago\r\nFROM financeiro_titulo\r\n    LEFT JOIN admcore_cliente ON (financeiro_titulo.cliente_id = admcore_cliente.id)\r\n    LEFT JOIN admcore_clientecontrato ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n     LEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nWHERE data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' IS NOT NULL \r\n  AND data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' >= $__timeFrom()\r\n  AND data_pagamento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' <= $__timeTo()\r\n  AND data_vencimento AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife' < $__timeFrom()\r\n  AND data_cancela IS NULL\r\n        AND admcore_pop.cidade in ($pop)\r\n) AS subquery\r\n",
+          "refId": "mensal2",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select count(admcore_clientecontratostatus.id) AS novos_contratos from admcore_clientecontrato\r\nINNER JOIN admcore_clientecontratostatus ON (admcore_clientecontratostatus.id= admcore_clientecontrato.status_id)\r\nINNER JOIN admcore_servicointernet on (admcore_clientecontrato.id = admcore_servicointernet.clientecontrato_id)\r\nLEFT JOIN admcore_pop ON (admcore_clientecontrato.pop_id = admcore_pop.id)\r\nwhere admcore_clientecontratostatus.status in (1,2) and \r\n\r\ndate_trunc('month', admcore_clientecontrato.data_cadastro AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife') = date_trunc('month', current_date AT TIME ZONE 'UTC' AT TIME ZONE 'America/Recife')\r\n\r\nAND admcore_pop.cidade in ($pop)",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "sgp",
+    "financeiro"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": {
+          "type": "postgres",
+          "uid": "${DS_POSTGRESQL}"
+        },
+        "definition": "select cidade from admcore_pop",
+        "hide": 0,
+        "includeAll": true,
+        "label": "POP:",
+        "multi": true,
+        "name": "pop",
+        "options": [],
+        "query": "select cidade from admcore_pop",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Dashboard financeiro P1",
+  "uid": "cda045c0-703c-42e7-ab0d-0dbd386d4b47",
+  "version": 5,
+  "weekStart": ""
+}

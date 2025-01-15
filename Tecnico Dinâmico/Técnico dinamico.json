@@ -1,0 +1,1379 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_POSTGRESQL",
+      "label": "PostgreSQL",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "postgres",
+      "pluginName": "PostgreSQL"
+    },
+    {
+      "name": "VAR_TECNICO",
+      "type": "constant",
+      "label": "Técnicos",
+      "value": "",
+      "description": ""
+    },
+    {
+      "name": "VAR_IMAGE",
+      "type": "constant",
+      "label": "image",
+      "value": "",
+      "description": ""
+    },
+    {
+      "name": "VAR_TECNICO_NAME",
+      "type": "constant",
+      "label": "tecnico_name",
+      "value": "",
+      "description": ""
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "gapit-htmlgraphics-panel",
+      "name": "HTML graphics",
+      "version": "2.1.1"
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.5.9"
+    },
+    {
+      "type": "datasource",
+      "id": "postgres",
+      "name": "PostgreSQL",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "volkovlabs-echarts-panel",
+      "name": "Apache ECharts",
+      "version": "5.3.0"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "description": "/usr/share/grafana/public/img/logos/Img_sgp/\n/usr/share/grafana/public/img/logos/Img_sgp/Técnicos",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 25,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n  font-family: Arial, sans-serif;\n  background-color: #f0f0f0;\n  margin: 0;\n  padding: 20px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 200vh;\n}\n\n.card {\n  background-color: #1e27d5;;\n  border-radius: 20px;\n  padding: 20px;\n  width: 300px;\n  height: 870px;\n  text-align: center;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n}\n\n.profile-pic {\n  border-radius: 50%;\n  width: 120px;\n  height: 120px;\n  overflow: hidden;\n  margin: 0 auto 10px;\n  border: 3px solid #343333;\n  \n}\n\n.profile-pic img {\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}\n\nh1 {\n  margin: 10px 0;\n  font-size: 24px;\n  color: #f6f3f3;\n}\n\n.title {\n  color: #ffffff;\n  margin-bottom: 10px;\n}\n\n.atendimentos {\n  margin-top: 100px;\n  margin-bottom: 4px;\n  font-size: 16px;\n  color: #f6f3f3;\n}\n\n.media {\n  background-color: #4fc004;\n  border-radius: 10px;\n  padding: 10px;\n}\n\n.mediaatt {\n  font-size: 22px;\n  color: #000000;\n}\n\n.duration-label {\n  font-size: 16px;\n  color: #ffffff;\n  margin-bottom: 4px;\n  margin-top: 50px;\n}\n\n.duration {\n  background-color: #4fc004;\n  border-radius: 10px;\n  padding: 10px;\n  margin-top: 10px;\n}\n\n.time-value {\n  font-size: 22px;\n  color: #000000;\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html lang=\"pt\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Perfil do Técnico</title>\n<link rel=\"stylesheet\" href=\"styles.css\">\n</head>\n<body>\n<div class=\"card\">\n  <div class=\"profile-pic\">\n    <img src=\"../public/img/logos/Img_sgp/Técnicos/Alessandro.jpeg\" alt=\"Gustavo Pereira\">\n  </div>\n  <h1>ALESSANDRO</h1>\n  <p class=\"title\">Técnico em Redes</p>\n  <div class=\"atendimentos\">Média de Atendimentos Diário</div>\n  <div class=\"media\">\n    <span id=\"mediaatt\" class=\"mediaatt\">0</span>\n  </div>\n  <div class=\"duration-label\">Duração do último atendimento</div>\n  <div class=\"duration\">\n    <span id=\"time-value\" class=\"time-value\">00:00:00</span>\n  </div>\n</div>\n</body>\n</html>\n",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "const tecnico = {}\ndata.series[2]?.fields.forEach(field => tecnico[field.name] = field?.values.buffer[0])\n//if (!window.location.search.includes('var-tecnico') || !tecnico) return window.location.href = \"/d/b9d2fba2-a014-46cb-98a4-d9de6e33bd9a/agendamentos?\"\nconsole.log(data.series)\nconst tecnicoImageUlr = tecnico.image\nconst tecnicoImageEl = htmlNode.querySelector('.profile-pic>img')\nhtmlNode.querySelector('h1').innerHTML = tecnico.name\ntecnicoImageEl.setAttribute('alt', tecnico)\ntecnicoImageEl.src = tecnicoImageUlr || '../public/img/logos/Img_sgp/Técnicos/tec2.png'\n\nconst secondstotime = (seconds) => (new Date(seconds * 1000)).toUTCString().match(/(\\d\\d:\\d\\d:\\d\\d)/)[0];\nhtmlNode.querySelector('#time-value').innerHTML = secondstotime(data.series[0]?.fields[0]?.values.buffer[0] || 0);\nhtmlNode.querySelector('#mediaatt').innerHTML = data.series[1]?.fields[0]?.values.buffer[0] || 0",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": " SELECT \r\n  case when EXTRACT(EPOCH FROM (atendimento_os.data_finalizacao - atendimento_os.data_checkin)) is not null then EXTRACT(EPOCH FROM (atendimento_os.data_finalizacao - atendimento_os.data_checkin)) else 0 end AS media_tempo_gasto_horas\r\n --EXTRACT(EPOCH FROM (atendimento_os.data_finalizacao - atendimento_os.data_checkin)) AS media_tempo_gasto_horas\r\n FROM atendimento_os \r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n WHERE atendimento_os.status = 1 \r\n and auth_user.username = '$tecnico'\r\n --and atendimento_os.data_checkin is not null\r\n group by atendimento_os.data_finalizacao, atendimento_os.data_checkin, atendimento_os.data_alteracao\r\n order by atendimento_os.data_alteracao desc NULLS FIRST\r\n limit 1",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT COUNT(*) / nullif(COUNT(DISTINCT DATE(data_finalizacao)), 0) AS media_atendimentos_por_dia\r\nfrom atendimento_os\r\nINNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id)\r\nwhere data_finalizacao is not NULL and data_finalizacao >= current_date - interval '30 day' and auth_user.username = '$tecnico'",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT '$tecnico' as username, '$tecnico_name' as name, '$image' as image;",
+          "refId": "C",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 4,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n  font-family: Arial, sans-serif;\n  margin: 0;\n  padding: 20px;\n  background-color: #f0f0f0;\n}\n\n.stat-card {\n  display: flex;\n  align-items: center;\n  background-color: #0b0ec6;\n  border-radius: 20px;\n  padding: 10px;\n  width: 300px; /* Largura fixa */\n  height: 80px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n  color: #ffffff;\n}\n\n.icon-holder {\n  padding: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.stat-content {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0px;\n  width: 100%; /* Adicionado para ocupar todo o espaço disponível */\n}\n\n.stat-content > div {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: flex-start;\n  padding: 10px;\n}\n\n.stat-content > img {\n  width: 25%;\n}\n\n.number {\n  font-size: 32px; /* Aumenta o tamanho do número */\n  font-weight: bold;\n  margin: 0;\n  text-align: right; /* Alinha o número no canto direito */\n}\n\n.label {\n  font-size: 16px; /* Aumenta o tamanho da label */\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Statistic Card</title>\n<link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n<div class=\"stat-card\">\n  <div class=\"icon-holder\">\n    <!-- Aqui você pode inserir o ícone SVG ou uma imagem com <img src=\"path-to-your-icon.svg\" alt=\"Applications\"> -->\n  </div>\n  <div class=\"stat-content\">\n    <img src=\"../public/img/logos/Img_sgp/checklist.png\" alt=\"Ícone\" class=\"icon\"/>\n    <div>\n      <div class=\"number\">1,438</div>\n      <div class=\"label\">ABERTAS</div>\n    </div>\n  </div>\n</div>\n</body>\n</html>\n",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "htmlNode.querySelector('.number').innerHTML = data.series[0]?.fields[0].values.buffer || 0;",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n count(atendimento_os.id) AS qtd\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where atendimento_os.data_cadastro >= current_date - interval '30 day'\r\n and auth_user.username = '$tecnico'\r\n and atendimento_os.status = 0",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 9,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n  font-family: Arial, sans-serif;\n  margin: 0;\n  padding: 20px;\n  background-color: #f0f0f0;\n}\n\n.stat-card {\n  display: flex;\n  align-items: center;\n  background-color: #0b0ec6;\n  border-radius: 20px;\n  padding: 10px;\n  width: 300px; /* Largura fixa */\n  height: 80px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n  color: #ffffff;\n}\n\n.icon-holder {\n  padding: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.stat-content {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0px;\n  width: 100%; /* Adicionado para ocupar todo o espaço disponível */\n}\n\n.stat-content > div {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: flex-start;\n  padding: 10px;\n}\n\n.stat-content > img {\n  width: 25%;\n}\n\n.number {\n  font-size: 32px; /* Aumenta o tamanho do número */\n  font-weight: bold;\n  margin: 0;\n  text-align: right; /* Alinha o número no canto direito */\n}\n\n.label {\n  font-size: 16px; /* Aumenta o tamanho da label */\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Statistic Card</title>\n<link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n<div class=\"stat-card\">\n  <div class=\"icon-holder\">\n    <!-- Aqui você pode inserir o ícone SVG ou uma imagem com <img src=\"path-to-your-icon.svg\" alt=\"Applications\"> -->\n  </div>\n  <div class=\"stat-content\">\n    <img src=\"../public/img/logos/Img_sgp/checked.png\" alt=\"Ícone\" class=\"icon\"/>\n    <div>\n      <div class=\"number\">1,438</div>\n      <div class=\"label\">ENCERRADAS</div>\n    </div>\n  </div>\n</div>\n</body>\n</html>\n",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "htmlNode.querySelector('.number').innerHTML = data.series[0]?.fields[0].values.bufer || 0;",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n count(atendimento_os.id) AS qtd\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where atendimento_os.data_cadastro >= current_date - interval '30 day'\r\n and auth_user.username = '$tecnico'\r\n and atendimento_os.status = 1",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 14,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n  font-family: Arial, sans-serif;\n  margin: 0;\n  padding: 20px;\n  background-color: #f0f0f0;\n}\n\n.stat-card {\n  display: flex;\n  align-items: center;\n  background-color: #0b0ec6;\n  border-radius: 20px;\n  padding: 10px;\n  width: 300px; /* Largura fixa */\n  height: 80px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n  color: #ffffff;\n}\n\n.icon-holder {\n  padding: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.stat-content {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0px;\n  width: 100%; /* Adicionado para ocupar todo o espaço disponível */\n}\n\n.stat-content > div {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: flex-start;\n  padding: 10px;\n}\n\n.stat-content > img {\n  width: 25%;\n}\n\n.number {\n  font-size: 32px; /* Aumenta o tamanho do número */\n  font-weight: bold;\n  margin: 0;\n  text-align: right; /* Alinha o número no canto direito */\n}\n\n.label {\n  font-size: 16px; /* Aumenta o tamanho da label */\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Statistic Card</title>\n<link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n<div class=\"stat-card\">\n  <div class=\"icon-holder\">\n    <!-- Aqui você pode inserir o ícone SVG ou uma imagem com <img src=\"path-to-your-icon.svg\" alt=\"Applications\"> -->\n  </div>\n  <div class=\"stat-content\">\n    <img src=\"../public/img/logos/Img_sgp/execution (1).png\" alt=\"Ícone\" class=\"icon\"/>\n    <div>\n      <div class=\"number\">1,438</div>\n      <div class=\"label\">EM EXECUÇÃO</div>\n    </div>\n  </div>\n</div>\n</body>\n</html>\n",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "htmlNode.querySelector('.number').innerHTML = data.series[0]?.fields[0].values.buffer || 0;",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n count(atendimento_os.id) AS qtd,\r\n atendimento_os.status\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where\r\n auth_user.username = '$tecnico'\r\n and atendimento_os.status = 2\r\n GROUP BY atendimento_os.status",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 19,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n  font-family: Arial, sans-serif;\n  margin: 0;\n  padding: 20px;\n  background-color: #f0f0f0;\n}\n\n.stat-card {\n  display: flex;\n  align-items: center;\n  background-color: #0b0ec6;\n  border-radius: 20px;\n  padding: 10px;\n  width: 300px; /* Largura fixa */\n  height: 80px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n  color: #ffffff;\n}\n\n.icon-holder {\n  padding: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.stat-content {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0px;\n  width: 100%; /* Adicionado para ocupar todo o espaço disponível */\n}\n\n.stat-content > div {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: flex-start;\n  padding: 10px;\n}\n\n.stat-content > img {\n  width: 25%;\n}\n\n.number {\n  font-size: 32px; /* Aumenta o tamanho do número */\n  font-weight: bold;\n  margin: 0;\n  text-align: right; /* Alinha o número no canto direito */\n}\n\n.label {\n  font-size: 16px; /* Aumenta o tamanho da label */\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Statistic Card</title>\n<link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n<div class=\"stat-card\">\n  <div class=\"icon-holder\">\n    <!-- Aqui você pode inserir o ícone SVG ou uma imagem com <img src=\"path-to-your-icon.svg\" alt=\"Applications\"> -->\n  </div>\n  <div class=\"stat-content\">\n    <img src=\"../public/img/logos/Img_sgp/alarm-clock.png\" alt=\"Ícone\" class=\"icon\"/>\n    <div>\n      <div class=\"number\">1,438</div>\n      <div class=\"label\">TEMPO MÉDIO</div>\n    </div>\n  </div>\n</div>\n</body>\n</html>\n",
+        "onInit": "// Sets the text from customProperties\nconst htmlgraphicsText = htmlNode.getElementById('htmlgraphics-text');\n\nif (htmlgraphicsText) {\n  htmlgraphicsText.textContent = customProperties.text;\n\n  // Change the text color based on the theme\n  if (theme.isDark) {\n    htmlgraphicsText.style.color = 'green';\n  } else {\n    htmlgraphicsText.style.color = 'red';\n  }\n}\n",
+        "onInitOnResize": false,
+        "onRender": "const secondstotime = (seconds) => (new Date(seconds * 1000)).toUTCString().match(/(\\d\\d:\\d\\d:\\d\\d)/)[0];\nhtmlNode.querySelector('.number').innerHTML = secondstotime(data.series[0]?.fields[0]?.values.buffer[0] || 1);",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n  AVG(EXTRACT(EPOCH FROM (atendimento_os.data_finalizacao - atendimento_os.data_checkin))) AS media_tempo_gasto_horas\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where atendimento_os.data_cadastro >= current_date - interval '30 day'\r\n and auth_user.username = '$tecnico'\r\n and atendimento_os.status = 1\r\n group by atendimento_os.status",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 13,
+        "x": 4,
+        "y": 4
+      },
+      "id": 6,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": true,
+        "calcsMutation": "standard",
+        "centerAlignContent": true,
+        "codeData": "{\n  \"text\": \"Random text\"\n}",
+        "css": "body {\n    font-family: Arial, sans-serif;\n    margin: 0;\n    padding: 20px;\n    border-radius: 5px;\n    background-color: rgb(4, 4, 15) !important;\n    overflow-x: auto;\n}\n\n.container {\n    width: 100%;\n    min-height: 100vh;\n    margin: auto;\n    padding: 20px;\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n    overflow-y: hidden;\n    overflow-x: auto;\n    border-radius: 5px;\n    background-color: transparent;\n}\n\n.buttons {\n    text-align: center;\n    margin-bottom: 20px;\n}\n\n.button {\n    padding: 10px 20px;\n    border: none;\n    color: white;\n    font-size: 16px;\n    cursor: pointer;\n    margin: 0 10px;\n    border-radius: 5px;\n    outline: none;\n    min-width: 150px;\n}\n\n.entrada {\n   background-color: #008000;\n}\n\n.saida {\n    background-color: #a91807;\n}\n\n.execucao {\n    background-color: #e89817;\n}\n\ntable {\n    width: 100%;\n    border-collapse: collapse;\n}\n\ntbody > tr {\n    font-weight: 550; \n}\n\ntbody{\n    background-color: rgb(0, 51, 102)!important;\n}\n\n.header{\n    background-color: #05C091;\n}\n\nth,td {\n    text-align: left;\n    padding: 10px;\n    border-bottom: 1px solid #ddd;\n    word-break: keep-all;\n    font-size: 12px;\n}\n\nth {\n    text-align: center;\n}\n\n\nthead {\n    background-color: #0b0ec6;\n    color: #fff;\n    width: 100% !important;\n    border: none;\n}\n\ntbody tr:hover {\n    background-color: #f1f1f1;\n    color: #7d1c11;\n}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "\n<div class=\"container\">\n   <div class=\"buttons\">\n      <button class=\"button entrada\" data-status=\"0\">ABERTA</button>\n      <button class=\"button saida\" data-status=\"1\">ENCERRADA</button>\n      <button class=\"button execucao\" data-status=\"2\">EM EXECUÇÃO</button>\n    </div>\n\n  <div id=\"indicador\" class=\"indicador\">\n    <table>\n      <thead>\n        <tr class=\"header\">\n          <th>OS</th>\n          <th>STATUS</th>\n          <th>CLIENTE</th>\n          <th>MOTIVO</th>\n          <th id=\"atendente\">ATENDENTE</th>\n          <th id=\"atendente-final\">ATENDENTE FINAL</th>\n          <th id=\"data-agendamento\">DATA DE AGENDAMENTO</th>\n          <th id=\"data-final\">DATA DE FINALIZAÇÃO</th>\n          <th id=\"tempo-medio\">TEMPO MEDIO GASTO</th>\n        </tr>\n      </thead>\n      <tbody></tbody>\n    </table>\n  </div>\n</div>",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "let tdAtendente = htmlNode.querySelector('#atendente')\nlet tdAtendenteFinal = htmlNode.querySelector('#atendente-final')\nlet tdDataFinal = htmlNode.querySelector('#data-final')\nlet tdDataAgendamento = htmlNode.querySelector('#data-agendamento')\nlet tdDataTempoMedio = htmlNode.querySelector('#tempo-medio')\n\nlet tableHeadClasses = {\n  0: 'entrada',\n  1: 'saida',\n  2: 'execucao'\n}\n\nhtmlNode.querySelectorAll('.button').forEach(el => {\n  el.addEventListener('click', () => {\n    tdAtendenteFinal.style.display = 'none'\n    tdAtendente.style.display = 'none'\n    tdDataFinal.style.display = 'none'\n    tdDataAgendamento.style.display = 'none'\n    tdDataTempoMedio.style.display = 'none'\n    let dataStatus = el.getAttribute('data-status')\n    atualizarIndicador(dataStatus);\n    let thead = htmlNode.querySelector('table>thead')\n    thead.className = ''\n    thead.classList.add(tableHeadClasses[dataStatus])\n    let tbody = htmlNode.querySelector('table>tbody')\n    tbody.className = ''\n    tbody.classList.add(tableHeadClasses[dataStatus])\n  })\n})\n\n\nfunction atualizarIndicador(status) {\n  let resultados = []\n  data.series[status == 1 ? 1 : 0]?.fields.forEach(f => {\n    f.values.buffer.forEach((value, v) => {\n      if (!resultados[v]) resultados[v] = {}\n      resultados[v][f.name] = value\n    })\n  })\n\n  // Atualizar o conteúdo do indicador com os resultados\n  let dados = resultados.filter(r => r.status == status)\n  popularTabela(dados, status)\n}\n\n\nfunction popularTabela(dados, osStatus = 0) {\n  let tbody = htmlNode.querySelector('#indicador>table>tbody')\n  tbody.innerHTML = ''\n\n  dados.forEach(data => {\n    let tr = document.createElement('tr');\n\n    let os = document.createElement('td');\n    os.innerHTML = data.os\n    tr.appendChild(os);\n\n    let status = document.createElement('td');\n    if (data.status == 0) {\n      status.innerHTML = 'Aberta';\n    } else if (data.status == 1) {\n      status.innerHTML = 'Encerrada';\n    } else if (data.status == 2) {\n      status.innerHTML = 'Em Execução';\n    } else {\n      status.innerHTML = 'Status desconhecido';\n    }\n    tr.appendChild(status);\n\n    let cliente = document.createElement('td');\n    cliente.innerHTML = data.cliente\n    tr.appendChild(cliente);\n\n    let motivo = document.createElement('td');\n    motivo.innerHTML = data.motivo\n    tr.appendChild(motivo);\n\n    if (osStatus != 1) {\n      tdAtendente.style.display = '';\n      let name = document.createElement('td');\n      name.innerHTML = data.name\n      tr.appendChild(name);\n    }\n\n    if (osStatus == 1) {\n      tdAtendenteFinal.style.display = '';\n      let final = document.createElement('td');\n      final.innerHTML = data.final\n      tr.appendChild(final);\n    }\n\n    if (osStatus != 1) {\n      tdDataAgendamento.style.display = '';\n      let data_cadastro = document.createElement('td');\n      data_cadastro.innerHTML = data.data_cadastro\n      tr.appendChild(data_cadastro);\n    }\n    \n    if (osStatus == 1) {\n      tdDataFinal.style.display = '';\n      let data_finalizacao = document.createElement('td');\n      data_finalizacao.innerHTML = data.data_finalizacao\n      tr.appendChild(data_finalizacao);\n    }\n\n    if (osStatus == 1) {\n      tdDataTempoMedio.style.display = '';\n      let tempo_medio = document.createElement('td');\n      const secondstotime = (seconds) => (new Date(seconds * 1000)).toUTCString().match(/(\\d\\d:\\d\\d:\\d\\d)/)[0];\n      tempo_medio.innerHTML = secondstotime(data.tempo)\n      tr.appendChild(tempo_medio);\n    }\n\n    tbody.append(tr);\n  })\n}\n\nhtmlNode.querySelectorAll('.button')[0].click()",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n atendimento_os.id AS OS,\r\n atendimento_os.status,\r\n admcore_pessoa.nome AS CLIENTE,\r\n atendimento_motivoos.descricao AS MOTIVO,\r\n auth_user_start.name,\r\n TO_CHAR(atendimento_os.data_cadastro, 'DD/MM/YYYY HH24:MI:SS') as data_cadastro\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN auth_user AS auth_user_start ON (atendimento_os.usuario_id = auth_user_start.id)\r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where auth_user.username = '$tecnico'\r\n and atendimento_os.status in (0,2)\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n atendimento_os.id AS OS,\r\n atendimento_os.status,\r\n admcore_pessoa.nome AS CLIENTE,\r\n atendimento_motivoos.descricao AS MOTIVO,\r\n auth_user_final.name as final,\r\n TO_CHAR(atendimento_os.data_finalizacao, 'DD/MM/YYYY HH24:MI:SS') as data_finalizacao,\r\n EXTRACT(EPOCH FROM (atendimento_os.data_finalizacao - atendimento_os.data_checkin)) AS tempo\r\n FROM atendimento_os\r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN auth_user AS auth_user_final ON (atendimento_os.usuario_finaliza_id = auth_user_final.id)\r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n where atendimento_os.data_cadastro >= current_date - interval '30 day' and auth_user.username = '$tecnico'\r\n and atendimento_os.status = 1",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 7,
+        "x": 17,
+        "y": 4
+      },
+      "id": 7,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:22px;text-align:center;font-family: Arial, sans-serif;\nbackground: linear-gradient(90deg, #00146C,#00146C);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nO.S EXECUTADAS </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 17,
+        "y": 6
+      },
+      "id": 13,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "const options = {\n  tooltip: {\n    trigger: 'axis'\n  },\n  xAxis: {\n    type: 'category',\n    boundaryGap: true,\n    data: ['3 dias', '7 dias', '15 dias', '30 dias']\n  },\n  yAxis: {},\n  series: [\n    {\n      type: 'bar',\n      data: [\n        data.series[0].fields[0].values.buffer[0],\n        data.series[0].fields[1].values.buffer[0],\n        data.series[0].fields[2].values.buffer[0],\n        data.series[0].fields[3].values.buffer[0]\n      ],\n      itemStyle: {\n        color: 'green',\n        barBorderRadius: [7, 7, 0, 0] // Define o border-radius\n      },\n      tooltip: {\n        valueFormatter: value => `Total - ${value}`\n      },\n    },\n    {\n      type: 'bar',\n      data: [\n        data.series[1].fields[0].values.buffer[0],\n        data.series[1].fields[1].values.buffer[0],\n        data.series[1].fields[2].values.buffer[0],\n        data.series[1].fields[3].values.buffer[0]\n      ],\n      itemStyle: {\n        color: 'blue',\n        barBorderRadius: [7, 7, 0, 0]\n      },\n      tooltip: {\n        valueFormatter: value => `Instalação de KIT - ${value}`\n      },\n    },\n    {\n      type: 'bar',\n      data: [\n        data.series[2].fields[0].values.buffer[0],\n        data.series[2].fields[1].values.buffer[0],\n        data.series[2].fields[2].values.buffer[0],\n        data.series[2].fields[3].values.buffer[0]\n      ],\n      itemStyle: {\n        color: 'red',\n        barBorderRadius: [7, 7, 0, 0]\n      },\n      tooltip: {\n        valueFormatter: value => `Remoção de KIT - ${value}`\n      },\n    },\n    {\n      type: 'bar',\n      data: [\n        data.series[3].fields[0].values.buffer[0],\n        data.series[3].fields[1].values.buffer[0],\n        data.series[3].fields[2].values.buffer[0],\n        data.series[3].fields[3].values.buffer[0]\n      ],\n      itemStyle: {\n        color: 'yellow',\n        barBorderRadius: [7, 7, 0, 0]\n      },\n      tooltip: {\n        valueFormatter: value => `Corretivas - ${value}`\n      },\n    },\n  ],\n  graphic: [\n    {\n      type: 'text',\n      left: 20,\n      top: 5,\n      style: {\n        fontSize: 18\n      }\n    }\n  ]\n}\n\nreturn options",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "console.log(context);\nreturn {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \t\t\r\n\tSUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '3 DAY' THEN 1 ELSE 0 END) AS quantidade_ultimos_3_dias,\r\n    SUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '7 DAY' THEN 1 ELSE 0 END) AS quantidade_ultimos_7_dias,\r\n    SUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '15 DAY' THEN 1 ELSE 0 END) AS quantidade_ultimos_15_dias,\r\n    SUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '30 DAY' THEN 1 ELSE 0 END) AS quantidade_ultimos_30_dias\r\nFROM atendimento_os \r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\nwhere auth_user.username = '$tecnico'\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select \t\t\r\n\tSUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '3 DAY' THEN 1 ELSE 0 END) AS finalizados_ultimos_3_dias,\r\n    SUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '7 DAY' THEN 1 ELSE 0 END) AS finalizados_ultimos_7_dias,\r\n    SUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '15 DAY' THEN 1 ELSE 0 END) AS finalizados_ultimos_15_dias,\r\n    SUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '30 DAY' THEN 1 ELSE 0 END) AS finalizados_ultimos_30_dias\r\nFROM atendimento_os \r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\nwhere auth_user.username = '$tecnico' and atendimento_motivoos.codigo = 10",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select \t\t\r\n\tSUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '3 DAY' THEN 1 ELSE 0 END) AS finalizados_ultimos_3_dias,\r\n    SUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '7 DAY' THEN 1 ELSE 0 END) AS finalizados_ultimos_7_dias,\r\n    SUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '15 DAY' THEN 1 ELSE 0 END) AS finalizados_ultimos_15_dias,\r\n    SUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '30 DAY' THEN 1 ELSE 0 END) AS finalizados_ultimos_30_dias\r\nFROM atendimento_os \r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\nwhere auth_user.username = '$tecnico' and atendimento_motivoos.codigo = 20",
+          "refId": "C",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select \t\t\r\n\tSUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '3 DAY' THEN 1 ELSE 0 END) AS finalizados_ultimos_3_dias,\r\n    SUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '7 DAY' THEN 1 ELSE 0 END) AS finalizados_ultimos_7_dias,\r\n    SUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '15 DAY' THEN 1 ELSE 0 END) AS finalizados_ultimos_15_dias,\r\n    SUM(CASE WHEN atendimento_os.data_finalizacao >= CURRENT_DATE - INTERVAL '30 DAY' THEN 1 ELSE 0 END) AS finalizados_ultimos_30_dias\r\nFROM atendimento_os \r\n INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n INNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\nwhere auth_user.username = '$tecnico' and atendimento_motivoos.codigo = 40",
+          "refId": "D",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select *\t\r\nFROM atendimento_motivoos",
+          "refId": "E",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "data_cadastro": 1,
+              "data_competencia": 2,
+              "descricao": 4,
+              "forma_de_pagamento": 5,
+              "tipo_operacao": 0,
+              "valor": 3
+            },
+            "renameByName": {
+              "data_alteracao": "DATA DA ALTERAÇÃO",
+              "data_cadastro": "DATA DE CADASTRO",
+              "data_competencia": "DATA DA COMPETÊNCIA",
+              "descricao": "COMPETÊNCIA",
+              "forma_de_pagamento": "FORMA DE PAGAMENTO",
+              "tipo_operacao": "TIPO DE OPERAÇÃO",
+              "valor": "VALOR"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "volkovlabs-echarts-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 10,
+        "x": 4,
+        "y": 15
+      },
+      "id": 9,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:22px;text-align:center;font-family: Arial, sans-serif;\nbackground: linear-gradient(90deg, #00146C,#00146C);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nMÉDIA DE TEMPO POR OS's</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 10,
+        "x": 14,
+        "y": 15
+      },
+      "id": 11,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:22px;text-align:center;font-family: Arial, sans-serif;\nbackground: linear-gradient(90deg, #00146C,#00146C);\ncolor:white;border-radius: 10px 10px 10px 10px; text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)\"> \nO.S EXECUTADAS </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.9",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#003366",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "MÉDIA DE TEMPO:"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dthms"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 4,
+        "y": 17
+      },
+      "id": 10,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.5.9",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n  top_5.descricao,\r\n\tmedia_tempo_gasto_horas\t\r\nFROM ( \t\r\n    SELECT \r\n        atendimento_motivoos.descricao,\r\n        AVG(EXTRACT(EPOCH FROM (atendimento_os.data_finalizacao - atendimento_os.data_checkin))) AS media_tempo_gasto_horas\r\n    FROM \r\n        atendimento_os\r\n        INNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n        INNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n        INNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n        INNER JOIN admcore_clientecontrato ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n        INNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n        INNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n    WHERE \r\n        atendimento_os.data_cadastro >= current_date - interval '45 day' \r\n        AND auth_user.username LIKE '$tecnico' \r\n        AND atendimento_os.data_checkin IS NOT NULL\r\n    GROUP BY \r\n        atendimento_motivoos.descricao\r\n    ORDER BY \r\n        media_tempo_gasto_horas DESC\r\n) AS top_5\r\nwhere media_tempo_gasto_horas is not null\r\nORDER BY \r\n    media_tempo_gasto_horas DESC;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "descricao": "DESCRIÇÃO:",
+              "media_tempo_gasto_horas": "MÉDIA DE TEMPO:"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_POSTGRESQL}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 14,
+        "y": 17
+      },
+      "id": 12,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "editorMode": "code",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "let pops = []\ndata.series[0]?.fields[0].values.forEach(pop => {\n  pops.push(pop.charAt(0).toUpperCase() + pop.slice(1))\n})\n\nreturn {\n  tooltip: {\n    trigger: 'axis'\n  },\n  grid: {  // Adiciona configurações para o espaçamento do grid\n    left: '5%', // Ajusta a margem esquerda do grid\n    top: '0%',\n    bottom: '0%',\n    containLabel: true // Garante que os rótulos estejam contidos no gráfico\n  },\n  xAxis: {},\n  yAxis: {\n    type: 'category',\n    boundaryGap: true,\n    data: pops\n  },\n  series: [\n    {\n      type: 'bar',\n      data: data.series[0]?.fields[1].values.map(v => v || 0),\n      itemStyle: {\n        color: 'rgb(5, 192, 145)',\n        barBorderRadius: [0, 7, 7, 0] //define o barBorderRadius\n      },\n      tooltip: {\n        valueFormatter: (value) => `Quantidade: ${value}`\n      },\n      label: {\n        show: true,\n        position: 'right',\n        valueAnimation: true,\n      }\n    }\n  ],\n  grip: {\n    left: '20%'\n  }\n}",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "console.log(context);\nreturn {\n  dataset: context.editor.dataset,\n  series: context.editor.series,\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n}\n",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_POSTGRESQL}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select *\r\nfrom ( \t\r\n\t\tSELECT \r\n\t\t\tatendimento_motivoos.descricao,\r\n\t\t\tcount(atendimento_motivoos.descricao) AS quantidade\r\n\t\tFROM atendimento_os\r\n\t\tINNER JOIN atendimento_ocorrencia ON (atendimento_os.ocorrencia_id = atendimento_ocorrencia.id) \r\n\t\tINNER JOIN auth_user ON (atendimento_os.responsavel_id = auth_user.id) \r\n\t\tINNER JOIN atendimento_motivoos ON (atendimento_motivoos.id = atendimento_os.motivoos_id)\r\n\t\tINNER JOIN admcore_clientecontrato  ON (admcore_clientecontrato.id = atendimento_ocorrencia.clientecontrato_id)\r\n\t\tINNER JOIN admcore_cliente ON (admcore_clientecontrato.cliente_id = admcore_cliente.id)\r\n\t\tINNER JOIN admcore_pessoa ON (admcore_cliente.pessoa_id = admcore_pessoa.id)\r\n\t\twhere atendimento_os.data_cadastro >= current_date - interval '30 day' and auth_user.username like '$tecnico'\r\n\t\tgroup by atendimento_motivoos.descricao\r\n\t\torder by quantidade desc\r\n\t\tlimit 5\r\n\t\t) as top_5\r\norder by quantidade asc\r\n\r\n \r\n ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "volkovlabs-echarts-panel"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "hide": 2,
+        "label": "Técnicos",
+        "name": "tecnico",
+        "query": "${VAR_TECNICO}",
+        "skipUrlSync": false,
+        "type": "constant",
+        "current": {
+          "value": "${VAR_TECNICO}",
+          "text": "${VAR_TECNICO}",
+          "selected": false
+        },
+        "options": [
+          {
+            "value": "${VAR_TECNICO}",
+            "text": "${VAR_TECNICO}",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "hide": 2,
+        "label": "image",
+        "name": "image",
+        "query": "${VAR_IMAGE}",
+        "skipUrlSync": false,
+        "type": "constant",
+        "current": {
+          "value": "${VAR_IMAGE}",
+          "text": "${VAR_IMAGE}",
+          "selected": false
+        },
+        "options": [
+          {
+            "value": "${VAR_IMAGE}",
+            "text": "${VAR_IMAGE}",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "hide": 2,
+        "label": "tecnico_name",
+        "name": "tecnico_name",
+        "query": "${VAR_TECNICO_NAME}",
+        "skipUrlSync": false,
+        "type": "constant",
+        "current": {
+          "value": "${VAR_TECNICO_NAME}",
+          "text": "${VAR_TECNICO_NAME}",
+          "selected": false
+        },
+        "options": [
+          {
+            "value": "${VAR_TECNICO_NAME}",
+            "text": "${VAR_TECNICO_NAME}",
+            "selected": false
+          }
+        ]
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "TECNICO dinamico",
+  "uid": "d5d89706-a731-4174-b19b-b72d2da1023g",
+  "version": 25,
+  "weekStart": ""
+}
