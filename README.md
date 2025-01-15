@@ -1,4 +1,4 @@
-# Análise de Dados para Empresa de Rede de Internet
+# Análise de Dados para Monitoramento de redes
 
 Este projeto consiste na criação de dashboards e análises técnicas para uma empresa de rede de internet, focando em métricas de desempenho, ocorrências e insights para a tomada de decisões estratégicas. As dashboards oferecem uma visualização clara e interativa dos dados, enquanto as análises técnicas ajudam a identificar padrões, otimizar a performance e entender os principais fatores de interrupção e manutenção de serviço.
 
